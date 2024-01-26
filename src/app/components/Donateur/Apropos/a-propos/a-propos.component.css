@@ -1,0 +1,259 @@
+.section-data,
+.section-data * {
+  box-sizing: border-box;
+}
+.section-data {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: relative;
+}
+.a-propos {
+  color: #000000;
+  text-align: center;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 64px;
+  line-height: 100%;
+  font-weight: 700;
+  position: relative;
+}
+.dolel-fondation-est-une-plateforme-but-non-lucratif {
+  text-align: left;
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 50px;
+  line-height: 0undefined;
+  font-weight: 600;
+  position: relative;
+  width: 572px;
+}
+.dolel-fondation-est-une-plateforme-but-non-lucratif-span {
+  color: #f7e801;
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 50px;
+  font-weight: 600;
+}
+.dolel-fondation-est-une-plateforme-but-non-lucratif-span2 {
+  color: #3b0458;
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 50px;
+  font-weight: 600;
+}
+.dolel-fondation-est-une-plateforme-but-non-lucratif-span3 {
+  color: #f7e801;
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 50px;
+  font-weight: 600;
+}
+.dolel-fondation-est-une-plateforme-but-non-lucratif-span4 {
+  color: #3b0458;
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 50px;
+  font-weight: 600;
+}
+.dolel-fondation-est-une-plateforme-but-non-lucratif-span5 {
+  color: #f7e801;
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 50px;
+  font-weight: 600;
+}
+.dolel-fondation-est-une-plateforme-but-non-lucratif-span6 {
+  color: #f7e801;
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 50px;
+  line-height: 122%;
+  font-weight: 600;
+}
+.dolel-fondation-est-une-plateforme-but-non-lucratif-span7 {
+  color: #f7e801;
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 50px;
+  font-weight: 600;
+}
+.section-content {
+  flex-shrink: 0;
+  width: 572px;
+  height: 208px;
+  position: static;
+}
+.weekend-ux-is-a-ui-ux-design-academy-in-delhi-involved-in-user-experience-and-user-interface-training-and-consulting-it-was-started-in-2023-and-passionate-towards-user-interface-design-user-experience-design-human-computer-interaction-design-humanoid-is-gushing-towards-competence-to-acquire-knowledge-and-have-a-wide-understanding-towards-the-sphere-through-the-foremost-courses-in-the-area-of-ui-ux-design-by-strengthening-up-your-skills-for-your-golden-future {
+  color: #1e1e1e;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 700;
+  position: absolute;
+  left: 0px;
+  top: 287px;
+  width: 572px;
+}
+.component-17,
+.component-17 * {
+  box-sizing: border-box;
+}
+.component-17 {
+  width: 554px;
+  height: 480px;
+  position: relative;
+  top:18%;
+}
+.rectangle-13 {
+  border-radius: 10px;
+  position: absolute;
+  right: 32.13%;
+  left: 0%;
+  width: 67.87%;
+  bottom: 0%;
+  top: 52.14%;
+  height: 47.86%;
+  object-fit: cover;
+}
+.rectangle-14 {
+  border-radius: 10px;
+  position: absolute;
+  right: 0%;
+  left: 32.13%;
+  width: 67.87%;
+  bottom: 52.14%;
+  top: 0%;
+  height: 47.86%;
+  object-fit: cover;
+}
+.component-18,
+.component-18 * {
+  box-sizing: border-box;
+}
+.component-18 {
+  width: 1323px;
+  height: 912px;
+  position: relative;
+}
+.unsplash-i-2-ho-d-c-2-rua {
+  position: absolute;
+  right: 58.81%;
+  left: 0%;
+  width: 41.19%;
+  bottom: 0%;
+  top: 0%;
+  height: 100%;
+  object-fit: cover;
+}
+.neque {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  position: absolute;
+  right: 0%;
+  left: 43.46%;
+  width: 56.54%;
+  bottom: 73.25%;
+  top: 0%;
+  height: 26.75%;
+}
+.sed-ut-perspiciatis-unde-omnis-iste-natus-error-sit-voluptatem-accusantium-doloremque-laudantium-to {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Light", sans-serif;
+  font-size: 50px;
+  font-weight: 300;
+  position: absolute;
+  right: 0%;
+  left: 43.99%;
+  width: 56.01%;
+  bottom: 56.03%;
+  top: 27.63%;
+  height: 16.34%;
+}
+.group-513033 {
+  position: absolute;
+  inset: 0;
+}
+.group-513031 {
+  width: 328px;
+  height: 352px;
+  position: static;
+}
+.rectangle-373 {
+  background: #f7e801;
+  position: absolute;
+  right: 29.4%;
+  left: 45.8%;
+  width: 24.79%;
+  bottom: 0%;
+  top: 61.4%;
+  height: 38.6%;
+}
+.notre-vision {
+  color: #3b0458;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  position: absolute;
+  right: 33.03%;
+  left: 49.74%;
+  width: 17.23%;
+  bottom: 30.7%;
+  top: 64.91%;
+  height: 4.39%;
+}
+.quis-autem-vel-eum-iure-reprehenderit-qui-in-ea-voluptate-velit-esse-quam-nihil-molestiae-consequatu-quis-autem-vel-eum-iure-reprehenderit-qui-in-ea-voluptate-velit-esse-quam {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  position: absolute;
+  right: 29.4%;
+  left: 45.8%;
+  width: 24.79%;
+  bottom: 3.07%;
+  top: 73.25%;
+  height: 23.68%;
+}
+.group-513032 {
+  position: absolute;
+  inset: 0;
+}
+.rectangle-3732 {
+  background: #3b0458;
+  position: absolute;
+  right: 0%;
+  left: 75.21%;
+  width: 24.79%;
+  bottom: 0%;
+  top: 61.4%;
+  height: 38.6%;
+}
+.notre-mission {
+  color: #f7e801;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  position: absolute;
+  right: 3.63%;
+  left: 79.14%;
+  width: 17.23%;
+  bottom: 30.7%;
+  top: 64.91%;
+  height: 4.39%;
+}
+.quis-autem-vel-eum-iure-reprehenderit-qui-in-ea-voluptate-velit-esse-quam-nihil-molestiae-consequatu-quis-autem-vel-eum-iure-reprehenderit-qui-in-ea-voluptate-velit-esse-quam2 {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 25px;
+  font-weight: 400;
+  position: absolute;
+  right: 0%;
+  left: 75.21%;
+  width: 24.79%;
+  bottom: 3.07%;
+  top: 73.25%;
+  height: 23.68%;
+}

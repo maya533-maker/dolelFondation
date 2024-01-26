@@ -1,0 +1,488 @@
+
+.quotes,
+.quotes * {
+  box-sizing: border-box;
+}
+.quotes {
+  background: #3b0458;
+  padding: 55px 53px 55px 53px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: center;
+  height: 170px;
+  position: relative;
+}
+.content {
+  display: flex;
+  flex-direction: row;
+  gap: 22px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  height: 60px;
+  position: relative;
+}
+.div {
+  flex-shrink: 0;
+  width: 64.97px;
+  height: 48.49px;
+  position: relative;
+  overflow: visible;
+}
+.le-sourire-la-plus-belle-chose-qui-eguaille-une-journ-e {
+  color: #ffffff;
+  text-align: center;
+  font-family: "ShipporiMincho-ExtraBold", sans-serif;
+  font-size: 25px;
+  /* line-height: 120%; */
+  font-weight: 800;
+  position: relative;
+}
+.sub-content,
+.sub-content * {
+  box-sizing: border-box;
+}
+.sub-content {
+  background: #f7e801;
+  padding: 39px 52px 39px 52px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  width: 388px;
+  position: relative;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 284px;
+  position: relative;
+}
+._17-m {
+  color: #000000;
+  text-align: left;
+  font-family: "ShipporiMincho-ExtraBold", sans-serif;
+  font-size: 73px;
+  line-height: 120%;
+  font-weight: 800;
+  position: relative;
+}
+.nous-comptons-plus-d-1-m-rien-est-sous-estimer {
+  color: #000000;
+  text-align: left;
+  font-family: "WorkSans-Medium", sans-serif;
+  font-size: 20px;
+  line-height: 130%;
+  font-weight: 500;
+  position: relative;
+  width: 244px;
+}
+.about-us,
+.about-us * {
+  box-sizing: border-box;
+}
+.about-us {
+  background: #f7e801;
+  padding: 80px 150px 80px 150px;
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  align-items: center;
+  justify-content: flex-start;
+  width: 1440px;
+  position: relative;
+  overflow: hidden;
+}
+.ellipse-93 {
+  border-radius: 50%;
+  border-style: solid;
+  border-color: #f7e801;
+  border-width: 40px;
+  flex-shrink: 0;
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  left: -61px;
+  top: -128px;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.about-us2 {
+  display: flex;
+  flex-direction: column;
+  gap: 27px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.rectangle-2 {
+  background: linear-gradient(to left, #f7e801, #f7e801);
+  border-radius: 16px;
+  flex-shrink: 0;
+  width: 502px;
+  height: 314px;
+  position: relative;
+  object-fit: cover;
+}
+.image {
+  display: flex;
+  flex-direction: row;
+  gap: 29px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.rectangle-4 {
+  border-radius: 16px;
+  flex-shrink: 0;
+  width: 208px;
+  height: 329px;
+  position: relative;
+  object-fit: cover;
+}
+.rectangle-3 {
+  border-radius: 16px;
+  flex-shrink: 0;
+  width: 268px;
+  height: 317px;
+  position: relative;
+  object-fit: cover;
+}
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+}
+
+* .qui-sommes-nous {
+  color: #3b0458;
+ /* border: 2px solid orange; */
+  font-family: "Inter-Black", sans-serif;
+  font-size: 40px;
+  line-height: 48px;
+  font-weight: 900;
+  margin-top: -3%;
+  width: 545px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dolel-fondation-est-une-plateforme-but-non-lucratif {
+  color: #3b0458;
+  text-align: left;
+  font-family: "Inter-Black", sans-serif;
+  font-size: 40px;
+  line-height: 48px;
+  font-weight: 900;
+  position: relative;
+  width: 545px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.lorem-ipsum-is-simply-dummy-text-of-the-printing-and-typesetting-industry-orem-ipsum-has-been-the-industry-s-standard-dummy-text-ever-since-the-1500-s-when-an-unknown-lorem-ipsum-is-simply-dummy-text-of-the-printing-and-typesetting-industry-orem-ipsum-has-been-the-industry-s-standard-dummy-text-ever-since-the-1500-s-when-an-unknown-ipsum-has-been-the-industry-s-standard-dummy-text-ever-since-the-1500-s-when-an-unknown {
+  color: #000000;
+  text-align: justified;
+  font-family: "Inter-SemiBold", sans-serif;
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 600;
+  position: relative;
+  width: 595px;
+  display: flex;
+  align-items: center;
+  justify-content: undefined;
+}
+.contain-svae-children {
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 0px;
+  height: 74px;
+  position: relative;
+}
+.button {
+  background: #3b0458;
+  border-radius: 12px;
+  padding: 20px 32px 20px 32px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+.text-here {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Inter-Black", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 900;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.angle-right {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  overflow: visible;
+}
+
+.group-513083,
+.group-513083 * {
+  /* box-sizing: border-box; */
+}
+.group-513083 {
+  position: absolute;
+  inset: 0;
+}
+.group-513080 {
+  width: 421px;
+  height: 620px;
+  position: static;
+}
+.rectangle-371 {
+  background: #ffffff;
+  border-radius: 30px;
+  width: 419px;
+  height: 620px;
+  position: absolute;
+  left: 38px;
+  top: 2459px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.rectangle-368 {
+  border-radius: 30px 30px 0px 0px;
+  width: 419px;
+  height: 280px;
+  position: absolute;
+  left: 38px;
+  top: 2459px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  object-fit: cover;
+}
+.simplon-s-n-gal-uvre-dans-le-pays-travers-un-num-rique-inclusif-et-soli-daire-pour-les-jeunes-femmes-et-person-nes-en-situation-de-handicap {
+  color: #000000;
+  text-align: center;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  position: absolute;
+  left: 53px;
+  top: 2832px;
+}
+.ellipse-11 {
+
+  /* border-radius: 50%; */
+  width: 59px;
+  height: 59px;
+  position: absolute;
+  left: 55px;
+  top: 2720px;
+  /* box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); */
+  /* object-fit: cover; */
+}
+.group-513077 {
+  width: 419px;
+  height: 66px;
+  position: static;
+}
+.rectangle-370 {
+  background: #3b0458;
+  border-radius: 0px 0px 30px 30px;
+  width: 419px;
+  height: 66px;
+  position: absolute;
+  left: 36px;
+  top: 3013px;
+}
+.faire-une-donnation {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 25px;
+  font-weight: 700;
+  position: absolute;
+  left: 111px;
+  top: 3030px;
+  width: 269px;
+  height: 33px;
+}
+.group-513081 {
+  width: 420px;
+  height: 620px;
+  position: static;
+}
+.rectangle-372 {
+  background: #ffffff;
+  border-radius: 30px;
+  width: 419px;
+  height: 620px;
+  position: absolute;
+  left: 511px;
+  top: 2464px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.rectangle-3682 {
+  border-radius: 30px 30px 0px 0px;
+  width: 419px;
+  height: 280px;
+  position: absolute;
+  left: 512px;
+  top: 2464px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  object-fit: cover;
+}
+.l-aspasen-est-une-association-s-n-galaise-qui-met-la-disposition-des-patients-des-soins-palliatifs-gratuits-domicile {
+  color: #000000;
+  text-align: center;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  position: absolute;
+  left: 526px;
+  top: 2832px;
+}
+.ellipse-112 {
+  border-radius: 50%;
+  width: 59px;
+  height: 59px;
+  position: absolute;
+  left: 531px;
+  top: 2720px;
+
+}
+.group-513078 {
+  width: 419px;
+  height: 66px;
+  position: static;
+}
+.rectangle-3702 {
+  background: #3b0458;
+  border-radius: 0px 0px 30px 30px;
+  width: 419px;
+  height: 66px;
+  position: absolute;
+  left: 511px;
+  top: 3018px;
+}
+.faire-une-donnation2 {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 25px;
+  font-weight: 700;
+  position: absolute;
+  left: 586px;
+  top: 3035px;
+  width: 269px;
+  height: 33px;
+}
+.group-513082 {
+  width: 421px;
+  height: 630px;
+  position: static;
+}
+.rectangle-373 {
+  background: #ffffff;
+  border-radius: 30px;
+  width: 419px;
+  height: 620px;
+  position: absolute;
+  left: 984px;
+  top: 2459px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.group-513079 {
+  width: 419px;
+  height: 66px;
+  position: static;
+}
+.rectangle-3703 {
+  background: #3b0458;
+  border-radius: 0px 0px 30px 30px;
+  width: 419px;
+  height: 66px;
+  position: absolute;
+  left: 986px;
+  top: 3023px;
+}
+.faire-une-donnation3 {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 25px;
+  font-weight: 700;
+  position: absolute;
+  left: 1061px;
+  top: 3040px;
+  width: 269px;
+  height: 33px;
+}
+.rectangle-3683 {
+  border-radius: 30px 30px 0px 0px;
+  width: 419px;
+  height: 275px;
+  position: absolute;
+  left: 985px;
+  top: 2459px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  object-fit: cover;
+}
+.les-racines-de-l-espoir-a-pour-mission-de-faire-du-social-pour-des-personnes-d-favoris-es-en-particulier-chez-les-en-fants-malades-les-enfants-talib-s {
+  color: #000000;
+  text-align: center;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  position: absolute;
+  left: 1007px;
+  top: 2827px;
+}
+.ellipse-113 {
+  border-radius: 50%;
+  width: 59px;
+  height: 59px;
+  position: absolute;
+  left: 997px;
+  top: 2715px;
+
+}
