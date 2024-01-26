@@ -1,5 +1,4 @@
-
-<div class="container" [ngClass]="{'sign-up-mode': isSignUpMode}">
+<div class="container"  [ngClass]="{'sign-up-mode': isSignUpMode}">
   <div class="forms-container">
     <div class="signin-signup">
       <form (ngSubmit)="signIn()" class="sign-in-form">
@@ -7,11 +6,13 @@
         </h2>
         <div class="input-field">
           <i class="fas fa-user"></i>
-          <input type="email" placeholder="email" />
+          <input type="email" placeholder="email"name="emailLogin"
+          required [(ngModel)]="emailLogin">
         </div>
         <div class="input-field">
           <i class="fas fa-lock"></i>
-          <input type="password" placeholder="mot de passe" />
+          <input type="password" placeholder="mot de passe" name="passwordLogin"
+          required [(ngModel)]="passwordLogin">
         </div>
         <button type="submit" class="btn solid fw-bold">Se connecter</button>
         <p class="social-text fw-bold">ou se connecter avec:</p>
@@ -36,17 +37,20 @@
         <h2 class="title">S’inscrire</h2>
         <div class="input-field">
           <i class="fas fa-user"></i>
-          <input type="email" placeholder="email" />
+          <input type="email" placeholder="email"name="emailLogin"
+          required [(ngModel)]="emailLogin">
         </div>
         <div class="input-field">
           <i class="fas fa-lock"></i>
-          <input type="password" placeholder="mot de passe" />
+          <input type="password" placeholder="mot de passe"  name="passwordLogin"
+          required [(ngModel)]="passwordLogin">
         </div>
         <div class="input-field">
           <i class="fas fa-lock"></i>
-          <input type="password" placeholder="mot de passe" />
+          <input type="password" placeholder="mot de passe"  name="passwordLogin"
+          required [(ngModel)]="passwordLogin">
         </div>
-        <button type="submit" class="btn">S’inscrire</button>
+        <button type="submit" class="btn" (click)="signIn()" >S’inscrire</button>
         <p class="social-text">ou s’inscrire avec:</p>
         <div class="social-media">
           <div class="social-media">

@@ -14,6 +14,7 @@ import { ContactComponent } from './components/Donateur/contact/contact.componen
 import { CollecteComponent } from './collecte/collecte.component';
 import { EditProfilComponent } from './components/Donateur/edit-profil/edit-profil.component';
 import { TeamsComponent } from './components/teams/teams.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { TeamsComponent } from './components/teams/teams.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

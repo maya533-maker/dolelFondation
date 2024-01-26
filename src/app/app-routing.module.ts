@@ -9,7 +9,7 @@ import { FondationsComponent } from './components/Donateur/fondations/fondations
 import { TeamsComponent } from './components/teams/teams.component';
 
 const routes: Routes = [
-  // { path: '', redirectTo : 'auth', pathMatch: 'full' },
+  { path: '', redirectTo : 'auth', pathMatch: 'full' },
   { path: 'auth', component: AuthComponent},
   { path: 'dash', component: DashboardComponent},
   { path: 'acceuil', component: AcceuilComponent},
