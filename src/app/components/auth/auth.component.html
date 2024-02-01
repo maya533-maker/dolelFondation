@@ -1,22 +1,32 @@
-<div class="container"  [ngClass]="{'sign-up-mode': isSignUpMode}">
-  <div class="forms-container">
-    <div class="signin-signup">
-      <form (ngSubmit)="signIn()" class="sign-in-form">
-        <h2 class="title">Se connecter
-        </h2>
-        <div class="input-field">
-          <i class="fas fa-user"></i>
-          <input type="email" placeholder="email"name="emailLogin"
-          required [(ngModel)]="emailLogin">
-        </div>
-        <div class="input-field">
-          <i class="fas fa-lock"></i>
-          <input type="password" placeholder="mot de passe" name="passwordLogin"
-          required [(ngModel)]="passwordLogin">
-        </div>
-        <button type="submit" class="btn solid fw-bold">Se connecter</button>
-        <p class="social-text fw-bold">ou se connecter avec:</p>
-        <div class="social-media">
+<div class="container" [ngClass]="{ 'sign-up-mode': isSignUpMode }">
+  <div class="container" [ngClass]="{ 'sign-up-mode': isSignUpMode }">
+    <div class="forms-container">
+      <div class="signin-signup">
+        <!-- Formulaire de Connexion -->
+        <form *ngIf="!isSignUpMode" (ngSubmit)="signIn()" class="sign-in-form">
+          <h2 class="title">Se connecter</h2>
+          <div class="input-field">
+            <i class="fas fa-user"></i>
+            <input
+              type="email"
+              placeholder="Email"
+              name="emailLogin"
+              required
+              [(ngModel)]="emailLogin"
+            />
+          </div>
+          <div class="input-field">
+            <i class="fas fa-lock"></i>
+            <input
+              type="password"
+              placeholder="Mot de passe"
+              name="passwordLogin"
+              required
+              [(ngModel)]="passwordLogin"
+            />
+          </div>
+          <button type="submit" class="btn solid fw-bold">Se connecter</button>
+          <p class="social-text fw-bold">ou se connecter avec:</p>
           <div class="social-media">
             <a href="#" class="social-icon">
               <i class="fab fa-facebook-f"></i>
@@ -31,73 +41,194 @@
               <i class="fab fa-linkedin-in"></i>
             </a>
           </div>
-        </div>
-      </form>
-      <form (ngSubmit)="signUp()" class="sign-up-form">
-        <h2 class="title">S’inscrire</h2>
-        <div class="input-field">
-          <i class="fas fa-user"></i>
-          <input type="email" placeholder="email"name="emailLogin"
-          required [(ngModel)]="emailLogin">
-        </div>
-        <div class="input-field">
-          <i class="fas fa-lock"></i>
-          <input type="password" placeholder="mot de passe"  name="passwordLogin"
-          required [(ngModel)]="passwordLogin">
-        </div>
-        <div class="input-field">
-          <i class="fas fa-lock"></i>
-          <input type="password" placeholder="mot de passe"  name="passwordLogin"
-          required [(ngModel)]="passwordLogin">
-        </div>
-        <button type="submit" class="btn" (click)="signIn()" >S’inscrire</button>
-        <p class="social-text">ou s’inscrire avec:</p>
-        <div class="social-media">
-          <div class="social-media">
-            <a href="#" class="social-icon">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="#" class="social-icon">
-              <i class="fab fa-twitter"></i>
-            </a>
-            <a href="#" class="social-icon">
-              <i class="fab fa-google"></i>
-            </a>
-            <a href="#" class="social-icon">
-              <i class="fab fa-linkedin-in"></i>
-            </a>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
+        </form>
 
-  <div class="panels-container">
-    <div class="panel left-panel">
-      <div class="content">
-        <!-- <h2 style="font-weight: bold;">L'inscription est gratuite et rapide</h2> -->
-        <h3 style="color: #F7E801;font-weight: bold;">Nouveau ici?</h3>
-        <p>
-          C'est le moment de rejoindre notre communauté et de profiter de tout ce qu'elle a à vous offrir.Inscrivez-vous dès aujourd'hui !
-        </p>
-        <button class="btn" style="background-color: #F7E801;font-weight: bold;" (click)="toggleMode()" *ngIf="!isSignUpMode" id="sign-up-btn">
-          S'inscrire
-        </button>
+        <!-- Formulaire d'Inscription -->
+        <form *ngIf="isSignUpMode" class="sign-up-form" (ngSubmit)="signUp()">
+          <h2 class="title">S’inscrire</h2>
+
+          <!-- Champs en commun -->
+          <div class="input-field">
+            <i class="fas fa-user"></i>
+            <input
+              type="text"
+              placeholder="Nom"
+              name="name"
+              required
+              [(ngModel)]="name"
+            />
+          </div>
+
+          <div class="input-field">
+            <i class="fas fa-envelope"></i>
+            <input
+              type="email"
+              placeholder="Email"
+              name="emailSignUp"
+              required
+              [(ngModel)]="emailSignUp"
+            />
+          </div>
+          <!-- <p>{{ emailSignUp }}</p> -->
+
+          <div class="input-field">
+            <i class="fas fa-lock"></i>
+            <input
+              type="password"
+              placeholder="Mot de passe"
+              name="passwordSignUp"
+              required
+              [(ngModel)]="passwordSignUp"
+            />
+          </div>
+
+          <div class="input-field">
+            <i class="fas fa-image"></i>
+            <input
+              type="file"
+              placeholder="Image"
+              name="image"
+              required
+              [(ngModel)]="image"
+            />
+          </div>
+
+          <div class="input-field">
+            <i class="fas fa-phone"></i>
+            <input
+              type="tel"
+              placeholder="Numéro de téléphone"
+              name="telephone"
+              required
+              [(ngModel)]="telephone"
+            />
+          </div>
+
+          <!-- Sélecteur de rôle -->
+          <div class="input-field">
+            <i class="fas fa-user"></i>
+            <select [(ngModel)]="selectedRole" name="selectedRole" >
+              <option value="" disabled selected>Choisir le rôle</option>
+              <option value="donateur">Donateur</option>
+              <option value="fondation">Fondation</option>
+            </select>
+          </div>
+
+          <!-- Bouton pour continuer vers le formulaire spécifique -->
+          <button
+            type="button"
+            class="btn"
+            *ngIf="selectedRole"
+            (click)="continueToForm()"
+          >
+            Continuer
+          </button>
+
+          <!-- Champs spécifiques pour le Donateur -->
+          <ng-container *ngIf="selectedRole === 'donateur'">
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input
+                type="text"
+                placeholder="Prénom"
+                name="firstName"
+                required
+                [(ngModel)]="firstName"
+              />
+            </div>
+          </ng-container>
+
+          <!-- Champs spécifiques pour la Fondation -->
+          <ng-container *ngIf="selectedRole === 'fondation'">
+            <div class="input-field">
+              <i class="fas fa-id-card"></i>
+              <input
+                type="text"
+                placeholder="Numéro d'enregistrement"
+                name="numeroEnregistrement"
+                required
+                [(ngModel)]="numeroEnregistrement"
+              />
+            </div>
+
+            <div class="input-field">
+              <i class="fas fa-map-marker-alt"></i>
+              <input
+                type="text"
+                placeholder="Adresse"
+                name="adresse"
+                required
+                [(ngModel)]="adresse"
+              />
+            </div>
+
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <textarea
+                placeholder="Description"
+                name="description"
+                required
+                [(ngModel)]="description"
+              ></textarea>
+            </div>
+          </ng-container>
+
+          <button type="submit" class="btn">S’inscrire</button>
+        </form>
       </div>
-      <img src="https://s3-alpha-sig.figma.com/img/e5a9/2fc7/5ef39a796a8984b2119223ab9d1183fd?Expires=1707091200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=HJinGlR2ujZ4ijSJ4jVhawVVRPuO4bMn8e9N7Q9a2a1ZuDxQ3DXusDQHElQvLwJB0THIHkWBzPPq~QM2K2DBO41bHWqWqbf86qowOBC1FRlZzO~LH24I5~5vsRbZfLZslVzBQD2FTd4iWPFopJTUWkE~Io~mKI62FtPXmdNLQnPbtrKILEb8YmXdJpHqRHQEpY1lqqm5s5VT9Si-rkQ8rICk68Ia35hlXcRhN~Hq7fPKTvyOnk3KkmaVDzCqkUFie1kf47RQaARrU7f8h4e9RX1tZK~6saAZrXkhTbUwo8K8lIJuIYXyw678aWjtOQaQVWKoA8Xtot5WeIEFvAZUJg__" class="image" alt="" />
     </div>
-    <div class="panel right-panel">
-      <div class="content">
-        <h2 style="font-weight: bold;">Bienvenue sur notre site</h2>
-        <h3 style="color: #F7E801;font-weight: bold;">Vous avez déjà un compte?</h3>
-        <p>
-          Connectez-vous pour accéder à votre contenu, partager vos idées et participer aux événements de nos collaborateurs. Ou créez un nouveau compte avec une adresse e-mail différente.
-        </p>
-        <button class="btn"  style="background-color: #F7E801;font-weight: bold;" (click)="toggleMode()" *ngIf="isSignUpMode" id="sign-in-btn">
-          Se connecter
-        </button>
+    <div class="panels-container">
+      <div class="panel left-panel">
+        <!-- <button class="btn" [routerLink]="['/acceuil']" style="margin-top:-12%;"><i class="fa-solid fa-arrow-left fa-spin"></i>&nbsp; Retour</button> -->
+        <div class="content">
+          <h3 style="color: #f7e801; font-weight: bold">Nouveau ici?</h3>
+          <p>
+            C'est le moment de rejoindre notre communauté et de profiter de tout
+            ce qu'elle a à vous offrir.Inscrivez-vous dès aujourd'hui !
+          </p>
+          <button
+            class="btn"
+            style="background-color: #f7e801; font-weight: bold"
+            (click)="toggleMode()"
+            *ngIf="!isSignUpMode"
+            id="sign-up-btn"
+          >
+            S'inscrire
+          </button>
+        </div>
+        <img
+          src="https://s3-alpha-sig.figma.com/img/e5a9/2fc7/5ef39a796a8984b2119223ab9d1183fd?Expires=1707091200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=HJinGlR2ujZ4ijSJ4jVhawVVRPuO4bMn8e9N7Q9a2a1ZuDxQ3DXusDQHElQvLwJB0THIHkWBzPPq~QM2K2DBO41bHWqWqbf86qowOBC1FRlZzO~LH24I5~5vsRbZfLZslVzBQD2FTd4iWPFopJTUWkE~Io~mKI62FtPXmdNLQnPbtrKILEb8YmXdJpHqRHQEpY1lqqm5s5VT9Si-rkQ8rICk68Ia35hlXcRhN~Hq7fPKTvyOnk3KkmaVDzCqkUFie1kf47RQaARrU7f8h4e9RX1tZK~6saAZrXkhTbUwo8K8lIJuIYXyw678aWjtOQaQVWKoA8Xtot5WeIEFvAZUJg__"
+          class="image"
+          alt=""
+        />
       </div>
-      <img src="https://s3-alpha-sig.figma.com/img/5bee/e699/de231f1bafbc0ff6c97a80e493ba4e34?Expires=1707091200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=cpLoja74tW7bX16al~OVbwB7T9Eox6Edupk~aUqHXQkRF26eT1F2VvP~sQgbjAGz4hdTc-fJT5II6y~2eQYvy10lwqxCS-74D1-EwQjdZsejM0opHgw5a~~kiyd5r9perSgvJQXBuONd8y-D2xw~tk0DWNGtMBh53Zv28Ahb3ufC08G-hEQvoJ2w1CxZrudfPCULLDqolxOrF8~L9l-Ke8JXsNnzqByWZjqvgTr1MyNuLwrEoiJw39SB-twjb48z1~IOrdVd6O54-7iUG6WFF7KR5hW29AjhUHsqS8-v9Obry7l8CjvUx~U4Lz1CG5Bext3aZWC3qp4bOzckDhdnkQ__" class="image" alt="" />
+      <div class="panel right-panel">
+        <div class="content">
+          <h2 style="font-weight: bold">Bienvenue sur notre site</h2>
+          <h3 style="color: #f7e801; font-weight: bold">
+            Vous avez déjà un compte?
+          </h3>
+          <p>
+            Connectez-vous pour accéder à votre contenu, partager vos idées et
+            participer aux événements de nos collaborateurs. Ou créez un nouveau
+            compte avec une adresse e-mail différente.
+          </p>
+          <button
+            class="btn"
+            style="background-color: #f7e801; font-weight: bold"
+            (click)="toggleMode()"
+            *ngIf="isSignUpMode"
+            id="sign-in-btn"
+          >
+            Se connecter
+          </button>
+        </div>
+        <img
+          src="https://s3-alpha-sig.figma.com/img/5bee/e699/de231f1bafbc0ff6c97a80e493ba4e34?Expires=1707091200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=cpLoja74tW7bX16al~OVbwB7T9Eox6Edupk~aUqHXQkRF26eT1F2VvP~sQgbjAGz4hdTc-fJT5II6y~2eQYvy10lwqxCS-74D1-EwQjdZsejM0opHgw5a~~kiyd5r9perSgvJQXBuONd8y-D2xw~tk0DWNGtMBh53Zv28Ahb3ufC08G-hEQvoJ2w1CxZrudfPCULLDqolxOrF8~L9l-Ke8JXsNnzqByWZjqvgTr1MyNuLwrEoiJw39SB-twjb48z1~IOrdVd6O54-7iUG6WFF7KR5hW29AjhUHsqS8-v9Obry7l8CjvUx~U4Lz1CG5Bext3aZWC3qp4bOzckDhdnkQ__"
+          class="image"
+          alt=""
+        />
+      </div>
     </div>
   </div>
 </div>

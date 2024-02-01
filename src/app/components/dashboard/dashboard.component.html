@@ -1,49 +1,61 @@
-<main >
-  <nav class="main-menu">
-    <a class="navbar-brand " href="#" style="width:10%;" ><img class=""src="/assets/Logo.png" alt="LOGO" style="width:100%;margin-top: 40%;"></a>
-    <ul class="d-flex flex-column align-content-center my-5">
-      <li class="nav-item active my-4" (click)="setActiveNavItem(0)">
-        <b></b>
-        <b></b>
-        <a href="#">
-          <i class="fa fa-house nav-icon"></i>
-          <span class="nav-text">Dashboard</span>
-        </a>
-      </li>
-
-      <li class="nav-item my-4" (click)="setActiveNavItem(1)">
-        <b></b>
-        <b></b>
-        <a href="#">
-          <i class="fa fa-user nav-icon"></i>
-          <span class="nav-text">Gestion abonné</span>
-        </a>
-      </li>
-
-      <li class="nav-item my-4" (click)="setActiveNavItem(2)">
-        <b></b>
-        <b></b>
-        <a href="#">
-          <i class="fa fa-calendar-check nav-icon"></i>
-          <span class="nav-text">Gestion collecte</span>
-        </a>
-      </li>
-
-      <li class="nav-item my-4" (click)="setActiveNavItem(3)">
-        <b></b>
-        <b></b>
-        <a href="#">
-          <i class="fa fa-person-running nav-icon"></i>
-          <span class="nav-text">Gestion don</span>
-        </a>
-      </li>
+<main  >
+  <div class="area"></div><nav class="main-menu"style="position: fixed;">
+    <img class="mx-2 first" src="/assets/LogoHand.png" style="width: 5vh;" alt="">
+   <a [routerLink]="['/page']"> <img class="second" src="/assets/Logo.png" style="width: 25vh;" alt=""></a>
+    <ul>
+        <li class="mt-4">
+            <a [routerLink]="['/page']"  >
+                <i class="fa fa-home fa-2x"></i>
+                <span class="nav-text">
+                  Dashboard
+                </span>
+            </a>
+          
+        </li>
+        <li class="has-subnav mt-4">
+            <a [routerLink]="['/list']">
+                <i class="fa fa-globe fa-2x"></i>
+                <span class="nav-text">
+                  Liste Fondation
+                </span>
+            </a>
+            
+        </li>
+        <li class="has-subnav mt-4">
+            <a [routerLink]="['/history']">
+               <i class="fa fa-comments fa-2x"></i>
+                <span class="nav-text">
+                  Don Historique
+                </span>
+            </a>
+            
+        </li>
+        <li class="has-subnav mt-4">
+            <a [routerLink]="['/profil']">
+               <i class="fa fa-camera-retro fa-2x"></i>
+                <span class="nav-text">
+                  Modifier profil
+                </span>
+            </a>
+           
+        </li>
+      
     </ul>
-      <a href="#" class="ellipse-1 d-flex" style="margin-left:5%;margin-top:5%;">
-        <img src="https://static.wixstatic.com/media/d94da7_86043ba225f04e2ba78c83edc57c5008~mv2.png/v1/fill/w_1080,h_1080,al_c/d94da7_86043ba225f04e2ba78c83edc57c5008~mv2.png" alt="">
-      </a>
-  </nav>
-  <div class="frame-8 d-flex justify-content-end">
-    <div class="searchbox">
+
+    <ul class="logout">
+        <li>
+           <a href="#">
+                 <i class="fa fa-power-off fa-2x"></i>
+                <span class="nav-text">
+                    Logout
+                </span>
+            </a>
+        </li>  
+    </ul>
+</nav>
+  <div class="rectangle-3463853" style="position: fixed;z-index: 3;top: 0;" >
+    <div class="frame-8 d-flex justify-content-end">
+    <div class="searchbox" style="margin-top: -1%;">
       <div class="search">search</div>
       <button class="btn"><svg
         class="search2"
@@ -72,7 +84,7 @@
         </g>
       </svg></button>
     </div>
-    <div class="frame-10">
+    <div class="frame-10"style="margin-top: -1%;">
       <div class="group-1">
         <button class="btn">
           <svg
@@ -131,5 +143,5 @@
       </g>
     </svg></button>
     </div>
-  </div>
+  </div></div>
 </main>

@@ -1,0 +1,250 @@
+.component-18,
+.component-18 * {
+  box-sizing: border-box;
+}
+.component-18 {
+  width: 98%;
+  display: flex;
+  height: 637px;
+  position: relative;
+}
+.group-513216 {
+  position: absolute;
+  inset: 0;
+}
+.rectangle-374 {
+  position: absolute;
+  right: 0%;
+  left: 0%;
+  width: 100%;
+  bottom: 24.65%;
+  top: 0%;
+  height: 75.35%;
+  object-fit: cover;
+}
+.ellipse-11 {
+  border-radius: 50%;
+  position: absolute;
+  right: 73.47%;
+  left: 4.51%;
+  width: 21.7%;
+  bottom: 0%;
+  top: 58.24%;
+  height: 41.76%;
+}
+.group-513211 {
+  position: absolute;
+  inset: 0;
+}
+.component-17 {
+  position: absolute;
+  right: 8.68%;
+  left: 75.9%;
+  width: 15.42%;
+  bottom: 0%;
+  top: 90.42%;
+  height: 9.58%;
+}
+.rectangle-4471 {
+  background: #f7e801;
+  border-radius: 40px 0px 40px 0px;
+  position: absolute;
+  right: 0%;
+  left: 0%;
+  width: 100%;
+  bottom: 0%;
+  top: 0%;
+  height: 100%;
+}
+.suivre {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  position: absolute;
+  right: 22.07%;
+  left: 16.07%;
+  width: 55.86%;
+  bottom: 26.23%;
+  top: 5%;
+  height: 49.18%;
+}
+
+/* section image texte */
+.blocimagetext{
+  margin-top: 4%;
+  margin-left: 5%;
+  width: 90%;
+}
+.imagetext{
+  background-color: #3B0458;
+  border-right: 8px solid #F7E801;
+  border-bottom: 8px solid #F7E801;
+  border-radius: 0 65px 0 65px;
+  padding: 25px;
+}
+.imagetext img{
+  height: 280px;
+  /* border: 2px solid; */
+  /* margin-left: 5%; */
+}
+.imagetext h4{
+  color: white;
+  font-weight: bold;
+  font-size: 35px;
+  margin-left: 5%;
+}
+.imagetext p{
+  font-size: 20px;
+  margin-top: 4%;
+  margin-left: 5%;
+}
+.div-group,
+.div-group * {
+  box-sizing: border-box;
+}
+.div-group {
+  background: #F7E801;
+  border-radius: 8px;
+  width: 384px;
+  height: 224px;
+  position: relative;
+}
+.div {
+  width: 352px;
+  height: 97px;
+  position: absolute;
+  left: 16px;
+  top: 16px;
+}
+.heading-2-elegant-card {
+  color: #3B0458;
+  text-align: center;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  /* width: 137.56px; */
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.p-text-gray-200 {
+  height: 57px;
+  position: absolute;
+  right: 0px;
+  left: 0px;
+  top: 40px;
+  overflow: hidden;
+}
+.text {
+  color: #000000;
+  text-align: left;
+  font-family: "Roboto-Regular", sans-serif;
+  font-size: 10px;
+  font-weight: bold;
+  position: absolute;
+  left: 0px;
+  /* line-height: 40px; */
+  top: 18px;
+  width: 287.36px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.button-margin {
+  width: 95.95px;
+  height: 59px;
+  position: absolute;
+  left: 16px;
+  top: 121px;
+}
+.button {
+  background: #3B0458;
+  border-radius: 4px;
+  border-width: 2px;
+  width: 95.95px;
+  height: 35px;
+  position: absolute;
+  left: 0px;
+  top: 24px;
+}
+.text4 {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Roboto-Regular", sans-serif;
+  font-size: 13.300000190734863px;
+  font-weight: 400;
+  position: absolute;
+  left: calc(50% - 21.97px);
+  top: 10px;
+  width: 43.95px;
+  height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.div-absolute {
+  background: #3B0458;
+  border-radius: 8px;
+  position: absolute;
+  right: -10.42%;
+  left: 60.42%;
+  width: 50%;
+  bottom: -17.86%;
+  top: 67.86%;
+  height: 50%;
+  box-shadow: 0px 2px 4px -2px rgba(0, 0, 0, 0.1),
+    0px 4px 6px -1px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+/* présentation */
+.containerapropos{
+  margin-top: 20%;
+  background-color: #F7E801;
+  height: 670px;
+  width: 14.5% !important;
+  border-radius: 0 80px 0 0;
+  position: relative;
+  right: -82px;
+  top: -14px;
+}
+.blocaboutus{
+  display: flex;
+  grid-template-columns: auto auto;
+  margin-left: 10%;
+  margin-top: 2%;
+}
+.blocaboutus img{
+  margin-top: 20%;
+  height: 500px;
+  width: 400px;
+  border:2px solid #3B0458;
+}
+.blocpresentation{
+  margin-top: 30%;
+  background-color: #3B0458;
+  height: 670px;
+  width: 550px;
+  border-radius: 0 0 70px 0;
+  /* margin-left: 11%; */
+}
+.blocpresentation h5{
+  color:#F7E801;
+  font-size: 38px;
+  padding: 4%;
+}
+.blocpresentation p{
+  width:76%;
+  margin-left: 17% !important;
+  text-align: justify;
+  color: white;
+  font-size: 20px;
+  /* border: 2px solid; */
+}

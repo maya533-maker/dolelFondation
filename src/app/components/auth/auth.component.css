@@ -3,6 +3,20 @@
   padding: 0;
   box-sizing: border-box;
 }
+/* Style spécifique pour le bouton S'inscrire de la fondation */
+.fondation-mode button {
+  background-color: #4CAF50; /* Couleur de fond verte */
+  color: white; /* Couleur du texte blanc */
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.fondation-mode button:hover {
+  background-color: #45a049; /* Couleur de fond verte légèrement plus sombre au survol */
+}
 
 
 body,
@@ -16,7 +30,7 @@ input {
   background-color: #fff;
   min-height: 100vh;
   overflow: hidden;
-  
+
 }
 
 .forms-container {
@@ -25,7 +39,7 @@ input {
   height: 100%;
   top: 0;
   left: 0;
-  
+
 }
 
 .signin-signup {
@@ -400,3 +414,27 @@ form.sign-in-form {
     left: 50%;
   }
 }
+
+/* Style pour les champs de la fondation */
+.fondation-mode .input-field {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+
+.fondation-mode .input-field i {
+  flex: 0 0 20px; /* Largeur fixe pour l'icône */
+  margin-right: 10px; /* Espacement entre l'icône et le champ de saisie */
+  color: #333;
+}
+
+.fondation-mode .input-field input,
+.fondation-mode .input-field textarea {
+  flex: 1; /* Occupera tout l'espace restant */
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  outline: none;
+}
+

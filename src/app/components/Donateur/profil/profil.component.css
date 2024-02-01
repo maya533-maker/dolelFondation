@@ -1,0 +1,41 @@
+.right-profil input{
+  width: 70%;
+  border: 1px solid #3B0458;
+}
+.first{
+  background-color: #3B0458;
+  width: 150px;
+  height: 4px;
+  position: relative;
+  top: -40px;
+  left: 430px;
+}
+.second{
+  background-color: #F7E801;
+  border:1px solid;
+  border-radius: 100%;
+  width: 20px;
+  height: 15px;
+  position: relative;
+  top: -50px;
+  left: 490px;
+}
+.left-profil img{
+  width: 80%;
+  height: 50%;
+}
+.pwd{
+  width: 60%;
+}
+.pwd input{
+  width: 60%;
+  border: 1px solid #3B0458;
+}
+.btnSave{
+  border: none;
+  background-color: #3B0458;
+  color: white;
+  font-weight: bold;
+  border-radius: 10px;
+  margin-left: 90%;
+}

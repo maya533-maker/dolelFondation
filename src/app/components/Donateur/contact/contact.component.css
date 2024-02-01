@@ -1,0 +1,295 @@
+
+#maCarte {
+  height: 25%;
+}
+
+.get-in-touch,
+.get-in-touch * {
+  box-sizing: border-box;
+}
+.get-in-touch {
+  position: absolute;
+  inset: 0;
+}
+.rectangle-3 {
+  background: #ffffff;
+  border-radius: 10px;
+  width: 950px;
+  height: 638px;
+  position: absolute;
+  left: 245px;
+  top: 195px;
+  box-shadow: 2px 10px 28px 0px rgba(75, 0, 129, 0.12);
+}
+.group-65 {
+  width: 830px;
+  height: 518px;
+  position: static;
+}
+.group-56 {
+  width: 234px;
+  height: 37px;
+  position: static;
+}
+.contactez-nous {
+  color: #3b0458;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  position: absolute;
+  left: 640px;
+  top: 255px;
+}
+.rectangle-16 {
+  background: #f7e801;
+  border-radius: 2px;
+  width: 160px;
+  height: 2px;
+  position: absolute;
+  left: 640px;
+  top: 290px;
+}
+.laissez-nous-un-message {
+  color: var(--textcolor, #0f001a);
+  text-align: left;
+  font-family: "Inter-Medium", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  position: absolute;
+  left: 305px;
+  top: 342px;
+}
+.group-64 {
+  width: 422px;
+  height: 386px;
+  position: static;
+}
+.name {
+  width: 422px;
+  height: 61px;
+  position: static;
+}
+.rectangle-17 {
+  border-radius: 4px;
+  border-style: solid;
+  border-color: #b4bec8;
+  border-width: 1.2px;
+  width: 422px;
+  height: 50px;
+  position: absolute;
+  left: 305px;
+  top: 398px;
+}
+.rectangle-18 {
+  background: #ffffff;
+  width: 56px;
+  height: 23px;
+  position: absolute;
+  left: 315px;
+  top: 387px;
+}
+.nom {
+  color: var(--textcolor, #0f001a);
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  opacity: 0.800000011920929;
+  position: absolute;
+  left: 319px;
+  top: 390px;
+}
+.pr-nom-et-nom {
+  color: #878787;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  opacity: 0.800000011920929;
+  position: absolute;
+  left: 319px;
+  top: 419px;
+}
+.email {
+  width: 422px;
+  height: 50px;
+  position: static;
+}
+.rectangle-172 {
+  border-radius: 4px;
+  border-style: solid;
+  border-color: #b4bec8;
+  border-width: 1.2px;
+  width: 422px;
+  height: 50px;
+  position: absolute;
+  left: 305px;
+  top: 472px;
+}
+.adresse-e-mail {
+  color: #878787;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  opacity: 0.800000011920929;
+  position: absolute;
+  left: 319px;
+  top: 489px;
+}
+.button {
+  width: 422px;
+  height: 50px;
+  position: static;
+}
+.rectangle-173 {
+  background: #f7e801;
+  border-radius: 4px;
+  width: 422px;
+  height: 50px;
+  position: absolute;
+  left: 305px;
+  top: 723px;
+}
+.envoyer {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  position: absolute;
+  left: 492px;
+  top: 739px;
+}
+.message {
+  width: 422px;
+  height: 137px;
+  position: static;
+}
+.rectangle-174 {
+  border-radius: 4px;
+  border-style: solid;
+  border-color: #b4bec8;
+  border-width: 1.2px;
+  width: 422px;
+  height: 137px;
+  position: absolute;
+  left: 305px;
+  top: 546px;
+}
+.votre-message {
+  color: #878787;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  opacity: 0.800000011920929;
+  position: absolute;
+  left: 319px;
+  top: 563px;
+}
+.group-63 {
+  width: 352px;
+  height: 386px;
+  position: static;
+}
+.group-7 {
+  width: 133.89px;
+  height: 14.02px;
+  position: absolute;
+  left: 817px;
+  top: 476px;
+  overflow: visible;
+}
+.mermoz-dakar-s-n-gal {
+  color: var(--textcolor, #0f001a);
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 400;
+  position: absolute;
+  left: 817px;
+  top: 430.69px;
+  width: 314px;
+  height: 25.31px;
+}
+.div {
+  color: var(--textcolor, #0f001a);
+  text-align: left;
+  font-family: "Inter-Light", sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  position: absolute;
+  left: 783px;
+  top: 387px;
+  width: 20px;
+  height: 27.61px;
+}
+.group-61 {
+  width: 168px;
+  height: 21px;
+  position: static;
+}
+._221-765450281 {
+  color: var(--textcolor, #0f001a);
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  position: absolute;
+  left: 821px;
+  top: 510.56px;
+  width: 130px;
+  height: 20.46px;
+}
+.div2 {
+  color: var(--textcolor, #0f001a);
+  text-align: left;
+  font-family: "Inter-Light", sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  position: absolute;
+  left: 807px;
+  top: 510.02px;
+  width: 10.77px;
+  transform-origin: 0 0;
+  transform: rotate(90deg) scale(1, 1);
+}
+.group-62 {
+  width: 231px;
+  height: 24px;
+  position: static;
+}
+.msambou-533-gmail-com {
+  color: var(--textcolor, #0f001a);
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  position: absolute;
+  left: 817px;
+  top: 553.02px;
+}
+.div3 {
+  color: var(--textcolor, #0f001a);
+  text-align: left;
+  font-family: "Inter-Light", sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  position: absolute;
+  left: 783px;
+  top: 551.02px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+.rectangle-19 {
+  border-radius: 4px;
+  width: 348px;
+  height: 155px;
+  position: absolute;
+  left: 787px;
+  top: 618px;
+  object-fit: cover;
+}

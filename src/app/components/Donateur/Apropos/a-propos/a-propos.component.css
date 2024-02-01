@@ -81,9 +81,9 @@
   color: #1e1e1e;
   text-align: left;
   font-family: "Inter-Bold", sans-serif;
-  font-size: 16px;
-  line-height: 26px;
+  font-size: 20px;
   font-weight: 700;
+  line-height: 26px;
   position: absolute;
   left: 0px;
   top: 287px;
@@ -144,8 +144,9 @@
   color: #000000;
   text-align: left;
   font-family: "Inter-Bold", sans-serif;
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 700;
+  line-height: 50px;
   position: absolute;
   right: 0%;
   left: 43.46%;
@@ -247,7 +248,7 @@
   color: #ffffff;
   text-align: center;
   font-family: "Inter-Regular", sans-serif;
-  font-size: 25px;
+  font-size: 21px;
   font-weight: 400;
   position: absolute;
   right: 0%;

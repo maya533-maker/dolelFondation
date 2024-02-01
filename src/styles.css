@@ -1,1 +1,378 @@
-/* You can add global styles to this file, and also import other style files */
+.frame-427320790,
+.frame-427320790 * {
+  box-sizing: border-box;
+}
+.frame-427320790 {
+  width: 1440px;
+  height: 882px;
+  position: relative;
+}
+.image-65 {
+  width: 1440px;
+  height: 513px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  object-fit: cover;
+}
+.group-513085 {
+  position: absolute;
+  inset: 0;
+}
+.group-513177 {
+  width: 1440px;
+  height: 259px;
+  position: static;
+}
+.group-513030 {
+  width: 1440px;
+  height: 156px;
+  position: absolute;
+  left: calc(50% - 720px);
+  bottom: -1470px;
+}
+.rectangle-372 {
+  background: #3b0458;
+  position: absolute;
+  right: 0%;
+  left: 0%;
+  width: 100%;
+  bottom: 0%;
+  top: 0%;
+  height: 100%;
+}
+.mdi-twitter {
+  height: auto;
+  position: absolute;
+  right: 15.83%;
+  left: 82.5%;
+  width: 1.67%;
+  bottom: 42.31%;
+  top: 42.31%;
+  height: 15.38%;
+  overflow: visible;
+}
+.ic-baseline-facebook {
+  height: auto;
+  position: absolute;
+  right: 11.11%;
+  left: 87.22%;
+  width: 1.67%;
+  bottom: 42.31%;
+  top: 42.31%;
+  height: 15.38%;
+  overflow: visible;
+}
+.mdi-instagram {
+  height: auto;
+  position: absolute;
+  right: 13.47%;
+  left: 84.86%;
+  width: 1.67%;
+  bottom: 41.67%;
+  top: 42.95%;
+  height: 15.38%;
+  overflow: visible;
+}
+.ic-outline-copyright {
+  height: auto;
+  position: absolute;
+  right: 80.56%;
+  left: 17.78%;
+  width: 1.67%;
+  bottom: 39.1%;
+  top: 45.51%;
+  height: 15.38%;
+  overflow: visible;
+}
+.image-removebg-preview-6-1 {
+  position: absolute;
+  right: 83.4%;
+  left: 10.42%;
+  width: 6.18%;
+  bottom: 35.9%;
+  top: 42.31%;
+  height: 21.79%;
+  object-fit: cover;
+}
+.line-80 {
+  border-style: solid;
+  border-color: #f7e801;
+  border-width: 5px 0 0 0;
+  position: absolute;
+  right: 10.76%;
+  left: 10.76%;
+  width: 78.47%;
+  bottom: 74.36%;
+  top: 25.64%;
+  height: 0%;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+._2024-abdoulaye-k-diallo-mariama-sambou {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 25px;
+  font-weight: 700;
+  position: absolute;
+  right: 41.04%;
+  left: 20.62%;
+  width: 38.33%;
+  bottom: 42.95%;
+  top: 42.95%;
+  height: 14.1%;
+}
+.group-513087 {
+  width: 108px;
+  height: 50px;
+  position: static;
+}
+.rectangle {
+  border-radius: 24px;
+  border-style: solid;
+  border-color: #d8d8d8;
+  border-width: 1px;
+  position: absolute;
+  right: 50.28%;
+  left: 46.25%;
+  width: 3.47%;
+  bottom: -142.97%;
+  top: 237.3%;
+  height: 5.67%;
+}
+.path {
+  height: auto;
+  position: absolute;
+  right: 50.97%;
+  left: 48.26%;
+  width: 0.76%;
+  bottom: -140.93%;
+  top: 239.12%;
+  height: 1.81%;
+  overflow: visible;
+}
+.right {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  right: 46.25%;
+  left: 50.28%;
+  width: 3.47%;
+  bottom: -142.97%;
+  top: 237.3%;
+  height: 5.67%;
+  overflow: visible;
+}
+
+.group-513080 {
+  width: 421px;
+  height: 620px;
+  position: static;
+}
+.rectangle-371 {
+  background: #ffffff;
+  border-radius: 30px;
+  width: 419px;
+  height: 620px;
+  position: absolute;
+  left: 38px;
+  top: 674px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.rectangle-368 {
+  border-radius: 30px 30px 0px 0px;
+  width: 419px;
+  height: 280px;
+  position: absolute;
+  left: 38px;
+  top: 674px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  object-fit: cover;
+}
+.simplon-s-n-gal-uvre-dans-le-pays-travers-un-num-rique-inclusif-et-soli-daire-pour-les-jeunes-femmes-et-person-nes-en-situation-de-handicap {
+  color: #000000;
+  text-align: center;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  position: absolute;
+  left: 53px;
+  top: 1047px;
+}
+.ellipse-11 {
+  border-radius: 50%;
+  width: 59px;
+  height: 59px;
+  position: absolute;
+  left: 55px;
+  top: 935px;
+  
+}
+.group-513077 {
+  width: 419px;
+  height: 66px;
+  position: static;
+}
+.rectangle-370 {
+  background: #3b0458;
+  border-radius: 0px 0px 30px 30px;
+  width: 419px;
+  height: 66px;
+  position: absolute;
+  left: 36px;
+  top: 1228px;
+}
+.d-tails {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 25px;
+  font-weight: 700;
+  position: absolute;
+  left: calc(50% - 547px);
+  top: 1236px;
+  width: 125px;
+  height: 33px;
+}
+.group-513081 {
+  width: 420px;
+  height: 620px;
+  position: static;
+  
+}
+.rectangle-3722 {
+  background: #ffffff;
+  border-radius: 30px;
+  width: 419px;
+  height: 620px;
+  position: absolute;
+  left: 511px;
+  top: 679px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.rectangle-3682 {
+  border-radius: 30px 30px 0px 0px;
+  width: 419px;
+  height: 280px;
+  position: absolute;
+  left: 512px;
+  top: 679px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  object-fit: cover;
+}
+.l-aspasen-est-une-association-s-n-galaise-qui-met-la-disposition-des-patients-des-soins-palliatifs-gratuits-domicile {
+  color: #000000;
+  text-align: center;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  position: absolute;
+  left: 526px;
+  top: 1047px;
+}
+.ellipse-112 {
+  border-radius: 50%;
+  width: 59px;
+  height: 59px;
+  position: absolute;
+  left: 531px;
+  top: 935px;
+  
+}
+.group-513078 {
+  width: 419px;
+  height: 66px;
+  position: static;
+}
+.rectangle-3702 {
+  background: #3b0458;
+  border-radius: 0px 0px 30px 30px;
+  width: 419px;
+  height: 66px;
+  position: absolute;
+  left: 511px;
+  top: 1233px;
+}
+.d-tails2 {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 25px;
+  font-weight: 700;
+  position: absolute;
+  left: calc(50% - 66px);
+  top: 1240px;
+  width: 134px;
+  height: 33px;
+}
+.group-513082 {
+  width: 421px;
+  height: 630px;
+  position: static;
+}
+.rectangle-373 {
+  background: #ffffff;
+  border-radius: 30px;
+  width: 419px;
+  height: 620px;
+  position: absolute;
+  left: 984px;
+  top: 674px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.group-513079 {
+  width: 419px;
+  height: 66px;
+  position: static;
+}
+.rectangle-3703 {
+  background: #3b0458;
+  border-radius: 0px 0px 30px 30px;
+  width: 419px;
+  height: 66px;
+  position: absolute;
+  left: 986px;
+  top: 1238px;
+}
+.d-tails3 {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 25px;
+  font-weight: 700;
+  position: absolute;
+  left: calc(50% - -420px);
+  top: 1243px;
+  width: 124px;
+  height: 33px;
+}
+.rectangle-3683 {
+  border-radius: 30px 30px 0px 0px;
+  width: 419px;
+  height: 275px;
+  position: absolute;
+  left: 985px;
+  top: 674px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  object-fit: cover;
+}
+.les-racines-de-l-espoir-a-pour-mission-de-faire-du-social-pour-des-personnes-d-favoris-es-en-particulier-chez-les-en-fants-malades-les-enfants-talib-s {
+  color: #000000;
+  text-align: center;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  position: absolute;
+  left: 1007px;
+  top: 1042px;
+}
+.ellipse-113 {
+  border-radius: 50%;
+  width: 59px;
+  height: 59px;
+  position: absolute;
+  left: 997px;
+  top: 930px;
+ 
+}
