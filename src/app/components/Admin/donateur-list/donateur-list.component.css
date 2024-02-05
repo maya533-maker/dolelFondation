@@ -1,0 +1,49 @@
+/* donateur-list.component.css */
+.container {
+  margin-top: 5%;
+  right: 20%;
+}
+
+.card {
+  width: 300px;
+  margin: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.image {
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.description {
+  margin-top: 5px;
+}
+
+.icon-button {
+  margin-top: 10px;
+}
+
+.card.blocked .image,
+.card.blocked .title,
+.card.blocked .description {
+  filter: blur(2px);
+}
+
+.card.blocked .icon-button {
+  display: block;
+  margin-top: 10px;
+}

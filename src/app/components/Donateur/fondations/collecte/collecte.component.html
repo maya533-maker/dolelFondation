@@ -1,0 +1,133 @@
+<app-dashf></app-dashf>
+
+<div style="margin-top: 10%;margin-left:10%;width: 1073px; height: 36px; justify-content: center; align-items: flex-end; gap: 514px; display: inline-flex">
+
+  <!-- Afficher le bouton d'ajout pour les fondations seulement -->
+  <div *ngIf="typeUtilisateur === 'fondation'" style="padding-top: 6px; padding-bottom: 6px; padding-left: 0px; padding-right: 6px; background: #3B0458; border-radius: 4px; justify-content: flex-start; align-items: flex-start; display: flex;">
+    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="ajouterCollecte()" class="btn add-button">
+      <i style="color: white;" class="fa-solid fa-plus"></i>
+      <span style="color: white;">Ajouter un nouveau Événement</span>
+    </button>
+  </div>
+</div>
+
+<div class="card-container" style="margin-left: 5%;">
+  <div *ngFor="let collecte of collectes" class="card">
+    <div class="card-content">
+      <div class="image" [style.background-image]="'url(' + collecte.image + ')'" >
+        <!-- Afficher les icônes d'action pour les fondations seulement -->
+        <div *ngIf="typeUtilisateur === 'fondation'" class="icon-button btn-group">
+          <button class="icon-button btn" (click)="supprimerCollecte(collecte)" style="border: #F7E801;color: #F7E801;right: 25%;">
+            <i class="fas fa-trash"></i>
+          </button>
+          <button class="icon-button btn" data-bs-toggle="modal" data-bs-target="#exampleModal2" style="border: #F7E801;color: #F7E801;margin-right: 25%;" (click)="modifierCollecte(collecte)">
+            <i class="fas fa-edit"></i>
+          </button>
+          <button class="icon-button btn" (click)="cloturerCollecte(collecte)" style="border: #F7E801;color: #F7E801;margin-right: 25%;">
+            <i class="fas fa-lock"></i>
+          </button>
+          <!-- <button class="icon-button btn" (click)="decloturerCollecte(collecte)" style="border: #F7E801;color: #F7E801;margin-right: 25%;">
+            <i class="fas fa-unlock"></i>
+          </button> -->
+        </div>
+      </div>
+      <div class="title">{{ collecte.titre }}</div>
+      <div class="description">{{ collecte.description }}</div>
+      <div class="amount">{{ collecte.objectifFinancier | currency:'XOF':'symbol':'1.0-0' }}</div>
+      <div class="account-number">Numéro de compte: {{ collecte.numeroCompte }}</div>
+      <button data-bs-toggle="modal" data-bs-target="#exampleModal3" class="button">Détails</button>
+    </div>
+  </div>
+</div>
+
+<!-- ... reste du code ... -->
+
+
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog custom-modal">
+    <div class="modal-content">
+      <div class="modal-header" style="display: flex;justify-content: center;">
+        <h1>FORMULAIRE DE MODIFICATION D'UNE COLLECTE</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="input-field">
+          <i class="fas fa-signature"></i>
+          <input name="titre" type="text" [(ngModel)]="titre" placeholder="Titre" />
+        </div>
+        <div class="input-field">
+          <i class="fas fa-align-left"></i>
+          <input name="description" [(ngModel)]="description" placeholder="Description">
+        </div>
+        <div class="input-field">
+          <i class="fas fa-image"></i>
+          <input type="file" (change)="getFile($event)" accept="image/*">
+        </div>
+        <div class="input-field">
+          <i class="fas fa-money-bill"></i>
+          <input name="objectifFinancier" type="number" [(ngModel)]="objectifFinancier" placeholder="Objectif Financier" />
+        </div>
+        <div class="input-field">
+          <i class="fas fa-sort-numeric-up"></i>
+          <input name="numeroCompte" type="text" [(ngModel)]="numeroCompte" placeholder="Numéro de compte" />
+        </div>
+        <button (click)="modifierCollecte(collecte)" style="border: 2px solid #F7E801;color: #F7E801;" class="btn add-button">Modifier</button>
+      </div>
+    </div>
+  </div>
+</div>
+j
+
+
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog custom-modal">
+    <div class="modal-content">
+      <div class="modal-header" style="display: flex;justify-content: center;">
+        <h1>FORMULAIRE D'AJOUT D'UNE COLLECTE</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body ">
+        <div class="input-field">
+          <i class="fas fa-signature"></i>
+          <input name="titre" type="text" [(ngModel)]="titre" placeholder="Titre" />
+        </div>
+        <div class="input-field">
+          <i class="fas fa-align-left"></i>
+          <input name="description" [(ngModel)]="description" placeholder="Description">
+        </div>
+        <div class="input-field">
+          <i class="fas fa-image"></i>
+          <input type="file" (change)="getFile($event)" accept="image/*">
+        </div>
+        <div class="input-field">
+          <i class="fas fa-money-bill"></i>
+          <input name="objectifFinancier" type="number" [(ngModel)]="objectifFinancier" placeholder="Objectif Financier" />
+        </div>
+        <div class="input-field">
+          <i class="fas fa-sort-numeric-up"></i>
+          <input name="numeroCompte" type="text" [(ngModel)]="numeroCompte" placeholder="Numéro de compte" />
+        </div>
+        <button (click)="ajouterCollecte()" style="border: 2px solid #F7E801;color: #F7E801;" class="btn add-button">Ajouter</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog custom-modal">
+    <div class="modal-content">
+      <div class="modal-header" style="display: flex;justify-content: center;">
+        <h1></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body ">
+      </div>
+    </div>
+  </div>
+</div> -->

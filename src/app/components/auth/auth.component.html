@@ -48,81 +48,88 @@
           <h2 class="title">S’inscrire</h2>
 
           <!-- Champs en commun -->
-          <div class="input-field">
-            <i class="fas fa-user"></i>
-            <input
-              type="text"
-              placeholder="Nom"
-              name="name"
-              required
-              [(ngModel)]="name"
-            />
-          </div>
-
-          <div class="input-field">
-            <i class="fas fa-envelope"></i>
-            <input
-              type="email"
-              placeholder="Email"
-              name="emailSignUp"
-              required
-              [(ngModel)]="emailSignUp"
-            />
+          <div class="row " style="width: 90vh;">
+            <div class="col-5 mx-4">
+              <div class="input-field">
+                <i class="fas fa-user"></i>
+                <input
+                  type="text"
+                  placeholder="Nom"
+                  name="name"
+                  required
+                  [(ngModel)]="name"
+                />
+              </div>
+            </div>
+            <div class="col-5">
+              <div class="input-field">
+                <i class="fas fa-envelope"></i>
+                <input
+                  type="email"
+                  placeholder="Email"
+                  name="emailSignUp"
+                  required
+                  [(ngModel)]="emailSignUp"
+                />
+              </div>
+            </div>
           </div>
           <!-- <p>{{ emailSignUp }}</p> -->
 
-          <div class="input-field">
-            <i class="fas fa-lock"></i>
-            <input
-              type="password"
-              placeholder="Mot de passe"
-              name="passwordSignUp"
-              required
-              [(ngModel)]="passwordSignUp"
-            />
+          <div class="row" style="width:90vh">
+          <div class="col-5 mx-4">
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input
+                type="password"
+                placeholder="Mot de passe"
+                name="passwordSignUp"
+                required
+                [(ngModel)]="passwordSignUp"
+              />
+            </div>
           </div>
-
-          <div class="input-field">
-            <i class="fas fa-image"></i>
-            <input
-              type="file"
-              placeholder="Image"
-              name="image"
-              required
-              [(ngModel)]="image"
-            />
+          <div class="col-5">
+            <div class="input-field">
+              <i class="fas fa-image"></i>
+              <input type="file" (change)="getFile($event)" accept="image/*">
+            </div>
           </div>
-
-          <div class="input-field">
-            <i class="fas fa-phone"></i>
-            <input
-              type="tel"
-              placeholder="Numéro de téléphone"
-              name="telephone"
-              required
-              [(ngModel)]="telephone"
-            />
           </div>
-
-          <!-- Sélecteur de rôle -->
+          <div class="row" style="width:90vh">
+            <div class="col-5 mx-4">
+              <div class="input-field">
+                <i class="fas fa-phone"></i>
+                <input
+                  type="tel"
+                  placeholder="Numéro de téléphone"
+                  name="telephone"
+                  required
+                  [(ngModel)]="telephone"
+                />
+              </div>
+            </div>
+            <div class="col-5">
+                <!-- Sélecteur de rôle -->
           <div class="input-field">
             <i class="fas fa-user"></i>
-            <select [(ngModel)]="selectedRole" name="selectedRole" >
+            <select style="border-radius: 30px;" [(ngModel)]="selectedRole" name="selectedRole" >
               <option value="" disabled selected>Choisir le rôle</option>
               <option value="donateur">Donateur</option>
               <option value="fondation">Fondation</option>
             </select>
           </div>
-
+            </div>
+          </div>
           <!-- Bouton pour continuer vers le formulaire spécifique -->
-          <button
+          <!-- <button
             type="button"
             class="btn"
             *ngIf="selectedRole"
             (click)="continueToForm()"
           >
             Continuer
-          </button>
+          </button> -->
 
           <!-- Champs spécifiques pour le Donateur -->
           <ng-container *ngIf="selectedRole === 'donateur'">
@@ -140,36 +147,41 @@
 
           <!-- Champs spécifiques pour la Fondation -->
           <ng-container *ngIf="selectedRole === 'fondation'">
-            <div class="input-field">
-              <i class="fas fa-id-card"></i>
-              <input
-                type="text"
-                placeholder="Numéro d'enregistrement"
-                name="numeroEnregistrement"
-                required
-                [(ngModel)]="numeroEnregistrement"
-              />
+          <div class="row" style="width: 90vh;">
+            <div class="col-5 mx-4">
+              <div class="input-field">
+                <i class="fas fa-id-card"></i>
+                <input
+                  type="text"
+                  placeholder="Numéro d'enregistrement"
+                  name="numeroEnregistrement"
+                  required
+                  [(ngModel)]="numeroEnregistrement"
+                />
+              </div>
             </div>
-
-            <div class="input-field">
-              <i class="fas fa-map-marker-alt"></i>
-              <input
-                type="text"
-                placeholder="Adresse"
-                name="adresse"
-                required
-                [(ngModel)]="adresse"
-              />
+            <div class="col-5">
+              <div class="input-field">
+                <i class="fas fa-map-marker-alt"></i>
+                <input
+                  type="text"
+                  placeholder="Adresse"
+                  name="adresse"
+                  required
+                  [(ngModel)]="adresse"
+                />
+              </div>
             </div>
+          </div>
 
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <textarea
+              <input type="textarea"
                 placeholder="Description"
                 name="description"
                 required
                 [(ngModel)]="description"
-              ></textarea>
+              >
             </div>
           </ng-container>
 
@@ -177,6 +189,7 @@
         </form>
       </div>
     </div>
+
     <div class="panels-container">
       <div class="panel left-panel">
         <!-- <button class="btn" [routerLink]="['/acceuil']" style="margin-top:-12%;"><i class="fa-solid fa-arrow-left fa-spin"></i>&nbsp; Retour</button> -->
@@ -232,3 +245,5 @@
     </div>
   </div>
 </div>
+
+

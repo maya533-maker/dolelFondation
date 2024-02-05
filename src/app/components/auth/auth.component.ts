@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/auth.service';
 import Swal from 'sweetalert2';
+import { AuthService } from '../service/auth.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-auth',
@@ -19,7 +20,7 @@ export class AuthComponent {
   emailSignUp: string = "";
   passwordSignUp: string = "";
   name: string = "";
-  image: string = "";
+  image!: File;
   telephone: string = "";
 
   // Propriétés spécifiques au formulaire de donateur
@@ -30,7 +31,7 @@ export class AuthComponent {
   adresse: string = "";
   description: string = "";
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private http: HttpClient) { }
 
   signIn() {
     if (this.emailLogin === "" || this.passwordLogin === "") {
@@ -38,13 +39,45 @@ export class AuthComponent {
     } else {
       this.authService.signIn(this.emailLogin, this.passwordLogin).subscribe(
         (response: any) => {
+          console.log('Utilisateur connecté:', response);
+
           const role = response.role;
+          const authToken = response.token;
+
+          console.log('Rôle de l\'utilisateur:', role);
+          console.log('Token d\'authentification:', authToken);
+
           this.authService.handleSignInSuccess(role);
         },
         (error: any) => {
           this.alertMessage("error", "Erreur de connexion", "Vérifiez vos identifiants et réessayez.");
         }
       );
+    }
+  }
+
+  // Méthode pour effectuer une requête authentifiée
+  performAuthenticatedRequest() {
+    const authToken = this.authService.getAuthToken();
+
+    if (authToken) {
+      console.log('Token actuel:', authToken);
+
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${authToken}`,
+        'Content-Type': 'application/json',
+      });
+
+      this.http.get('votre_url', { headers }).subscribe(response => {
+        console.log('Réponse de la requête:', response);
+        // Traitez la réponse
+      }, error => {
+        console.error('Erreur lors de la requête:', error);
+        // Traitez l'erreur
+      });
+    } else {
+      console.error('Aucun jeton disponible.');
+      // Gérez le cas où le jeton n'est pas disponible
     }
   }
 
@@ -57,30 +90,39 @@ export class AuthComponent {
       password:this.passwordSignUp,
       telephone:this.telephone,
       role: this.selectedRole,
+    };
 
+    const newUser = new FormData();
+    newUser.append('image', this.image as Blob);
+    newUser.append('nom' ,this.name);
+    newUser.append('prenom',this.firstName);
+    newUser.append('email',this.emailSignUp);
+    newUser.append('password',this.passwordSignUp);
+    newUser.append('telephone',this.telephone);
+    newUser.append('role',this.selectedRole);
+    newUser.append('description',this.description);
+    newUser.append('numeroEnregistrement',this.numeroEnregistrement);
+    newUser.append('adresse',this.adresse);
 
-    }
     if (this.selectedRole === 'donateur') {
-      this.authService.signUpDonateur(data).subscribe(
+      this.authService.signUpDonateur(newUser).subscribe(
         (response: any) => {
           console.log("je suis vide pour le moment🥱:", response);
-          const role = response.role;
+          const role = response.data.role;
           this.authService.handleSignInSuccess(role);
-          this.router.navigate(['/auth']);
+          this.alertMessage("success","inscription réussie!!","🎉");
         },
         (error: any) => {
-          console.error("si y'a erreur signal toi:", error);
+          console.error("si y'a erreur signale toi:", error);
           this.alertMessage("error", "Erreur d'inscription", "Vérifiez vos informations et réessayez.");
         }
       );
     } else if (this.selectedRole === 'fondation') {
-      this.authService.signUpFondation(
-        this.name, this.emailSignUp, this.passwordSignUp, this.image, this.numeroEnregistrement, this.adresse, this.description, this.telephone
-      ).subscribe(
+      this.authService.signUpFondation(newUser).subscribe(
         (response: any) => {
           const role = response.role;
           this.authService.handleSignInSuccess(role);
-          this.router.navigate(['/auth']);
+          this.alertMessage("success","inscription réussie!!","🎉");
         },
         (error: any) => {
           this.alertMessage("error", "Erreur d'inscription", "Vérifiez vos informations et réessayez.");
@@ -90,8 +132,69 @@ export class AuthComponent {
   }
 
 
-  checkIfDataReceived(response: any) {
 
+
+  // Bloquer un donateur par l'administrateur
+  blockDonor(donorId: number): void {
+    this.authService.blockDonor(donorId).subscribe(
+      (response: any) => {
+        console.log('Donateur bloqué avec succès:', response);
+      },
+      (error: any) => {
+        console.error('Erreur lors du blocage du donateur:', error);
+      }
+    );
+  }
+
+  // Débloquer un donateur par l'administrateur
+  unblockDonor(donorId: number): void {
+    this.authService.unblockDonor(donorId).subscribe(
+      (response: any) => {
+        console.log('Donateur débloqué avec succès:', response);
+      },
+      (error: any) => {
+        console.error('Erreur lors du déblocage du donateur:', error);
+      }
+    );
+  }
+
+  // Bloquer une fondation par l'administrateur
+  blockFoundation(foundationId: number): void {
+    this.authService.blockFoundation(foundationId).subscribe(
+      (response: any) => {
+        console.log('Fondation bloquée avec succès:', response);
+      },
+      (error: any) => {
+        console.error('Erreur lors du blocage de la fondation:', error);
+      }
+    );
+  }
+
+  // Débloquer une fondation par l'administrateur
+  unblockFoundation(foundationId: number): void {
+    this.authService.unblockFoundation(foundationId).subscribe(
+      (response: any) => {
+        console.log('Fondation débloquée avec succès:', response);
+      },
+      (error: any) => {
+        console.error('Erreur lors du déblocage de la fondation:', error);
+      }
+    );
+  }
+
+  // Supprimer un utilisateur (donateur ou fondation) par l'administrateur
+  deleteUser(userId: number): void {
+    this.authService.deleteUser(userId).subscribe(
+      (response: any) => {
+        console.log('Utilisateur supprimé avec succès:', response);
+      },
+      (error: any) => {
+        console.error('Erreur lors de la suppression de l\'utilisateur:', error);
+      }
+    );
+  }
+
+  checkIfDataReceived(response: any) {
     console.log("Nom:", response.name);
     console.log("Prénom:", response.firstName);
     console.log("Image:", response.image);
@@ -105,6 +208,11 @@ export class AuthComponent {
       console.log("Description:", response.description);
       console.log("Adresse:", response.adresse);
     }
+  }
+
+  getFile(event: any) {
+    console.warn(event.target.files[0]);
+    this.image = event.target.files[0] as File;
   }
 
   continueToForm() {

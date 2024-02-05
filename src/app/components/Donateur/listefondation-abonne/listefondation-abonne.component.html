@@ -1,0 +1,71 @@
+<!-- listefondation-abonne.component.html -->
+<app-dashboard></app-dashboard>
+<div class="card" style="margin-top: 8%; margin-left: 8%; border: 1px solid #F7E801; width: 90%">
+  <div class="card-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col" style="background-color: #F7E801; font-weight: bold;">Photo</th>
+          <th scope="col" style="background-color: #F7E801; font-weight: bold;">Nom</th>
+          <th scope="col" style="background-color: #F7E801; font-weight: bold;">Email</th>
+          <th scope="col" style="background-color: #F7E801; font-weight: bold;">Adresse</th>
+          <th scope="col" style="background-color: #F7E801; font-weight: bold;">Description</th>
+          <th scope="col" style="background-color: #F7E801; font-weight: bold;">Téléphone</th>
+          <th scope="col" style="background-color: #F7E801; font-weight: bold;">Numéro d'enregistrement</th>
+          <th scope="col" style="background-color: #F7E801; font-weight: bold;">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let fondation of fondationsAbonnees">
+          <th scope="row"><img style="width: 49.98px; height: 50px; border-radius: 9999px" [src]="fondation.image" /></th>
+          <td>{{ fondation.nom_fondation }}</td>
+          <td>{{ fondation.email_fondation }}</td>
+          <td>{{ fondation.adresse_fondation }}</td>
+          <td>{{ fondation.description_fondation }}</td>
+          <td>{{ fondation.telephone_donateur }}</td>
+          <td>{{ fondation.numeroenregistrement_fondation }}</td>
+          <td>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn" style="color: #F7E801" (click)="showCollectesModal(fondation.id)">
+              <i class="fa-solid fa-circle-info fa-bounce"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Modal for Collectes -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" style="background-color: #F7E801;">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel" style="color: #3B0458;">Liste des Collectes</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="background-color: #3B0458;"></button>
+      </div>
+      <div class="modal-body">
+        <div class="list-group">
+          <ng-container *ngIf="listeCollectes.length > 0; else noCollectes">
+            <a *ngFor="let collecte of listeCollectes" href="#" class="list-group-item list-group-item-action" style="background-color: #3B0458; color: white;">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">{{ collecte.titre }}</h5>
+                <small>{{ collecte.objectifFinancier }} FCFA</small>
+              </div>
+              <p class="mb-1">{{ collecte.description }}</p>
+              <small>Numéro de compte : {{ collecte.numeroCompte }}</small>
+
+              <!-- Bouton "Faire un don" -->
+              <button type="button" style="border: 1px solid white;color: white;" class="btn mx-4" [routerLink]="['/donation']">Faire un don</button>
+            </a>
+          </ng-container>
+          <ng-template #noCollectes>
+            <p>Aucune collecte disponible.</p>
+          </ng-template>
+        </div>
+      </div>
+      <div class="modal-footer" style="background-color: #3B0458;">
+        <button type="button" style="border: 1px solid #F7E801;color: #F7E801;" class="btn" data-bs-dismiss="modal">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>

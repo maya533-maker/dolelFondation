@@ -1,0 +1,40 @@
+/* maintenance.component.css */
+.maintenance-page {
+  text-align: center;
+  padding: 50px;
+}
+
+.logo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+h1 {
+  color: #3B0458;
+}
+
+.countdown {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.timer {
+  font-weight: bold;
+  color: #F7E801;
+}
+
+.social-links {
+  margin-top: 30px;
+}
+
+.social-links a {
+  margin-right: 20px;
+  color: #3B0458;
+  text-decoration: none;
+}
+
+.social-links a:hover {
+  text-decoration: underline;
+}
