@@ -1,0 +1,22 @@
+<app-dashf></app-dashf>
+<div *ngIf="donateurs.length > 0">
+  <h3>Donateurs associés :</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Montant donné</th>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Téléphone</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let donateur of donateurs">
+        <td>{{ donateur['Montant Donné'] }}</td>
+        <td>{{ donateur['Nom Donateur'] }}</td>
+        <td>{{ donateur['Prénom Donateur'] }}</td>
+        <td>{{ donateur['Téléphone Donateur'] }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

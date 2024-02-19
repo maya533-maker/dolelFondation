@@ -1,10 +1,11 @@
-/* collecte.component.css */
-
+/* Container pour les cartes */
 .card-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
+/* Style des cartes */
 .card {
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -12,15 +13,22 @@
   padding: 16px;
   width: 300px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease; /* Transition pour l'effet de survol */
 }
 
+/* Effet de levée au survol */
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Contenu des cartes */
 .card-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 }
-
+/* Image de la carte */
 .image {
   width: 100%;
   height: 150px;
@@ -29,30 +37,35 @@
   border-radius: 8px;
 }
 
+/* Titre de la carte */
 .title {
   font-size: 18px;
   font-weight: bold;
   margin: 8px 0;
 }
 
+/* Description de la carte */
 .description {
   font-size: 14px;
   color: #555;
   margin-bottom: 8px;
 }
 
+/* Montant de la carte */
 .amount {
   font-size: 16px;
   font-weight: bold;
   margin-bottom: 8px;
 }
 
+/* Numéro de compte de la carte */
 .account-number {
   font-size: 12px;
   color: #888;
   margin-bottom: 16px;
 }
 
+/* Bouton "Détails" de la carte */
 .button {
   width: 100%;
   padding: 8px;
@@ -63,13 +76,13 @@
   cursor: pointer;
 }
 
+/* Texte du bouton "Détails" */
 .button-text {
   font-size: 12px;
   text-transform: uppercase;
   margin-top: 8px;
   color: #3B0458;
 }
-
 /* Ajout des styles pour les boutons */
 .button-group {
   display: flex;
@@ -187,3 +200,4 @@ form.sign-in-form {
   display: block;
   margin-right: 25%;
 }
+

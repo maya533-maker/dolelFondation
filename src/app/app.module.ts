@@ -34,7 +34,6 @@ import { CollecteService } from './components/service/collecte.service';
 import { TokenInterceptorProvider } from './components/token.interceptor';
 import { FondationsListComponent } from './components/Admin/fondations-list/fondations-list.component';
 import { DonateurListComponent } from './components/Admin/donateur-list/donateur-list.component';
-import { CollecteListComponent } from './components/Admin/collecte-list/collecte-list.component';
 import { ProfilFondComponent } from './components/Fondations/profil-fond/profil-fond.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DetailcolComponent } from './components/Fondations/detailcol/detailcol.component';
@@ -42,11 +41,15 @@ import { FondationsDetailsComponent } from './components/Fondations/fondations-d
 import { DetaildComponent } from './components/Donateur/detaild/detaild.component';
 import { CollecteComponent } from './components/Donateur/fondations/collecte/collecte.component';
 import { ListefondationAbonneComponent } from './components/Donateur/listefondation-abonne/listefondation-abonne.component';
-import { FaireUnDonComponent } from './components/Donateur/faire-un-don/faire-un-don.component';
 import { FondationListComponent } from './components/Donateur/fondation-list/fondation-list.component';
 import { CollecteClotureComponent } from './components/Donateur/collecte-cloture/collecte-cloture.component';
 import { AbonnenComponent } from './components/Fondations/abonnen/abonnen.component';
 import { MaintenanceComponent } from './components/Fondations/maintenance/maintenance.component';
+import { ConfirmationDonComponent } from './components/Donateur/confirmation-don/confirmation-don.component';
+import { DonateurDonHistoryComponent } from './components/Donateur/donateur-don-history/donateur-don-history.component';
+import { DonateursAssociesComponent } from './components/Fondations/donateurs-associes/donateurs-associes.component';
+import { DonationComponent } from './donation/donation.component';
+import { CollecteListComponent } from './collecte-list/collecte-list.component';
 
 
 @NgModule({
@@ -85,11 +88,14 @@ import { MaintenanceComponent } from './components/Fondations/maintenance/mainte
     FondationsDetailsComponent,
     DetaildComponent,
     ListefondationAbonneComponent,
-    FaireUnDonComponent,
     FondationListComponent,
     CollecteClotureComponent,
     AbonnenComponent,
     MaintenanceComponent,
+    ConfirmationDonComponent,
+    DonateurDonHistoryComponent,
+    DonateursAssociesComponent,
+    DonationComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, BrowserAnimationsModule],
   providers: [AuthService, CollecteService, TokenInterceptorProvider],

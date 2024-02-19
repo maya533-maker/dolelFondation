@@ -1,6 +1,7 @@
 <app-dashf></app-dashf>
 
 <div style="margin-top: 10%;margin-left:10%;width: 1073px; height: 36px; justify-content: center; align-items: flex-end; gap: 514px; display: inline-flex">
+  <app-donateurs-associes [collecteId]="collecte.id"></app-donateurs-associes>
 
   <!-- Afficher le bouton d'ajout pour les fondations seulement -->
   <div *ngIf="typeUtilisateur === 'fondation'" style="padding-top: 6px; padding-bottom: 6px; padding-left: 0px; padding-right: 6px; background: #3B0458; border-radius: 4px; justify-content: flex-start; align-items: flex-start; display: flex;">
@@ -40,7 +41,8 @@
   </div>
 </div>
 
-<!-- ... reste du code ... -->
+
+
 
 
 <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

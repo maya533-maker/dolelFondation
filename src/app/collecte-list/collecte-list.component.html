@@ -1,0 +1,55 @@
+<app-dashboard></app-dashboard>
+<div class="container" style="margin-top: 10%; margin-left: 5%">
+  <div class="row">
+    <ng-container *ngIf="listeCollectes.length > 0; else noCollectes">
+      <div class="col-md-4 mb-4" *ngFor="let collecte of listeCollectes">
+        <div class="card" style="background-color: #ffff; color: #f7e801">
+          <img
+            src="{{ apiUrl }}/{{ collecte?.image }}"
+            class="card-img-top img-fluid"
+            alt="..."
+            style="max-height: 300px; object-fit: contain"
+          />
+          <div class="card-body">
+            <h5 class="card-title text-center" style="font-weight: bold">
+              {{ collecte.titre }}
+            </h5>
+            <p class="card-text">{{ collecte.description }}</p>
+            <p class="card-text">
+              <small class="text-muted"
+                >Objectif : {{ collecte.objectifFinancier }} FCFA</small
+              >
+            </p>
+            <p class="card-text">
+              <small class="text-muted"
+                >Numéro de compte : {{ collecte.numeroCompte }}</small
+              >
+            </p>
+            <p class="card-text">
+              <small class="text-muted"
+                >Fondation : {{ collecte.nom_fondation }}</small
+              >
+            </p>
+            <button
+              type="button"
+              class="btn"
+              (click)="redirigerVersDonation(collecte.id)"
+              style="
+                border: #f7e801 1px solid;
+                color: #f7e801;
+                font-weight: bold;
+              "
+            >
+              Faire un don
+            </button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #noCollectes>
+      <div class="col">
+        <p>Aucune collecte disponible.</p>
+      </div>
+    </ng-template>
+  </div>
+</div>

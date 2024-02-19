@@ -14,7 +14,8 @@ import Swal from 'sweetalert2';
       <div class="second"></div>
       <div class="row g-4">
         <div class="col col-md-6 left-profil">
-          <img class="container-fluid" style="width: 60%; margin-left: 30%;" [src]="donateur.image" alt="">
+          <img class="container-fluid" style="width:60%;margin-left:30%;" src="https://i.pinimg.com/736x/41/c4/f5/41c4f51bcd17b297aa8f8d94a2ac1d95.jpg" alt="">
+
         </div>
         <div class="col-md-6 right-profil">
           <div class="mb-3 d-flex justify-content-between">
@@ -125,6 +126,7 @@ export class ProfilComponent {
   donateur: any = {}; // Assurez-vous que cet objet correspond à la structure de votre modèle donateur
   newPassword: string = '';
   confirmNewPassword: string = '';
+  apiUrl = "http://127.0.0.1:8000/api";
 
   constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) {
     // Chargez les détails du donateur lors de l'initialisation du composant

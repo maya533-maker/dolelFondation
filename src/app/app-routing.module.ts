@@ -26,45 +26,59 @@ import { DetaildComponent } from './components/Donateur/detaild/detaild.componen
 import { DashfComponent } from './components/Fondations/dashf/dashf.component';
 import { CollecteComponent } from './components/Donateur/fondations/collecte/collecte.component';
 import { ListefondationAbonneComponent } from './components/Donateur/listefondation-abonne/listefondation-abonne.component';
-import { FaireUnDonComponent } from './components/Donateur/faire-un-don/faire-un-don.component';
 import { FondationListComponent } from './components/Donateur/fondation-list/fondation-list.component';
 import { CollecteClotureComponent } from './components/Donateur/collecte-cloture/collecte-cloture.component';
 import { MaintenanceComponent } from './components/Fondations/maintenance/maintenance.component';
+import { ConfirmationDonComponent } from './components/Donateur/confirmation-don/confirmation-don.component';
+import { DonateurDonHistoryComponent } from './components/Donateur/donateur-don-history/donateur-don-history.component';
+import { DonateursAssociesComponent } from './components/Fondations/donateurs-associes/donateurs-associes.component';
+import { DonationComponent } from './donation/donation.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { CollecteListComponent } from './collecte-list/collecte-list.component';
+import { AdminGuard } from './guard/admin.guard';
+import { DonorGuard } from './guard/donor.guard';
+import { FoundationGuard } from './guard/foundation.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'acceuil', pathMatch: 'full' },
   { path: 'auth', component: AuthComponent },
-  { path: 'dash', component: DashComponent },
+  { path: 'dash', component: DashComponent, canActivate: [FoundationGuard] },
   { path: 'acceuil', component: AcceuilComponent },
   { path: 'apropos', component: AProposComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'fondations', component: FondationsComponent },
   { path: 'teams', component: TeamsComponent },
   { path: 'details', component: DetailsfondationComponent },
-  { path: 'profil', component: ProfilComponent },
+  { path: 'profil', component: ProfilComponent, canActivate: [DonorGuard] },
   { path: 'page', component: PageComponent },
   { path: 'list', component: ListFondationsComponent },
   { path: 'history', component: HistoriqueComponent },
   { path: 'detail', component: DtlComponent },
   { path: 'fond', component: DashComponent },
-  { path: 'abonne', component: AbonneComponent },
+  { path: 'abonne', component: AbonneComponent , canActivate: [FoundationGuard]},
   { path: 'don', component: DonComponent },
-  { path: 'collecte', component: CollecteComponent },
+  { path: 'collecte', component: CollecteComponent , canActivate: [FoundationGuard]},
   { path: 'etape', component: EtapeComponent },
   { path: 'col', component: CollecteComponent },
   { path: 'dashAd', component: DashAdComponent },
-  { path: 'pageAd', component: PageAdComponent },
-  { path: 'listt', component: DonateurListComponent },
-  { path: 'fondationl', component: FondationsListComponent },
-  { path: 'profill', component:  ProfilFondComponent },
+  { path: 'pageAd', component: PageAdComponent, canActivate: [AdminGuard] },
+  { path: 'listt', component: DonateurListComponent , canActivate: [AdminGuard]},
+  { path: 'fondationl', component: FondationsListComponent, canActivate: [AdminGuard] },
+  { path: 'profill', component:  ProfilFondComponent , canActivate: [FoundationGuard]},
   { path: 'fdc', component:  FondationsDetailsComponent },
   { path: 'liste-collectes', component:  DetaildComponent },
-  { path: 'dashf', component:  DashfComponent },
-  { path: 'fondationabonne', component: ListefondationAbonneComponent },
-  { path: 'donation', component:   FaireUnDonComponent},
-  { path: 'listp', component:    FondationListComponent},
-  { path: 'collectec', component:    CollecteClotureComponent},
-  { path: 'maintenance', component: MaintenanceComponent },
+  { path: 'dashf', component:  DashfComponent , canActivate: [FoundationGuard] },
+  { path: 'fondationabonne', component: ListefondationAbonneComponent, canActivate: [DonorGuard]  },
+  { path: 'listp', component:    FondationListComponent, canActivate: [DonorGuard] },
+  { path: 'collectec', component:    CollecteClotureComponent, canActivate: [FoundationGuard]},
+  { path: 'maintenance', component: MaintenanceComponent, canActivate: [DonorGuard]  },
+  { path: 'confirmation-don', component: ConfirmationDonComponent },
+  { path: 'donHistory', component: DonateurDonHistoryComponent, canActivate: [DonorGuard]  },
+  { path: 'donateurDon', component: DonateursAssociesComponent , canActivate: [FoundationGuard]},
+  { path: 'donation', component: DonationComponent, canActivate: [DonorGuard]  },
+  { path: 'dashboard', component:  DashboardComponent, canActivate: [DonorGuard] },
+  { path: 'listcol', component:  CollecteListComponent, canActivate: [DonorGuard]  },
+
 
 ];
 

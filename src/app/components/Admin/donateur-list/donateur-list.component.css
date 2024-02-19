@@ -1,26 +1,35 @@
-/* donateur-list.component.css */
 .container {
   margin-top: 5%;
-  right: 20%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .card {
   width: 300px;
   margin: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 10px;
   overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease; /* Animation de transition */
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Effet de levée au survol */
 }
 
 .card-content {
   display: flex;
   flex-direction: column;
+  padding: 15px;
 }
 
 .image {
   height: 150px;
   background-size: cover;
   background-position: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .title {
@@ -35,15 +44,19 @@
 
 .icon-button {
   margin-top: 10px;
+  margin-left:5%;
+  padding: 3px 5px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.icon-button:hover {
+  background-color: rgba(0, 0, 0, 0.1); /* Légère teinte au survol */
 }
 
 .card.blocked .image,
 .card.blocked .title,
-.card.blocked .description {
-  filter: blur(2px);
-}
-
+.card.blocked .description,
 .card.blocked .icon-button {
-  display: block;
-  margin-top: 10px;
+  filter: blur(2px);
 }

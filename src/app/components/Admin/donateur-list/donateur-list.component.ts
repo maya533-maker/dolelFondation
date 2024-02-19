@@ -17,6 +17,9 @@ export class DonateurListComponent implements OnInit {
   email: string = '';
   motDePasse: string = '';
 
+  apiUrl = "http://127.0.0.1:8000/api";
+
+
   constructor(private donateurService: DonateurService) {}
 
   ngOnInit(): void {

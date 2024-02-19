@@ -21,7 +21,8 @@ export class CollecteComponent implements OnInit {
   description!: any;
   objectifFinancier!: any;
   numeroCompte!: any;
-  typeUtilisateur: string = '';
+  typeUtilisateur: string | null = null;
+
 
   collecteSelectionnee: Collecte | undefined;
 
@@ -29,8 +30,10 @@ export class CollecteComponent implements OnInit {
 
   ngOnInit(): void {
     this.refreshCollectes();
-    this.typeUtilisateur = this.authService.getUserRole();
+    const userRole = this.authService.getUserRole();
+    this.typeUtilisateur = userRole !== null ? userRole : 'valeur_par_defaut';
   }
+
 
   getFile(event: any) {
     console.warn(event.target.files[0]);

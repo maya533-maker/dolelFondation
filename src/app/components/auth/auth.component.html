@@ -1,8 +1,10 @@
 <div class="container" [ngClass]="{ 'sign-up-mode': isSignUpMode }">
   <div class="container" [ngClass]="{ 'sign-up-mode': isSignUpMode }">
+
     <div class="forms-container">
       <div class="signin-signup">
         <!-- Formulaire de Connexion -->
+        <button class="btn mx-5" [routerLink]="['/acceuil']" ><i class="fa-solid fa-arrow-left"></i></button>
         <form *ngIf="!isSignUpMode" (ngSubmit)="signIn()" class="sign-in-form">
           <h2 class="title">Se connecter</h2>
           <div class="input-field">
@@ -91,8 +93,9 @@
           </div>
           <div class="col-5">
             <div class="input-field">
-              <i class="fas fa-image"></i>
-              <input type="file" (change)="getFile($event)" accept="image/*">
+              <i class="fas"></i>
+              <input style="margin-left:-8%;margin-top: 7%;" type="file" (change)="getFile($event)" accept="image/*">
+              <!-- <img *ngIf="image" [src]="image" class="image" alt="Selected Image"> -->
             </div>
           </div>
           </div>
@@ -210,7 +213,7 @@
           </button>
         </div>
         <img
-          src="https://s3-alpha-sig.figma.com/img/e5a9/2fc7/5ef39a796a8984b2119223ab9d1183fd?Expires=1707091200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=HJinGlR2ujZ4ijSJ4jVhawVVRPuO4bMn8e9N7Q9a2a1ZuDxQ3DXusDQHElQvLwJB0THIHkWBzPPq~QM2K2DBO41bHWqWqbf86qowOBC1FRlZzO~LH24I5~5vsRbZfLZslVzBQD2FTd4iWPFopJTUWkE~Io~mKI62FtPXmdNLQnPbtrKILEb8YmXdJpHqRHQEpY1lqqm5s5VT9Si-rkQ8rICk68Ia35hlXcRhN~Hq7fPKTvyOnk3KkmaVDzCqkUFie1kf47RQaARrU7f8h4e9RX1tZK~6saAZrXkhTbUwo8K8lIJuIYXyw678aWjtOQaQVWKoA8Xtot5WeIEFvAZUJg__"
+          src="/assets/se connecter.png"
           class="image"
           alt=""
         />
@@ -237,7 +240,7 @@
           </button>
         </div>
         <img
-          src="https://s3-alpha-sig.figma.com/img/5bee/e699/de231f1bafbc0ff6c97a80e493ba4e34?Expires=1707091200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=cpLoja74tW7bX16al~OVbwB7T9Eox6Edupk~aUqHXQkRF26eT1F2VvP~sQgbjAGz4hdTc-fJT5II6y~2eQYvy10lwqxCS-74D1-EwQjdZsejM0opHgw5a~~kiyd5r9perSgvJQXBuONd8y-D2xw~tk0DWNGtMBh53Zv28Ahb3ufC08G-hEQvoJ2w1CxZrudfPCULLDqolxOrF8~L9l-Ke8JXsNnzqByWZjqvgTr1MyNuLwrEoiJw39SB-twjb48z1~IOrdVd6O54-7iUG6WFF7KR5hW29AjhUHsqS8-v9Obry7l8CjvUx~U4Lz1CG5Bext3aZWC3qp4bOzckDhdnkQ__"
+          src="/assets/s'inscrire.png"
           class="image"
           alt=""
         />

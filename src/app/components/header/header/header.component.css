@@ -1,4 +1,12 @@
 
 .container-fluid .nav-brand .navbar-nav .nav-item a{
-  color: #FF9700;
+  color: #F7E801;
+}
+
+nav li a {
+  color:#ffffff;font-weight:bold;
+}
+
+nav li a:focus-within{
+  color: #F7E801;
 }

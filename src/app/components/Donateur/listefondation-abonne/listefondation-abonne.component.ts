@@ -1,5 +1,3 @@
-// listefondation-abonne.component.ts
-
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -13,11 +11,14 @@ export class ListefondationAbonneComponent implements OnInit {
   fondationsAbonnees: any[] = [];
   listeCollectes: any[] = [];
   selectedFondationId: number | null = null;
+  selectedCollecte: any | null = null;
 
+  apiUrl = "http://127.0.0.1:8000/api";
   constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
     this.getListeFondationsAbonnees();
+    this.getCollectes();
   }
 
   getListeFondationsAbonnees(): void {
@@ -31,14 +32,11 @@ export class ListefondationAbonneComponent implements OnInit {
     );
   }
 
-  faireUnDon(collecte: any): void {
-    this.selectedFondationId = collecte.id;
-    this.getCollectesByFondationId(collecte.id);
-    console.log('Faire un don pour la collecte :', collecte);
+  redirigerVersDonation(): void {
+    this.router.navigate(['/donation']); 
   }
-
-  getCollectesByFondationId(fondationId: number): void {
-    this.http.get<any>(`http://127.0.0.1:8000/api/listeCollecte`).subscribe(
+  getCollectes(): void {
+    this.http.get<any>('http://127.0.0.1:8000/api/listeCollecte').subscribe(
       (response) => {
         this.listeCollectes = response.data;
       },
@@ -48,12 +46,11 @@ export class ListefondationAbonneComponent implements OnInit {
     );
   }
 
-
-
   showCollectesModal(fondationId: number): void {
     this.selectedFondationId = fondationId;
-    this.getCollectesByFondationId(fondationId);
+    // Pas besoin de récupérer les collectes spécifiques à la fondation ici
   }
+
 
   alertMessage(): void {
     console.log('Message d\'alerte');

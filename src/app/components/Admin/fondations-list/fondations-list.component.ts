@@ -10,22 +10,61 @@ import { Router } from '@angular/router';
   template: `
     <app-dash-ad></app-dash-ad>
     <div class="card-container">
-      <div *ngFor="let fondation of fondations" class="card" [ngClass]="{'blocked': fondation.bloquee}">
+      <div
+        *ngFor="let fondation of fondations"
+        class="card"
+        [ngClass]="{ blocked: fondation.bloquee }"
+      >
         <div class="card-content">
-          <div class="image" [style.background-image]="'url(' + fondation.image + ')'" >
+          <div>
+            <img
+              src="{{ apiUrl }}/{{ fondation?.image }}"
+              class="card-img-top"
+              alt="..."
+              style="max-height: 200px;objectif-fit:contain;"
+            />
             <div class="icons" *ngIf="isAdmin || isDonateur">
               <!-- Ajoutez cette condition pour afficher uniquement pour le donateur -->
-              <button *ngIf="isDonateur && !fondation.abonne" class="btn btn-primary btn-abonner" (click)="sAbonner(fondation)">S'abonner</button>
-              <button *ngIf="isDonateur && fondation.abonne" class="btn btn-danger btn-se-desabonner" (click)="seDesabonner(fondation)">Se désabonner</button>
+              <button
+                *ngIf="isDonateur && !fondation.abonne"
+                class="btn btn-primary btn-abonner"
+                (click)="sAbonner(fondation)"
+              >
+                S'abonner
+              </button>
+              <button
+                *ngIf="isDonateur && fondation.abonne"
+                class="btn btn-danger btn-se-desabonner"
+                (click)="seDesabonner(fondation)"
+              >
+                Se désabonner
+              </button>
 
               <!-- Ajoutez le reste des icônes ici (pour les admins) -->
-              <i class="fas fa-check text-success" (click)="approuverDemande(fondation)"></i>
-              <i class="fas fa-times text-danger" (click)="refuserDemande(fondation)"></i>
-              <i class="fas fa-trash text-warning" (click)="supprimerFondation(fondation)"></i>
-              <button *ngIf="!fondation.bloquee" class="btn btn-danger" (click)="bloquerFondation(fondation)">
+              <i
+                class="fas fa-check text-success"
+                (click)="approuverDemande(fondation)"
+              ></i>
+              <i
+                class="fas fa-times text-danger"
+                (click)="refuserDemande(fondation)"
+              ></i>
+              <i
+                class="fas fa-trash text-warning"
+                (click)="supprimerFondation(fondation)"
+              ></i>
+              <button
+                *ngIf="!fondation.bloquee"
+                class="btn btn-danger"
+                (click)="bloquerFondation(fondation)"
+              >
                 <i class="fas fa-ban"></i> Bloquer
               </button>
-              <button *ngIf="fondation.bloquee" class="btn btn-success" (click)="debloquerFondation(fondation)">
+              <button
+                *ngIf="fondation.bloquee"
+                class="btn btn-success"
+                (click)="debloquerFondation(fondation)"
+              >
                 <i class="fas fa-unlock"></i> Débloquer
               </button>
             </div>
@@ -33,54 +72,127 @@ import { Router } from '@angular/router';
           <div class="details">
             <h5 class="card-title">{{ fondation.nom }}</h5>
             <p class="card-text">{{ fondation.description }}</p>
-            <button class="btn btn-primary btn-details" (click)="detailsFondation(fondation)">Détails</button>
+            <button
+              class="btn btn-primary btn-details"
+              (click)="detailsFondation(fondation)"
+            >
+              Détails
+            </button>
           </div>
         </div>
       </div>
     </div>
   `,
-  styles: [`
-    .card-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      margin-top: 7%;
-    }
-    .card {
-      width: 300px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      overflow: hidden;
-    }
-    .card-content {
-      display: flex;
-      flex-direction: column;
-    }
-    .image {
-      height: 150px;
-      background-size: cover;
-      background-position: center;
-    }
-    .details {
-      padding: 10px;
-    }
-    .icons {
-      display: flex;
-      justify-content: space-between;
-      padding: 5px;
-      background-color: #f8f9fa;
-    }
-    .blocked {
-      filter: blur(2px);
-    }
-  `]
+  styles: [
+    `
+      .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 7%;
+        gap:35px;
+        flex-wrap:wrap;
+      }
+
+      .card {
+        width: 300px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+      }
+
+      .card-content {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .image {
+        height: 150px;
+        background-size: cover;
+        background-position: center;
+        border-bottom: 1px solid #ccc;
+      }
+
+      .details {
+        padding: 10px;
+      }
+
+      .card-title {
+        font-size: 20px;
+        margin-bottom: 10px;
+        color: #3b0458;
+      }
+
+      .card-text {
+        color: #333;
+        margin-bottom: 15px;
+      }
+
+      .icons {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        background-color: #fff;
+      }
+
+      .btn {
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn-primary,
+      .btn-danger,
+      .btn-details {
+        border: none;
+        padding: 8px 15px;
+        border-radius: 5px;
+      }
+
+      .btn-primary {
+        background-color: #3b0458;
+        color: #fff;
+      }
+
+      .btn-primary:hover {
+        background-color: #2c033f;
+      }
+
+      .btn-danger {
+        background-color: #d9534f;
+        color: #fff;
+      }
+
+      .btn-danger:hover {
+        background-color: #c9302c;
+      }
+
+      background-color: #f7e801;
+
+      .blocked {
+        filter: blur(2px);
+      }
+    `,
+  ],
 })
 export class FondationsListComponent implements OnInit {
   fondations: any[] = [];
   isAdmin: boolean = false;
   isDonateur: boolean = false;
 
-  constructor(private http: HttpClient, private authService: AuthService, private router: Router) {}
+  apiUrl = 'http://127.0.0.1:8000/api';
+
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.isAdmin = this.authService.getUserRole() === 'admin';
@@ -126,14 +238,25 @@ export class FondationsListComponent implements OnInit {
       if (result.isConfirmed) {
         this.deleteFondation(fondationId).subscribe(
           () => {
-            this.alertMessage('success', 'Suppression réussie!', 'La fondation a été supprimée avec succès.');
+            this.alertMessage(
+              'success',
+              'Suppression réussie!',
+              'La fondation a été supprimée avec succès.'
+            );
             this.getListeFondations().subscribe((response: any) => {
               this.fondations = response.data;
             });
           },
           (error) => {
-            console.error('Erreur lors de la suppression de la fondation :', error);
-            this.alertMessage('error', 'Erreur de suppression!', 'Une erreur s\'est produite lors de la suppression de la fondation.');
+            console.error(
+              'Erreur lors de la suppression de la fondation :',
+              error
+            );
+            this.alertMessage(
+              'error',
+              'Erreur de suppression!',
+              "Une erreur s'est produite lors de la suppression de la fondation."
+            );
           }
         );
       }
@@ -149,14 +272,22 @@ export class FondationsListComponent implements OnInit {
 
     this.approuverDemandeFondation(fondationId).subscribe(
       () => {
-        this.alertMessage('success', 'Approbation réussie!', 'La fondation a été approuvée avec succès.');
+        this.alertMessage(
+          'success',
+          'Approbation réussie!',
+          'La fondation a été approuvée avec succès.'
+        );
         this.getListeFondations().subscribe((response: any) => {
           this.fondations = response.data;
         });
       },
       (error) => {
-        console.error('Erreur lors de l\'approbation de la fondation :', error);
-        this.alertMessage('error', 'Erreur d\'approbation!', 'Une erreur s\'est produite lors de l\'approbation de la fondation.');
+        console.error("Erreur lors de l'approbation de la fondation :", error);
+        this.alertMessage(
+          'error',
+          "Erreur d'approbation!",
+          "Une erreur s'est produite lors de l'approbation de la fondation."
+        );
       }
     );
   }
@@ -170,14 +301,22 @@ export class FondationsListComponent implements OnInit {
 
     this.refuserDemandeFondation(fondationId).subscribe(
       () => {
-        this.alertMessage('success', 'Refus réussi!', 'La fondation a été refusée avec succès.');
+        this.alertMessage(
+          'success',
+          'Refus réussi!',
+          'La fondation a été refusée avec succès.'
+        );
         this.getListeFondations().subscribe((response: any) => {
           this.fondations = response.data;
         });
       },
       (error) => {
         console.error('Erreur lors du refus de la fondation :', error);
-        this.alertMessage('error', 'Erreur de refus!', 'Une erreur s\'est produite lors du refus de la fondation.');
+        this.alertMessage(
+          'error',
+          'Erreur de refus!',
+          "Une erreur s'est produite lors du refus de la fondation."
+        );
       }
     );
   }
@@ -207,11 +346,19 @@ export class FondationsListComponent implements OnInit {
     this.bloquerFondationService(fondationId).subscribe(
       () => {
         fondation.bloquee = true;
-        this.alertMessage('success', 'Blocage réussi!', 'La fondation a été bloquée avec succès.');
+        this.alertMessage(
+          'success',
+          'Blocage réussi!',
+          'La fondation a été bloquée avec succès.'
+        );
       },
       (error) => {
         console.error('Erreur lors du blocage de la fondation :', error);
-        this.alertMessage('error', 'Erreur de blocage!', 'Une erreur s\'est produite lors du blocage de la fondation.');
+        this.alertMessage(
+          'error',
+          'Erreur de blocage!',
+          "Une erreur s'est produite lors du blocage de la fondation."
+        );
       }
     );
   }
@@ -226,11 +373,19 @@ export class FondationsListComponent implements OnInit {
     this.debloquerFondationService(fondationId).subscribe(
       () => {
         fondation.bloquee = false;
-        this.alertMessage('success', 'Déblocage réussi!', 'La fondation a été débloquée avec succès.');
+        this.alertMessage(
+          'success',
+          'Déblocage réussi!',
+          'La fondation a été débloquée avec succès.'
+        );
       },
       (error) => {
         console.error('Erreur lors du déblocage de la fondation :', error);
-        this.alertMessage('error', 'Erreur de déblocage!', 'Une erreur s\'est produite lors du déblocage de la fondation.');
+        this.alertMessage(
+          'error',
+          'Erreur de déblocage!',
+          "Une erreur s'est produite lors du déblocage de la fondation."
+        );
       }
     );
   }
@@ -255,11 +410,19 @@ export class FondationsListComponent implements OnInit {
     this.abonnerFondation(fondationId).subscribe(
       () => {
         fondation.abonne = true;
-        this.alertMessage('success', 'Abonnement réussi!', 'Vous êtes abonné avec succès à la fondation.');
+        this.alertMessage(
+          'success',
+          'Abonnement réussi!',
+          'Vous êtes abonné avec succès à la fondation.'
+        );
       },
       (error) => {
-        console.error('Erreur lors de l\'abonnement à la fondation:', error);
-        this.alertMessage('error', 'Erreur d\'abonnement!', 'Une erreur s\'est produite lors de l\'abonnement à la fondation.');
+        console.error("Erreur lors de l'abonnement à la fondation:", error);
+        this.alertMessage(
+          'error',
+          "Erreur d'abonnement!",
+          "Une erreur s'est produite lors de l'abonnement à la fondation."
+        );
       }
     );
   }
@@ -274,11 +437,19 @@ export class FondationsListComponent implements OnInit {
     this.desabonnerFondation(fondationId).subscribe(
       () => {
         fondation.abonne = false;
-        this.alertMessage('success', 'Désabonnement réussi!', 'Vous vous êtes désabonné avec succès de la fondation.');
+        this.alertMessage(
+          'success',
+          'Désabonnement réussi!',
+          'Vous vous êtes désabonné avec succès de la fondation.'
+        );
       },
       (error) => {
         console.error('Erreur lors du désabonnement de la fondation:', error);
-        this.alertMessage('error', 'Erreur de désabonnement!', 'Une erreur s\'est produite lors du désabonnement de la fondation.');
+        this.alertMessage(
+          'error',
+          'Erreur de désabonnement!',
+          "Une erreur s'est produite lors du désabonnement de la fondation."
+        );
       }
     );
   }
@@ -298,7 +469,7 @@ export class FondationsListComponent implements OnInit {
       icon: icon,
       title: title,
       text: text,
-      timer: 1500
+      timer: 1500,
     });
   }
 }

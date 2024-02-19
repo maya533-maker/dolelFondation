@@ -5,7 +5,8 @@
     <div *ngFor="let donateur of donateurs" class="col-md-4">
       <div class="card" [ngClass]="{'blocked': donateur.bloque}">
         <div class="card-content">
-          <div class="image" [style.background-image]="'url(' + donateur.image + ')'" >
+          <img src="{{apiUrl}}/{{ donateur?.image }}" style="max-height: 200px;object-fit: contain;" class="card-img-top" alt="..." />
+          <div  >
             <button class="icon-button btn btn-light border border-warning" (click)="supprimerDonateur(donateur)">
               <i class="fas fa-trash" style="color: #f7e801;"></i>
             </button>

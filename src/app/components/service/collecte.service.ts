@@ -21,7 +21,6 @@ getCollectesParFondation(fondationId: string): Observable<Collecte[]> {
 }
 
 
-
 addCollecte(collecte: any): Observable<Collecte> {
   return this.http.post<Collecte>(`${this.apiUrl}/creerCollecte`, collecte)
     .pipe(

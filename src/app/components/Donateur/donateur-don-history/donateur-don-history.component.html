@@ -1,0 +1,23 @@
+<app-dashboard></app-dashboard>
+<div class="card" style="margin-top:8%;margin-left:8%;border:1px solid #F7E801;width:90%">
+  <div class="card-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col" style="background-color: #F7E801;font-weight:bold;">Montant Donné</th>
+          <th scope="col" style="background-color: #F7E801;font-weight:bold;">Titre de la collecte</th>
+          <th scope="col" style="background-color: #F7E801;font-weight:bold;">Description de la collecte</th>
+          <th scope="col" style="background-color: #F7E801;font-weight:bold;">Date Don Effectué</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let don of historiqueDons">
+          <td>{{ don.MontantDonne }}</td>
+          <td>{{ don.Titre }}</td>
+          <td>{{ don.DescriptionCollecte }}</td>
+          <td>{{ don.DateDonEffectue }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

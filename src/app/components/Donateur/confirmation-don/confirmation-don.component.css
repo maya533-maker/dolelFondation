@@ -1,0 +1,33 @@
+.card {
+  margin-top: 10%;
+  border: 2px solid #3b0458;
+  border-radius: 15px;
+  background-color: #f7e801;
+}
+
+.card-header {
+  background-color: #3b0458;
+  color: #f7e801;
+  border-bottom: 2px solid #3b0458;
+}
+
+.input-group-text {
+  background-color: #3b0458;
+  color: #f7e801;
+  border: none;
+}
+
+.btn-success {
+  background-color: #3b0458;
+  border: 2px solid #3b0458;
+}
+
+.btn-success:hover {
+  background-color: #f7e801;
+  color: #3b0458;
+}
+
+.form-control {
+  border: 2px solid #3b0458;
+  border-radius: 10px;
+}

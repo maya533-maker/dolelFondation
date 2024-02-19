@@ -13,7 +13,7 @@ export class DetaildComponent implements OnInit {
   collecteId: number = 0;
   collecteDetails: any;
   listeCollectes: any[] = [];
-  fondations: any[] = [];  // Ajoutez un tableau pour stocker la liste des fondations sélectionnables
+  fondations: any[] = [];
   selectedFondationId: number = 0;
 
   constructor(
@@ -30,6 +30,10 @@ export class DetaildComponent implements OnInit {
   loadCollecteDetails(): void {
     this.getCollecteDetails(this.collecteId).subscribe((data) => {
       this.collecteDetails = data;
+      // Après avoir chargé les détails de la collecte, chargez la liste des collectes en cours pour la fondation sélectionnée
+      if (this.selectedFondationId !== 0) {
+        this.loadListeCollectesEnCours();
+      }
     });
   }
 
@@ -39,9 +43,16 @@ export class DetaildComponent implements OnInit {
   }
 
   loadFondations(): void {
-    const apiUrl = 'http://127.0.0.1:8000/api/listeFondations';  // Remplacez par l'URL réelle pour obtenir la liste des fondations
+    const apiUrl = 'http://127.0.0.1:8000/api/listeFondations';
     this.http.get(apiUrl).subscribe((data: any) => {
       this.fondations = data;
+    });
+  }
+
+  loadListeCollectesEnCours(): void {
+    const apiUrl = `http://127.0.0.1:8000/api/listeCollecteEnCours/${this.selectedFondationId}`;
+    this.http.get(apiUrl).subscribe((data: any) => {
+      this.listeCollectes = data;
     });
   }
 

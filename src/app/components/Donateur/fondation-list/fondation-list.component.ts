@@ -22,10 +22,20 @@ import { Router } from '@angular/router';
             [style.background-image]="'url(' + fondation.image + ')'"
             *ngIf="isDonateur"
           >
+            <img class="card-img-top img-fluid"  style="max-height: 300px;object-fit: contain;" src="{{ apiUrl }}/{{ fondation?.image }}" alt="" />
             <div class="icons" *ngIf="isAdmin">
-              <i class="fas fa-check text-success" (click)="approuverDemande(fondation)"></i>
-              <i class="fas fa-times text-danger" (click)="refuserDemande(fondation)"></i>
-              <i class="fas fa-trash text-warning" (click)="supprimerFondation(fondation)"></i>
+              <i
+                class="fas fa-check text-success"
+                (click)="approuverDemande(fondation)"
+              ></i>
+              <i
+                class="fas fa-times text-danger"
+                (click)="refuserDemande(fondation)"
+              ></i>
+              <i
+                class="fas fa-trash text-warning"
+                (click)="supprimerFondation(fondation)"
+              ></i>
               <button
                 *ngIf="!fondation.bloquee"
                 class="btn btn-danger"
@@ -43,22 +53,22 @@ import { Router } from '@angular/router';
             </div>
           </div>
           <div class="details">
-            <button
-              *ngIf="!fondation.bloquee && !fondation.abonne"
-              class="btn btn-primary btn-abonner"
-              (click)="sAbonner(fondation)"
-            >
-              S'abonner
-            </button>
-
-            <button
-              *ngIf="!fondation.bloquee && fondation.abonne"
-              class="btn btn-danger btn-se-desabonner"
-              (click)="seDesabonner(fondation)"
-            >
-              Se désabonner
-            </button>
-
+            <div class="abonne-badge">
+              <button
+                *ngIf="!fondation.bloquee && fondation.abonne"
+                class="btn btn-danger btn-se-desabonner"
+                (click)="seDesabonner(fondation)"
+              >
+                Se désabonner
+              </button>
+              <button
+                *ngIf="!fondation.bloquee && !fondation.abonne"
+                class="btn btn-primary btn-abonner"
+                (click)="sAbonner(fondation)"
+              >
+                S'abonner
+              </button>
+            </div>
             <h5 class="card-title">{{ fondation.nom }}</h5>
             <p class="card-text">{{ fondation.description }}</p>
             <button
@@ -80,32 +90,120 @@ import { Router } from '@angular/router';
         justify-content: space-around;
         margin-top: 7%;
       }
+
       .card {
         width: 300px;
         border: 1px solid #ccc;
         border-radius: 5px;
         overflow: hidden;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
       }
+
+      .card:hover {
+        transform: translateY(-5px);
+      }
+
       .card-content {
         display: flex;
         flex-direction: column;
       }
+
       .image {
         height: 150px;
         background-size: cover;
         background-position: center;
       }
+
       .details {
         padding: 10px;
       }
+
       .icons {
         display: flex;
         justify-content: space-between;
         padding: 5px;
         background-color: #f8f9fa;
       }
+
       .blocked {
         filter: blur(2px);
+      }
+
+      .card-title {
+        font-size: 20px;
+        font-weight: bold;
+        color: #f7e801;
+        margin-bottom: 5px;
+      }
+
+      .card-text {
+        font-size: 16px;
+        color: #555;
+        margin-bottom: 10px;
+      }
+
+      .btn-abonner,
+      .btn-se-desabonner,
+      .btn-details {
+        width: 100%;
+        padding: 8px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      .btn-abonner {
+        background-color: #3b0458;
+        color: #fff;
+      }
+
+      .btn-se-desabonner {
+        background-color: #dc3545;
+        color: #fff;
+      }
+
+      .btn-details {
+        background-color: #f7e801;
+        color: #fff;
+      }
+
+      .btn-abonner:hover,
+      .btn-se-desabonner:hover,
+      .btn-details:hover {
+        opacity: 0.8;
+      }
+
+      .abonne-badge {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+      }
+
+      .btn-abonner,
+      .btn-se-desabonner {
+        width: fit-content;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+
+      .btn-abonner {
+        background-color: #3b0458;
+        color: #fff;
+      }
+
+      .btn-se-desabonner {
+        background-color: #dc3545;
+        color: #fff;
       }
     `,
   ],
@@ -114,6 +212,8 @@ export class FondationListComponent implements OnInit {
   fondations: any[] = [];
   isAdmin: boolean = false;
   isDonateur: boolean = false;
+
+  apiUrl = 'http://127.0.0.1:8000/api';
 
   constructor(
     private http: HttpClient,
@@ -167,11 +267,19 @@ export class FondationListComponent implements OnInit {
     this.abonnerFondation(fondationId).subscribe(
       () => {
         fondation.abonne = true;
-        this.alertMessage('success', 'Abonnement réussi!', 'Vous êtes abonné avec succès à la fondation.');
+        this.alertMessage(
+          'success',
+          'Abonnement réussi!',
+          'Vous êtes abonné avec succès à la fondation.'
+        );
       },
       (error) => {
-        console.error('Erreur lors de l\'abonnement à la fondation:', error);
-        this.alertMessage('error', 'Erreur d\'abonnement!', 'Une erreur s\'est produite lors de l\'abonnement à la fondation.');
+        console.error("Erreur lors de l'abonnement à la fondation:", error);
+        this.alertMessage(
+          'error',
+          "Erreur d'abonnement!",
+          "Une erreur s'est produite lors de l'abonnement à la fondation."
+        );
       }
     );
   }
@@ -186,11 +294,19 @@ export class FondationListComponent implements OnInit {
     this.desabonnerFondation(fondationId).subscribe(
       () => {
         fondation.abonne = false;
-        this.alertMessage('success', 'Désabonnement réussi!', 'Vous vous êtes désabonné avec succès de la fondation.');
+        this.alertMessage(
+          'success',
+          'Désabonnement réussi!',
+          'Vous vous êtes désabonné avec succès de la fondation.'
+        );
       },
       (error) => {
         console.error('Erreur lors du désabonnement de la fondation:', error);
-        this.alertMessage('error', 'Erreur de désabonnement!', 'Une erreur s\'est produite lors du désabonnement de la fondation.');
+        this.alertMessage(
+          'error',
+          'Erreur de désabonnement!',
+          "Une erreur s'est produite lors du désabonnement de la fondation."
+        );
       }
     );
   }
@@ -204,7 +320,6 @@ export class FondationListComponent implements OnInit {
     const apiUrl = `http://127.0.0.1:8000/api/sedesabonner/${fondationId}`;
     return this.http.post(apiUrl, {});
   }
-
 
   supprimerFondation(fondation: any): void {
     const fondationId = fondation.id;
