@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { DetailsfondationComponent } from './detailsfondation.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('DetailsfondationComponent', () => {
   let component: DetailsfondationComponent;
@@ -8,7 +8,8 @@ describe('DetailsfondationComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [DetailsfondationComponent]
+      declarations: [DetailsfondationComponent],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA] 
     });
     fixture = TestBed.createComponent(DetailsfondationComponent);
     component = fixture.componentInstance;

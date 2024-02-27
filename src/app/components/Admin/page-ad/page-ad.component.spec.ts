@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { PageAdComponent } from './page-ad.component';
 
@@ -8,7 +9,8 @@ describe('PageAdComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PageAdComponent]
+      declarations: [PageAdComponent],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     });
     fixture = TestBed.createComponent(PageAdComponent);
     component = fixture.componentInstance;

@@ -24,6 +24,17 @@ input {
   font-family: "Poppins", sans-serif;
 }
 
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.input-field.error input {
+  border-color: red;
+}
+
+
 .container {
   position: relative;
   max-width: 100%;

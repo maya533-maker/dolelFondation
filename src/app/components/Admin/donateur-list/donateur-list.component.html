@@ -1,20 +1,39 @@
 <!-- donateur-list.component.html -->
 <app-dash-ad></app-dash-ad>
 <div class="container">
+  <span style="color: black; font-weight: bold; font-size: 30px"
+    >Liste Donateur</span
+  >
   <div class="row">
     <div *ngFor="let donateur of donateurs" class="col-md-4">
-      <div class="card" [ngClass]="{'blocked': donateur.bloque}">
+      <div class="card" [ngClass]="{ blocked: donateur.bloque }">
         <div class="card-content">
-          <img src="{{apiUrl}}/{{ donateur?.image }}" style="max-height: 200px;object-fit: contain;" class="card-img-top" alt="..." />
-          <div  >
-            <button class="icon-button btn btn-light border border-warning" (click)="supprimerDonateur(donateur)">
-              <i class="fas fa-trash" style="color: #f7e801;"></i>
+          <img
+            src="{{ apiUrl }}/{{ donateur?.image }}"
+            style="max-height: 200px; object-fit: contain"
+            class="card-img-top"
+            alt="..."
+          />
+          <div>
+            <button
+              class="icon-button btn btn-light border border-warning"
+              (click)="supprimerDonateur(donateur)"
+            >
+              <i class="fas fa-trash" style="color: #f7e801"></i>
             </button>
-            <button *ngIf="!donateur.bloque" class="icon-button btn btn-light border border-danger" (click)="bloquerDonateur(donateur)">
-              <i class="fas fa-ban" style="color: red;"></i>
+            <button
+              *ngIf="!donateur.bloque"
+              class="icon-button btn btn-light border border-danger"
+              (click)="bloquerDonateur(donateur)"
+            >
+              <i class="fas fa-ban" style="color: red"></i>
             </button>
-            <button *ngIf="donateur.bloque" class="icon-button btn btn-light border border-success" (click)="debloquerDonateur(donateur)">
-              <i class="fas fa-unlock" style="color: green;"></i>
+            <button
+              *ngIf="donateur.bloque"
+              class="icon-button btn btn-light border border-success"
+              (click)="debloquerDonateur(donateur)"
+            >
+              <i class="fas fa-unlock" style="color: green"></i>
             </button>
           </div>
           <div class="title">{{ donateur.prenom }} {{ donateur.nom }}</div>

@@ -50,6 +50,7 @@ import { DonateurDonHistoryComponent } from './components/Donateur/donateur-don-
 import { DonateursAssociesComponent } from './components/Fondations/donateurs-associes/donateurs-associes.component';
 import { DonationComponent } from './donation/donation.component';
 import { CollecteListComponent } from './collecte-list/collecte-list.component';
+import { MonComposantComponent } from './mon-composant/mon-composant.component';
 
 
 @NgModule({
@@ -96,6 +97,7 @@ import { CollecteListComponent } from './collecte-list/collecte-list.component';
     DonateurDonHistoryComponent,
     DonateursAssociesComponent,
     DonationComponent,
+    MonComposantComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, BrowserAnimationsModule],
   providers: [AuthService, CollecteService, TokenInterceptorProvider],

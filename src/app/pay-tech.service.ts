@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,7 @@ export class PayTechService {
       item_price: montant,
       ref_command: this.generateRefCommand(),
       command_name: descriptionCollecte,
-      currency: 'XOF', 
+      currency: 'XOF',
       env: 'test',
       ipn_url: 'https://votresite.com/ipn',
       success_url: 'https://votresite.com/success',

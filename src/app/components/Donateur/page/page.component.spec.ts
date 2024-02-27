@@ -1,6 +1,13 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { Component, NgModule } from '@angular/core';
 import { PageComponent } from './page.component';
+import{CUSTOM_ELEMENTS_SCHEMA}from '@angular/core';
+
+@NgModule({
+  declarations: [PageComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+})
+class TestModule {}
 
 describe('PageComponent', () => {
   let component: PageComponent;
@@ -8,7 +15,7 @@ describe('PageComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PageComponent]
+      imports: [TestModule]
     });
     fixture = TestBed.createComponent(PageComponent);
     component = fixture.componentInstance;

@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import{CUSTOM_ELEMENTS_SCHEMA}from '@angular/core';
 import { DtlComponent } from './dtl.component';
 
 describe('DtlComponent', () => {
@@ -8,7 +8,8 @@ describe('DtlComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [DtlComponent]
+      declarations: [DtlComponent],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     });
     fixture = TestBed.createComponent(DtlComponent);
     component = fixture.componentInstance;

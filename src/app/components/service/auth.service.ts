@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root',
@@ -36,17 +37,15 @@ export class AuthService {
     localStorage.setItem(this.authTokenKey, token);
   }
 
-  // signIn(email: string, password: string): Observable<any> {
-  //   const loginData = { email: email, password: password };
-  //   return this.http.post(`${this.apiUrl}/login`, loginData).pipe(
-  //     map((response: any) => {
-  //       // Stocker le token dans le localStorage
-  //       this.setAuthToken(response.token);
-  //       return response;
-  //     }),
-  //     catchError(this.handleError)
-  //   );
-  // }
+
+  modifierProfil(profileData: any): Observable<any> {
+    const apiUrl = `${this.apiUrl}/modifierProfil`;
+    return this.http.post(apiUrl, profileData).pipe(
+      map((response: any) => response),
+      catchError(this.handleError)
+    );
+  }
+
 
   signIn(email: string, password: string): Observable<any> {
     const loginData = { email: email, password: password };
@@ -132,6 +131,30 @@ export class AuthService {
   }
 
   handleSignInSuccess(role: string) {
+    let alertTitle = '';
+    let alertText = '';
+
+    switch (role) {
+      case 'admin':
+        alertTitle = 'Bienvenue Admin';
+        alertText = 'Vous êtes connecté en tant qu\'administrateur.';
+        break;
+      case 'fondation':
+        alertTitle = 'Bienvenue Fondation';
+        alertText = 'Vous êtes connecté en tant que fondation.';
+        break;
+      case 'donateur':
+        alertTitle = 'Bienvenue Donateur';
+        alertText = 'Vous êtes connecté en tant que donateur.';
+        break;
+      default:
+        alertTitle = 'Bienvenue';
+        alertText = 'Vous êtes connecté avec un rôle non défini.';
+        break;
+    }
+
+    this.alertMessage('success', alertTitle, alertText);
+
     switch (role) {
       case 'admin':
         this.router.navigate(['/pageAd']);
@@ -146,5 +169,14 @@ export class AuthService {
         this.router.navigate(['/default']);
         break;
     }
+  }
+
+  private alertMessage(icon: any, title: any, text: any) {
+    Swal.fire({
+      icon: icon,
+      title: title,
+      text: text,
+      timer: 1500
+    });
   }
 }

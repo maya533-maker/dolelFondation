@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CollecteClotureComponent } from './collecte-cloture.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('CollecteClotureComponent', () => {
   let component: CollecteClotureComponent;
@@ -8,7 +10,9 @@ describe('CollecteClotureComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [CollecteClotureComponent]
+      declarations: [CollecteClotureComponent],
+      imports: [RouterTestingModule, HttpClientModule],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     });
     fixture = TestBed.createComponent(CollecteClotureComponent);
     component = fixture.componentInstance;

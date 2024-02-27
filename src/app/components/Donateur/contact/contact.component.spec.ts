@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import{ CUSTOM_ELEMENTS_SCHEMA}from '@angular/core';
 import { ContactComponent } from './contact.component';
 
 describe('ContactComponent', () => {
@@ -8,7 +8,8 @@ describe('ContactComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ContactComponent]
+      declarations: [ContactComponent],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     });
     fixture = TestBed.createComponent(ContactComponent);
     component = fixture.componentInstance;

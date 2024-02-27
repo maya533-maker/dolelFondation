@@ -10,6 +10,10 @@ import { Router } from '@angular/router';
   template: `
     <app-dash-ad></app-dash-ad>
     <div class="card-container">
+      <span
+        style="color: black;font-weight:bold;"
+        >Liste des Fondations</span
+      >
       <div
         *ngFor="let fondation of fondations"
         class="card"
@@ -90,8 +94,8 @@ import { Router } from '@angular/router';
         flex-wrap: wrap;
         justify-content: center;
         margin-top: 7%;
-        gap:35px;
-        flex-wrap:wrap;
+        gap: 35px;
+        flex-wrap: wrap;
       }
 
       .card {

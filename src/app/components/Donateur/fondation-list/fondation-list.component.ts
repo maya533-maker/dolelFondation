@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
   template: `
     <app-dashboard></app-dashboard>
     <div class="card-container">
+      <span style="color:black;font-weight:bold;font-size:30px;">LISTE FONDATIONS</span>
       <div
         *ngFor="let fondation of fondations"
         class="card"

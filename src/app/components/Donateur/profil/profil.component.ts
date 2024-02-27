@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-profil',
   template: `
-    <app-dashboard></app-dashboard>
+     <app-dashboard></app-dashboard>
     <main class="mx-auto" style="margin-top: 8%;">
       <h3 class="" style="margin-left: 33%; margin-top: %">Informations du profil</h3>
       <div class="first"></div>
@@ -15,24 +15,23 @@ import Swal from 'sweetalert2';
       <div class="row g-4">
         <div class="col col-md-6 left-profil">
           <img class="container-fluid" style="width:60%;margin-left:30%;" src="https://i.pinimg.com/736x/41/c4/f5/41c4f51bcd17b297aa8f8d94a2ac1d95.jpg" alt="">
-
         </div>
         <div class="col-md-6 right-profil">
           <div class="mb-3 d-flex justify-content-between">
             <label for="nom" class="form-label">Nom</label>
-            <input type="text" class="form-control" id="nom" [placeholder]="donateur.nom">
+            <input type="text" class="form-control" id="nom" [(ngModel)]="donateur.nom" name="nom">
           </div>
           <div class="mb-3 d-flex justify-content-between">
             <label for="prenom" class="form-label">Prénom</label>
-            <input type="text" class="form-control" id="prenom" [placeholder]="donateur.prenom">
+            <input type="text" class="form-control" id="prenom" [(ngModel)]="donateur.prenom" name="prenom">
           </div>
           <div class="mb-3 d-flex justify-content-between">
             <label for="telephone" class="form-label">Téléphone</label>
-            <input type="text" class="form-control" id="telephone" [placeholder]="donateur.telephone">
+            <input type="text" class="form-control" id="telephone" [(ngModel)]="donateur.telephone" name="telephone">
           </div>
           <div class="mb-3 d-flex justify-content-between">
             <label for="email" class="form-label">Adresse email</label>
-            <input type="email" class="form-control" id="email" [placeholder]="donateur.email">
+            <input type="email" class="form-control" id="email" [(ngModel)]="donateur.email" name="email">
           </div>
           <div class="mb-3 d-flex justify-content-between">
             <label for="motDePasse" class="form-label">Mot de passe</label>
@@ -167,8 +166,7 @@ export class ProfilComponent {
   }
 
   supprimerCompteDonateur(): void {
-    // Endpoint pour supprimer le compte du donateur
-    const apiUrl = `http://127.0.0.1:8000/api/supprimerCompte`;
+    const apiUrl = `http://127.0.0.1:8000/api/supprimerCompteDonateur`;
 
     Swal.fire({
       title: 'Êtes-vous sûr de vouloir supprimer votre compte?',
@@ -180,13 +178,10 @@ export class ProfilComponent {
       confirmButtonText: 'Oui, supprimer!',
     }).then((result) => {
       if (result.isConfirmed) {
-        // Utilisez le service HttpClient pour envoyer la demande de suppression au serveur
-        this.http.post(apiUrl, {}).subscribe(
+        this.http.put(apiUrl, {}).subscribe(
           () => {
             this.alertMessage('success', 'Suppression réussie!', 'Le compte a été supprimé avec succès.');
-
-            // Naviguez vers la page de déconnexion après la suppression du compte
-            this.router.navigate(['/accueil']);
+            this.router.navigate(['/accueil']); 
           },
           (error) => {
             console.error('Erreur lors de la suppression du compte :', error);
@@ -196,6 +191,8 @@ export class ProfilComponent {
       }
     });
   }
+
+
 
   alertMessage(icon: any, title: any, text: any): void {
     Swal.fire({

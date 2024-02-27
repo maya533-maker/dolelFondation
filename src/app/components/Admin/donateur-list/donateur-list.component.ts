@@ -29,7 +29,7 @@ export class DonateurListComponent implements OnInit {
   refreshDonateurs(): void {
     this.donateurService.getDonateurs().subscribe((response: any) => {
       this.donateurs = response.data;
-      console.log('Donateurs actualisés :', this.donateurs);
+      // console.log('Donateurs actualisés :', this.donateurs);
     });
   }
 
@@ -55,7 +55,7 @@ export class DonateurListComponent implements OnInit {
             this.refreshDonateurs();
           },
           (error) => {
-            console.error('Erreur lors de la suppression du donateur :', error);
+            // console.error('Erreur lors de la suppression du donateur :', error);
             this.alertMessage('error', 'Erreur de suppression!', 'Une erreur s\'est produite lors de la suppression du donateur.');
           }
         );

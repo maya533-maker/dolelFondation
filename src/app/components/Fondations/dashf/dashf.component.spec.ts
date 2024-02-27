@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DashfComponent } from './dashf.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('DashfComponent', () => {
   let component: DashfComponent;
@@ -8,7 +10,8 @@ describe('DashfComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [DashfComponent]
+      declarations: [DashfComponent],
+      imports: [RouterTestingModule,HttpClientModule],
     });
     fixture = TestBed.createComponent(DashfComponent);
     component = fixture.componentInstance;

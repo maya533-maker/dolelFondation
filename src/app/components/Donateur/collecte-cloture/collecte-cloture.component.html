@@ -1,24 +1,49 @@
 <app-dashf></app-dashf>
-<div class="card-container" style="margin-left: 5%;margin-top: 10%;">
+<div class="card-container" style="margin-left: 5%; margin-top: 10%">
+  <span
+    style="color: black; font-weight: bold; font-size: 30px; margin-top: -5%"
+    >Liste des collectes cloturees</span
+  >
   <div *ngFor="let collecte of collectesCloturees" class="card">
     <div class="card-content">
-      <div class="image" [style.background-image]="'url(' + collecte.image + ')'" >
+      <div
+        class="image"
+        [style.background-image]="'url(' + collecte.image + ')'"
+      >
         <!-- Afficher les icônes d'action pour les fondations seulement -->
-        <div  class="icon-button btn-group">
-          <button class="icon-button btn" (click)="supprimerCollecte(collecte)" style="border: #F7E801;color: #F7E801;right: 25%;">
+        <div class="icon-button btn-group">
+          <button
+            class="icon-button btn"
+            (click)="supprimerCollecte(collecte)"
+            style="border: #f7e801; color: #f7e801; right: 25%"
+          >
             <i class="fas fa-trash"></i>
           </button>
 
-          <button class="icon-button btn" (click)="decloturerCollecte(collecte)" style="border: #F7E801;color: #F7E801;margin-right: 25%;">
+          <button
+            class="icon-button btn"
+            (click)="decloturerCollecte(collecte)"
+            style="border: #f7e801; color: #f7e801; margin-right: 25%"
+          >
             <i class="fas fa-unlock"></i>
           </button>
         </div>
       </div>
       <div class="title">{{ collecte.titre }}</div>
-    <div class="description">{{ collecte.description }}</div>
-    <div class="amount">{{ collecte.objectifFinancier | currency:'XOF':'symbol':'1.0-0' }}</div>
-    <div class="account-number">Numéro de compte: {{ collecte.numeroCompte }}</div>
-      <button data-bs-toggle="modal" data-bs-target="#exampleModal3" class="button">Détails</button>
+      <div class="description">{{ collecte.description }}</div>
+      <div class="amount">
+        {{ collecte.objectifFinancier | currency : "XOF" : "symbol" : "1.0-0" }}
+      </div>
+      <div class="account-number">
+        Numéro de compte: {{ collecte.numeroCompte }}
+      </div>
+      <button
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal3"
+        class="button"
+      >
+        Détails
+      </button>
     </div>
   </div>
 </div>

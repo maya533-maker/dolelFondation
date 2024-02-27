@@ -1,5 +1,6 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import{ CUSTOM_ELEMENTS_SCHEMA}from '@angular/core';
 import { DonateursAssociesComponent } from './donateurs-associes.component';
 
 describe('DonateursAssociesComponent', () => {
@@ -8,7 +9,9 @@ describe('DonateursAssociesComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [DonateursAssociesComponent]
+      declarations: [DonateursAssociesComponent],
+      imports: [HttpClientModule],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     });
     fixture = TestBed.createComponent(DonateursAssociesComponent);
     component = fixture.componentInstance;

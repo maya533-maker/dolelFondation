@@ -22,7 +22,7 @@ export class CollecteComponent implements OnInit {
   objectifFinancier!: any;
   numeroCompte!: any;
   typeUtilisateur: string | null = null;
-
+  apiUrl = "http://127.0.0.1:8000/api";
 
   collecteSelectionnee: Collecte | undefined;
 
@@ -35,39 +35,51 @@ export class CollecteComponent implements OnInit {
   }
 
 
-  getFile(event: any) {
-    console.warn(event.target.files[0]);
-    this.image = event.target.files[0] as File;
-  }
+
 
   ajouterCollecte(): void {
-    const addCollect = new FormData();
-    addCollect.append('titre', this.titre);
-    addCollect.append('image', this.image as Blob);
-    addCollect.append('description', this.description);
-    addCollect.append('objectifFinancier', this.objectifFinancier);
-    addCollect.append('numeroCompte', this.numeroCompte);
+    const formData = new FormData();
+    formData.append('titre', this.titre);
+    formData.append('description', this.description);
+    formData.append('objectifFinancier', String(this.objectifFinancier));
+    formData.append('numeroCompte', this.numeroCompte);
+    if (this.image) {
+      formData.append('image', this.image, this.image.name);
+    }
 
-    this.collecteService.addCollecte(addCollect).subscribe(
-      (response) => {
-        console.log("Réponse de l'API après ajout :", response);
-        this.refreshCollectes();
+    this.collecteService.ajouterCollecte(formData)
+      .subscribe(
+        () => {
+          // Gérer le succès de l'ajout ici, par exemple, afficher un message de succès ou rediriger l'utilisateur
+          console.log('Collecte ajoutée avec succès');
+        },
+        error => {
+          // Gérer les erreurs ici, par exemple, afficher un message d'erreur à l'utilisateur
+          console.error('Erreur lors de l\'ajout de la collecte :', error);
+        }
+      );
+  }
+
+
+  refreshCollectes(): void {
+    this.collecteService.getCollectesEnCours().subscribe(
+      (response: any) => {
+        this.collectes = response.data;
+        console.log('Collectes en cours actualisées :', this.collectes);
       },
       (error) => {
-        console.error("Erreur lors de l'ajout de la collecte :", error);
+        console.error('Erreur lors de la récupération des collectes en cours :', error);
+        // Gérer l'erreur ici, par exemple afficher un message d'erreur à l'utilisateur
       }
     );
   }
 
-  refreshCollectes(): void {
-    this.collecteService.getCollectes().subscribe((response: any) => {
-      this.collectes = response.data;
-      console.log('Collectes actualisées :', this.collectes);
-    });
+
+
+  getFile(event: any) {
+    console.warn(event.target.files[0]);
+    this.image = event.target.files[0] as File;
   }
-
-
-
 
 
   afficherDetailsCollecte(collecte: Collecte): void {

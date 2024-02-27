@@ -38,6 +38,7 @@ import { CollecteListComponent } from './collecte-list/collecte-list.component';
 import { AdminGuard } from './guard/admin.guard';
 import { DonorGuard } from './guard/donor.guard';
 import { FoundationGuard } from './guard/foundation.guard';
+import { MonComposantComponent } from './mon-composant/mon-composant.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'acceuil', pathMatch: 'full' },
@@ -78,8 +79,7 @@ const routes: Routes = [
   { path: 'donation', component: DonationComponent, canActivate: [DonorGuard]  },
   { path: 'dashboard', component:  DashboardComponent, canActivate: [DonorGuard] },
   { path: 'listcol', component:  CollecteListComponent, canActivate: [DonorGuard]  },
-
-
+  { path: 'react', component:  MonComposantComponent,canActivate: [AdminGuard]  },
 ];
 
 @NgModule({

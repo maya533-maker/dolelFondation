@@ -36,26 +36,60 @@ export class AuthComponent {
   signIn() {
     if (this.emailLogin === "" || this.passwordLogin === "") {
       this.alertMessage("error", "Attention", "Merci de renseigner tous les champs");
+    } else if (!this.isValidEmail(this.emailLogin)) {
+      this.alertMessage("error", "Erreur de format", "Veuillez entrer un email valide.");
     } else {
       this.authService.signIn(this.emailLogin, this.passwordLogin).subscribe(
         (response: any) => {
-          console.log('Utilisateur connecté:', response);
-
-          const role = response.role;
-          const authToken = response.token;
-
-          console.log('Rôle de l\'utilisateur:', role);
-          console.log('Token d\'authentification:', authToken);
-
-          this.authService.handleSignInSuccess(role);
+          // Vérifier si l'utilisateur est bloqué
+          if (response.blocked) {
+            // Bloquer l'utilisateur en fonction de son rôle
+            if (response.role === 'donateur') {
+              this.authService.blockDonor(response.userId).subscribe(
+                (blockResponse: any) => {
+                  this.alertMessage("error", "Compte bloqué", "Votre compte a été bloqué. Veuillez contacter l'administrateur.");
+                },
+                (blockError: any) => {
+                  this.alertMessage("error", "Erreur de blocage", "Une erreur s'est produite lors du blocage de votre compte.");
+                }
+              );
+            } else if (response.role === 'fondation') {
+              this.authService.blockFoundation(response.userId).subscribe(
+                (blockResponse: any) => {
+                  this.alertMessage("error", "Compte bloqué", "Votre compte a été bloqué. Veuillez contacter l'administrateur.");
+                },
+                (blockError: any) => {
+                  this.alertMessage("error", "Erreur de blocage", "Une erreur s'est produite lors du blocage de votre compte.");
+                }
+              );
+            }
+          } else {
+            const role = response.role;
+            const authToken = response.token;
+            this.authService.handleSignInSuccess(role);
+          }
         },
         (error: any) => {
-          this.alertMessage("error", "Erreur de connexion", "Vérifiez vos identifiants et réessayez.");
+          if (error.status === 401) {
+            // Gérer le cas où l'email ou le mot de passe est incorrect
+            this.alertMessage("error", "Erreur de connexion", "Email ou mot de passe incorrect.");
+          } else if (error.status === 404) {
+            // Gérer le cas où le compte n'existe pas
+            this.alertMessage("error", "Erreur de connexion", "Le compte n'existe pas. Veuillez vérifier vos informations.");
+          } else {
+            // Gérer d'autres erreurs
+            this.alertMessage("error", "Erreur de connexion", "Une erreur s'est produite lors de la connexion. Veuillez réessayer.");
+          }
         }
       );
     }
   }
 
+  isValidEmail(email: string): boolean {
+    // Expression régulière pour vérifier le format de l'email
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return emailPattern.test(email);
+  }
   // Méthode pour effectuer une requête authentifiée
   performAuthenticatedRequest() {
     const authToken = this.authService.getAuthToken();
@@ -82,53 +116,95 @@ export class AuthComponent {
   }
 
   signUp() {
+    if (!this.name || !this.emailSignUp || !this.passwordSignUp || !this.telephone || !this.selectedRole) {
+      this.alertMessage("error", "Attention", "Merci de renseigner tous les champs");
+      return;
+    }
+    if (!this.isValidEmail(this.emailSignUp)) {
+      this.alertMessage("error", "Erreur de format", "Veuillez entrer un email valide.");
+      return;
+    }
+
+    if (this.passwordSignUp.length < 1 || this.passwordSignUp.length > 8) {
+      this.alertMessage("error", "Erreur de format", "Le mot de passe doit contenir entre 1 et 8 caractères.");
+      return;
+    }
+
+    if (this.numeroEnregistrement.length > 13) {
+      this.alertMessage("error", "Erreur de format", "Le numéro d'enregistrement ne doit pas dépasser 13 caractères.");
+      return;
+    }
+
+    if (this.name.length < 1 || this.name.length > 8) {
+      this.alertMessage("error", "Erreur de format", "Le nom ne doit contenir qu'entre 1 et 8 caractères.");
+      return;
+    }
+
+    if (this.adresse.length < 1 || this.adresse.length > 8) {
+      this.alertMessage("error", "Erreur de format", "L'adresse ne doit contenir qu'entre 1 et 8 caractères.");
+      return;
+    }
+
+    if (this.telephone.length !== 9) {
+      this.alertMessage("error", "Erreur de format", "Le numéro de téléphone doit contenir exactement 9 caractères.");
+      return;
+    }
+
+    // Generate default password if not provided
+    if (!this.passwordSignUp) {
+      this.passwordSignUp = this.generateDefaultPassword();
+    }
+
+    // Proceed with registration
     const data = {
       nom: this.name,
       prenom: this.firstName,
       image: this.image,
-      email:this.emailSignUp,
-      password:this.passwordSignUp,
-      telephone:this.telephone,
+      email: this.emailSignUp,
+      password: this.passwordSignUp,
+      telephone: this.telephone,
       role: this.selectedRole,
+      description: this.description,
+      numeroEnregistrement: this.numeroEnregistrement,
+      adresse: this.adresse
     };
 
-    const newUser = new FormData();
-    newUser.append('image', this.image as Blob);
-    newUser.append('nom' ,this.name);
-    newUser.append('prenom',this.firstName);
-    newUser.append('email',this.emailSignUp);
-    newUser.append('password',this.passwordSignUp);
-    newUser.append('telephone',this.telephone);
-    newUser.append('role',this.selectedRole);
-    newUser.append('description',this.description);
-    newUser.append('numeroEnregistrement',this.numeroEnregistrement);
-    newUser.append('adresse',this.adresse);
-
+    // Call the appropriate signUp method based on selected role
     if (this.selectedRole === 'donateur') {
-      this.authService.signUpDonateur(newUser).subscribe(
+      this.authService.signUpDonateur(data).subscribe(
         (response: any) => {
-          console.log("je suis vide pour le moment🥱:", response);
           const role = response.data.role;
           this.authService.handleSignInSuccess(role);
-          this.alertMessage("success","inscription réussie!!","🎉");
+          this.alertMessage("success", "Inscription réussie!", "🎉");
         },
         (error: any) => {
-          console.error("si y'a erreur signale toi:", error);
+          console.error("Erreur lors de l'inscription:", error);
           this.alertMessage("error", "Erreur d'inscription", "Vérifiez vos informations et réessayez.");
         }
       );
     } else if (this.selectedRole === 'fondation') {
-      this.authService.signUpFondation(newUser).subscribe(
+      this.authService.signUpFondation(data).subscribe(
         (response: any) => {
           const role = response.role;
           this.authService.handleSignInSuccess(role);
-          this.alertMessage("success","inscription réussie!!","🎉");
+          this.alertMessage("success", "Inscription réussie!", "🎉");
         },
         (error: any) => {
+          console.error("Erreur lors de l'inscription:", error);
           this.alertMessage("error", "Erreur d'inscription", "Vérifiez vos informations et réessayez.");
         }
       );
     }
+  }
+
+  // Method to generate a default password
+  generateDefaultPassword(): string {
+    const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let password = '';
+    for (let i = 0; i < 8; i++) {
+      password += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return password;
   }
 
 

@@ -11,8 +11,8 @@ export class CollecteService {
 
   constructor(private http: HttpClient) {}
 
-  getCollectes(): Observable<Collecte[]> {
-    return this.http.get<Collecte[]>(`${this.apiUrl}/listeCollecteEnCours`,);
+  getCollectesEnCours(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/listeCollecteEnCours`);
   }
 
   // Exemple dans le service CollecteService
@@ -21,14 +21,8 @@ getCollectesParFondation(fondationId: string): Observable<Collecte[]> {
 }
 
 
-addCollecte(collecte: any): Observable<Collecte> {
-  return this.http.post<Collecte>(`${this.apiUrl}/creerCollecte`, collecte)
-    .pipe(
-      catchError((error) => {
-        console.error('Erreur lors de l\'ajout de la collecte :', error);
-        throw error; // assurez-vous de gérer l'erreur ici
-      })
-    );
+ajouterCollecte(collecteData: FormData): Observable<any> {
+  return this.http.post<any>(`${this.apiUrl}/creerCollecte`, collecteData);
 }
 
 
