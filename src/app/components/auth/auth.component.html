@@ -1,10 +1,11 @@
 <div class="container" [ngClass]="{ 'sign-up-mode': isSignUpMode }">
   <div class="container" [ngClass]="{ 'sign-up-mode': isSignUpMode }">
-
     <div class="forms-container">
       <div class="signin-signup">
         <!-- Formulaire de Connexion -->
-        <button class="btn mx-5" [routerLink]="['/acceuil']" ><i class="fa-solid fa-arrow-left"></i></button>
+        <button class="btn mx-5" [routerLink]="['/acceuil']">
+          <i class="fa-solid fa-arrow-left"></i>
+        </button>
         <form *ngIf="!isSignUpMode" (ngSubmit)="signIn()" class="sign-in-form">
           <h2 class="title">Se connecter</h2>
           <div class="input-field">
@@ -18,9 +19,14 @@
             />
           </div>
           <div class="input-field">
-            <i class="fas fa-lock"></i>
+            <i
+              class="fas"
+              [class.fa-eye]="!passwordVisible"
+              [class.fa-eye-slash]="passwordVisible"
+              (click)="togglePasswordVisibility()"
+            ></i>
             <input
-              type="password"
+              type="{{ passwordVisible ? 'text' : 'password' }}"
               placeholder="Mot de passe"
               name="passwordLogin"
               required
@@ -50,7 +56,7 @@
           <h2 class="title">S’inscrire</h2>
 
           <!-- Champs en commun -->
-          <div class="row " style="width: 90vh;">
+          <div class="row" style="width: 90vh">
             <div class="col-5 mx-4">
               <div class="input-field">
                 <i class="fas fa-user"></i>
@@ -78,28 +84,38 @@
           </div>
           <!-- <p>{{ emailSignUp }}</p> -->
 
-          <div class="row" style="width:90vh">
-          <div class="col-5 mx-4">
-            <div class="input-field">
-              <i class="fas fa-lock"></i>
-              <input
-                type="password"
-                placeholder="Mot de passe"
-                name="passwordSignUp"
-                required
-                [(ngModel)]="passwordSignUp"
-              />
+          <div class="row" style="width: 90vh">
+            <div class="col-5 mx-4">
+              <div class="input-field">
+                <i
+                  class="fas"
+                  [class.fa-eye]="!passwordVisible"
+                  [class.fa-eye-slash]="passwordVisible"
+                  (click)="togglePasswordVisibility()"
+                ></i>
+                <input
+                  type="{{ passwordVisible ? 'text' : 'password' }}"
+                  placeholder="Mot de passe"
+                  name="passwordSignUp"
+                  required
+                  [(ngModel)]="passwordSignUp"
+                />
+              </div>
+            </div>
+            <div class="col-5">
+              <div class="input-field">
+                <i class="fas"></i>
+                <input
+                  style="margin-left: -8%; margin-top: 7%"
+                  type="file"
+                  (change)="getFile($event)"
+                  accept="image/*"
+                />
+                <!-- <img *ngIf="image" [src]="image" class="image" alt="Selected Image"> -->
+              </div>
             </div>
           </div>
-          <div class="col-5">
-            <div class="input-field">
-              <i class="fas"></i>
-              <input style="margin-left:-8%;margin-top: 7%;" type="file" (change)="getFile($event)" accept="image/*">
-              <!-- <img *ngIf="image" [src]="image" class="image" alt="Selected Image"> -->
-            </div>
-          </div>
-          </div>
-          <div class="row" style="width:90vh">
+          <div class="row" style="width: 90vh">
             <div class="col-5 mx-4">
               <div class="input-field">
                 <i class="fas fa-phone"></i>
@@ -113,15 +129,19 @@
               </div>
             </div>
             <div class="col-5">
-                <!-- Sélecteur de rôle -->
-          <div class="input-field">
-            <i class="fas fa-user"></i>
-            <select style="border-radius: 30px;" [(ngModel)]="selectedRole" name="selectedRole" >
-              <option value="" disabled selected>Choisir le rôle</option>
-              <option value="donateur">Donateur</option>
-              <option value="fondation">Fondation</option>
-            </select>
-          </div>
+              <!-- Sélecteur de rôle -->
+              <div class="input-field">
+                <i class="fas fa-user"></i>
+                <select
+                  style="border-radius: 30px"
+                  [(ngModel)]="selectedRole"
+                  name="selectedRole"
+                >
+                  <option value="" disabled selected>Choisir le rôle</option>
+                  <option value="donateur">Donateur</option>
+                  <option value="fondation">Fondation</option>
+                </select>
+              </div>
             </div>
           </div>
           <!-- Bouton pour continuer vers le formulaire spécifique -->
@@ -150,41 +170,42 @@
 
           <!-- Champs spécifiques pour la Fondation -->
           <ng-container *ngIf="selectedRole === 'fondation'">
-          <div class="row" style="width: 90vh;">
-            <div class="col-5 mx-4">
-              <div class="input-field">
-                <i class="fas fa-id-card"></i>
-                <input
-                  type="text"
-                  placeholder="Numéro d'enregistrement"
-                  name="numeroEnregistrement"
-                  required
-                  [(ngModel)]="numeroEnregistrement"
-                />
+            <div class="row" style="width: 90vh">
+              <div class="col-5 mx-4">
+                <div class="input-field">
+                  <i class="fas fa-id-card"></i>
+                  <input
+                    type="text"
+                    placeholder="Numéro d'enregistrement"
+                    name="numeroEnregistrement"
+                    required
+                    [(ngModel)]="numeroEnregistrement"
+                  />
+                </div>
+              </div>
+              <div class="col-5">
+                <div class="input-field">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <input
+                    type="text"
+                    placeholder="Adresse"
+                    name="adresse"
+                    required
+                    [(ngModel)]="adresse"
+                  />
+                </div>
               </div>
             </div>
-            <div class="col-5">
-              <div class="input-field">
-                <i class="fas fa-map-marker-alt"></i>
-                <input
-                  type="text"
-                  placeholder="Adresse"
-                  name="adresse"
-                  required
-                  [(ngModel)]="adresse"
-                />
-              </div>
-            </div>
-          </div>
 
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="textarea"
+              <input
+                type="textarea"
                 placeholder="Description"
                 name="description"
                 required
                 [(ngModel)]="description"
-              >
+              />
             </div>
           </ng-container>
 
@@ -212,11 +233,7 @@
             S'inscrire
           </button>
         </div>
-        <img
-          src="/assets/se connecter.png"
-          class="image"
-          alt=""
-        />
+        <img src="/assets/se connecter.png" class="image" alt="" />
       </div>
       <div class="panel right-panel">
         <div class="content">
@@ -239,14 +256,8 @@
             Se connecter
           </button>
         </div>
-        <img
-          src="/assets/s'inscrire.png"
-          class="image"
-          alt=""
-        />
+        <img src="/assets/s'inscrire.png" class="image" alt="" />
       </div>
     </div>
   </div>
 </div>
-
-

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { AuthService } from '../service/auth.service';
@@ -10,6 +10,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent {
+ 
+  // @ViewChild('passwordField') passwordField: ElementRef;
+
   isSignUpMode: boolean = false;
   selectedRole: string = '';
   showSignUpForm: boolean = false;
@@ -22,6 +25,8 @@ export class AuthComponent {
   name: string = "";
   image!: File;
   telephone: string = "";
+// Dans votre composant Angular
+passwordVisible: boolean = false;
 
   // Propriétés spécifiques au formulaire de donateur
   firstName: string = "";
@@ -30,8 +35,11 @@ export class AuthComponent {
   numeroEnregistrement: string = "";
   adresse: string = "";
   description: string = "";
-
+  passwordField:string = "";
   constructor(private authService: AuthService, private router: Router, private http: HttpClient) { }
+  togglePasswordVisibility(): void {
+    this.passwordVisible = !this.passwordVisible;
+}
 
   signIn() {
     if (this.emailLogin === "" || this.passwordLogin === "") {
