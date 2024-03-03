@@ -29,12 +29,12 @@ export class AuthService {
     return this.userRole;
   }
 
-  getAuthToken(): string | null {
-    return localStorage.getItem(this.authTokenKey);
-  }
-
   private setAuthToken(token: string): void {
     localStorage.setItem(this.authTokenKey, token);
+  }
+
+  getAuthToken(): string | null {
+    return localStorage.getItem(this.authTokenKey); 
   }
 
 
@@ -67,14 +67,7 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/register`, signUpData);
   }
 
-  // signUpDonateur(name: string, email: string, password: string, image: string, firstName: string, telephone: string): Observable<any> {
-  //   console.log('Donateur SignUp Data:', { name, email, password, image, firstName, telephone });
-  //   const signUpData = { name, email, password, role: 'donateur', image, firstName, telephone };
-  //   return this.http.post(`${this.apiUrl}/register`, signUpData).pipe(
-  //     map((response: any) => response),
-  //     catchError(this.handleError)
-  //   );
-  // }
+
 
   signUpFondation(signUpData: any): Observable<any> {
     // console.log('Fondation SignUp Data:', { name, email, password, image, numeroEnregistrement, adresse, description, telephone });

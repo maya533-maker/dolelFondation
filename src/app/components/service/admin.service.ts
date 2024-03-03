@@ -6,17 +6,15 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AdminService {
-  private baseUrl = 'http://127.0.0.1:8000/api';
+  private apiUrl = 'http://127.0.0.1:8000/api';
 
   constructor(private http: HttpClient) { }
 
-  getListeComptesSupprimes(): Observable<any[]> {
-    const url = `${this.baseUrl}/listeCompteAReactiver`;
-    return this.http.get<any[]>(url);
+  getListeCompteAReactiver(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/listeCompteAReactiver`);
   }
 
   reactiverCompte(userId: number): Observable<any> {
-    const url = `${this.baseUrl}/reactiverCompte/${userId}`;
-    return this.http.put(url, {});
+    return this.http.put<any>(`${this.apiUrl}/reactiverCompte/${userId}`, {});
   }
 }

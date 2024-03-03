@@ -10,12 +10,9 @@ import { Router } from '@angular/router';
   template: `
     <app-dash-ad></app-dash-ad>
     <div class="card-container">
-      <span
-        style="color: black;font-weight:bold;"
-        >Liste des Fondations</span
-      >
+      <span style="color: black;font-weight:bold;">Liste des Fondations</span>
       <div
-        *ngFor="let fondation of fondations"
+        *ngFor="let fondation of getFondationsPage()"
         class="card"
         [ngClass]="{ blocked: fondation.bloquee }"
       >
@@ -86,6 +83,33 @@ import { Router } from '@angular/router';
         </div>
       </div>
     </div>
+    <!-- Pagination -->
+<div class="d-flex flex-wrap justify-content-center my-5">
+  <button
+    class="btn btn-mauve me-2"
+    [disabled]="pageActuelle === 1"
+    (click)="precedentPage()"
+  >
+    Précédent
+  </button>
+  <button
+    class="btn"
+    [class.btn-mauve]="page === pageActuelle"
+    [class.btn-jaune]="page !== pageActuelle"
+    *ngFor="let page of pages"
+    (click)="pageActuelle = page"
+  >
+    {{ page }}
+  </button>
+  <button
+    class="btn btn-mauve ms-2"
+    [disabled]="pageActuelle === totalPages"
+    (click)="suivantPage()"
+  >
+    Suivant
+  </button>
+</div>
+
   `,
   styles: [
     `
@@ -167,7 +191,25 @@ import { Router } from '@angular/router';
       .btn-primary:hover {
         background-color: #2c033f;
       }
+      .btn-mauve {
+        background-color: #2c033f;
+        color: #fff;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 5px;
+      }
+      .btn.btn-jaune {
+  background-color: #f7e801;
+  color: #3b0458;
+}
 
+.btn.btn-jaune:hover {
+  background-color: #e7d301;
+}
+
+      .btn-mauve:hover {
+        background-color: #f7e801;
+      }
       .btn-danger {
         background-color: #d9534f;
         color: #fff;
@@ -177,7 +219,6 @@ import { Router } from '@angular/router';
         background-color: #c9302c;
       }
 
-      background-color: #f7e801;
 
       .blocked {
         filter: blur(2px);
@@ -189,7 +230,8 @@ export class FondationsListComponent implements OnInit {
   fondations: any[] = [];
   isAdmin: boolean = false;
   isDonateur: boolean = false;
-
+  articlesParPage = 6; // Nombre d'articles par page
+  pageActuelle = 1; // Page actuelle
   apiUrl = 'http://127.0.0.1:8000/api';
 
   constructor(
@@ -203,6 +245,9 @@ export class FondationsListComponent implements OnInit {
     this.isDonateur = this.authService.getUserRole() === 'donateur';
     console.log('isAdmin:', this.isAdmin);
     console.log('isDonateur:', this.isDonateur);
+    this.getListeFondations().subscribe((response: any) => {
+      this.fondations = response.data;
+    });
 
     if (this.isDonateur || this.isAdmin) {
       console.log('Fetching Fondations...');
@@ -216,6 +261,40 @@ export class FondationsListComponent implements OnInit {
   getListeFondations(): Observable<any> {
     const apiUrl = 'http://127.0.0.1:8000/api/listeFondation';
     return this.http.get(apiUrl);
+  }
+
+  // Méthode pour aller à la page précédente
+  precedentPage(): void {
+    if (this.pageActuelle > 1) {
+      this.pageActuelle--;
+    }
+  }
+
+  // Méthode pour aller à la page suivante
+  suivantPage(): void {
+    if (this.pageActuelle < this.totalPages) {
+      this.pageActuelle++;
+    }
+  }
+
+  // Méthode pour obtenir les fondations de la page actuelle
+  getFondationsPage(): any[] {
+    const indexDebut = (this.pageActuelle - 1) * this.articlesParPage;
+    const indexFin = indexDebut + this.articlesParPage;
+    return this.fondations.slice(indexDebut, indexFin);
+  }
+
+  // Méthode pour générer la liste des pages
+  get pages(): number[] {
+    const totalPages = Math.ceil(this.fondations.length / this.articlesParPage);
+    return Array(totalPages)
+      .fill(0)
+      .map((_, index) => index + 1);
+  }
+
+  // Méthode pour obtenir le nombre total de pages
+  get totalPages(): number {
+    return Math.ceil(this.fondations.length / this.articlesParPage);
   }
 
   detailsFondation(fondation: any): void {

@@ -6,7 +6,7 @@ import { DonateurService } from '../../service/donateur.service';
 @Component({
   selector: 'app-donateur-list',
   templateUrl: './donateur-list.component.html',
-  styleUrls: ['./donateur-list.component.css']
+  styleUrls: ['./donateur-list.component.css'],
 })
 export class DonateurListComponent implements OnInit {
   donateurs: any[] = [];
@@ -16,9 +16,9 @@ export class DonateurListComponent implements OnInit {
   telephone: string = '';
   email: string = '';
   motDePasse: string = '';
-
-  apiUrl = "http://127.0.0.1:8000/api";
-
+  pageActuelle = 1;
+  articlesParPage = 6;
+  apiUrl = 'http://127.0.0.1:8000/api';
 
   constructor(private donateurService: DonateurService) {}
 
@@ -51,12 +51,20 @@ export class DonateurListComponent implements OnInit {
       if (result.isConfirmed) {
         this.donateurService.deleteUtilisateur(donateur.id).subscribe(
           () => {
-            this.alertMessage('success', 'Suppression réussie!', 'Le donateur a été supprimé avec succès.');
+            this.alertMessage(
+              'success',
+              'Suppression réussie!',
+              'Le donateur a été supprimé avec succès.'
+            );
             this.refreshDonateurs();
           },
           (error) => {
             // console.error('Erreur lors de la suppression du donateur :', error);
-            this.alertMessage('error', 'Erreur de suppression!', 'Une erreur s\'est produite lors de la suppression du donateur.');
+            this.alertMessage(
+              'error',
+              'Erreur de suppression!',
+              "Une erreur s'est produite lors de la suppression du donateur."
+            );
           }
         );
       }
@@ -71,12 +79,20 @@ export class DonateurListComponent implements OnInit {
 
     this.donateurService.bloquerUtilisateur(donateur.id).subscribe(
       () => {
-        this.alertMessage('success', 'Blocage réussi!', 'Le donateur a été bloqué avec succès.');
+        this.alertMessage(
+          'success',
+          'Blocage réussi!',
+          'Le donateur a été bloqué avec succès.'
+        );
         this.refreshDonateurs();
       },
       (error) => {
         console.error('Erreur lors du blocage du donateur :', error);
-        this.alertMessage('error', 'Erreur de blocage!', 'Une erreur s\'est produite lors du blocage du donateur.');
+        this.alertMessage(
+          'error',
+          'Erreur de blocage!',
+          "Une erreur s'est produite lors du blocage du donateur."
+        );
       }
     );
   }
@@ -89,22 +105,56 @@ export class DonateurListComponent implements OnInit {
 
     this.donateurService.debloquerUtilisateur(donateur.id).subscribe(
       () => {
-        this.alertMessage('success', 'Déblocage réussi!', 'Le donateur a été débloqué avec succès.');
+        this.alertMessage(
+          'success',
+          'Déblocage réussi!',
+          'Le donateur a été débloqué avec succès.'
+        );
         this.refreshDonateurs();
       },
       (error) => {
         console.error('Erreur lors du déblocage du donateur :', error);
-        this.alertMessage('error', 'Erreur de déblocage!', 'Une erreur s\'est produite lors du déblocage du donateur.');
+        this.alertMessage(
+          'error',
+          'Erreur de déblocage!',
+          "Une erreur s'est produite lors du déblocage du donateur."
+        );
       }
     );
   }
+  precedentPage(): void {
+    if (this.pageActuelle > 1) {
+      this.pageActuelle--;
+    }
+  }
 
+  suivantPage(): void {
+    if (this.pageActuelle < this.totalPages) {
+      this.pageActuelle++;
+    }
+  }
+
+  get pages(): number[] {
+    const totalPages = Math.ceil(this.donateurs.length / this.articlesParPage);
+    return Array(totalPages)
+      .fill(0)
+      .map((_, index) => index + 1);
+  }
+
+  get totalPages(): number {
+    return Math.ceil(this.donateurs.length / this.articlesParPage);
+  }
+  getdonateursPage(): any[] {
+    const indexDebut = (this.pageActuelle - 1) * this.articlesParPage;
+    const indexFin = indexDebut + this.articlesParPage;
+    return this.donateurs.slice(indexDebut, indexFin);
+  }
   alertMessage(icon: any, title: any, text: any) {
     Swal.fire({
       icon: icon,
       title: title,
       text: text,
-      timer: 1500
+      timer: 1500,
     });
   }
 }

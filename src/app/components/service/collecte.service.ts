@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, catchError } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, catchError, throwError } from 'rxjs';
 import { Collecte } from 'src/app/collecte.model';
 
 @Injectable({
@@ -11,8 +11,8 @@ export class CollecteService {
 
   constructor(private http: HttpClient) {}
 
-  getCollectesEnCours(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/listeCollecteEnCours`);
+  getCollectes(): Observable<Collecte[]> {
+    return this.http.get<Collecte[]>(`${this.apiUrl}/listeCollecteEnCours`,);
   }
 
   // Exemple dans le service CollecteService
@@ -21,8 +21,15 @@ getCollectesParFondation(fondationId: string): Observable<Collecte[]> {
 }
 
 
-ajouterCollecte(collecteData: FormData): Observable<any> {
-  return this.http.post<any>(`${this.apiUrl}/creerCollecte`, collecteData);
+
+addCollecte(collecte: any): Observable<Collecte> {
+  return this.http.post<Collecte>(`${this.apiUrl}/creerCollecte`, collecte)
+    .pipe(
+      catchError((error) => {
+        console.error('Erreur lors de l\'ajout de la collecte :', error);
+        throw error; // assurez-vous de gérer l'erreur ici
+      })
+    );
 }
 
 
@@ -30,11 +37,17 @@ getCollectesCloturees(): Observable<Collecte[]> {
   return this.http.get<Collecte[]>(`${this.apiUrl}/listeCollecteCloturer`);
 }
 
-
-updateCollecte(collecte: Collecte): Observable<Collecte> {
-  // Utilisez collecte.id pour l'URL de l'API
-  return this.http.put<Collecte>(`${this.apiUrl}/modifierCollecte/${collecte.id}`, collecte);
+modifierCollecte(id: number): Observable<any> {
+  const url = `http://127.0.0.1:8000/api/modifierCollecte/${id}`;
+  return this.http.post(url, {}).pipe(
+    catchError((error: HttpErrorResponse) => {
+      return throwError(error);
+    })
+  );
 }
+
+
+
 
 cloturerCollecte(collecteId: number): Observable<void> {
   return this.http.put<void>(`${this.apiUrl}/cloturerUneCollecte/${collecteId}`, {});

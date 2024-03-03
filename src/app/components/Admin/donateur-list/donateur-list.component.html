@@ -5,7 +5,7 @@
     >Liste Donateur</span
   >
   <div class="row">
-    <div *ngFor="let donateur of donateurs" class="col-md-4">
+    <div *ngFor="let donateur of getdonateursPage()" class="col-md-4">
       <div class="card" [ngClass]="{ blocked: donateur.bloque }">
         <div class="card-content">
           <img
@@ -44,3 +44,17 @@
     </div>
   </div>
 </div>
+<!-- Pagination -->
+<div class="d-flex flex-wrap justify-content-center my-5">
+  <button class="btn btn-mauve me-2" [disabled]="pageActuelle === 1" (click)="precedentPage()">
+    Précédent
+  </button>
+  <button class="btn btn-mauve ms-2" *ngFor="let page of pages" (click)="pageActuelle = page"
+    [style.backgroundColor]="page === pageActuelle ? '#f7e801' : '#3b0458'">
+    {{ page }}
+  </button>
+  <button class="btn btn-mauve ms-2" [disabled]="pageActuelle === totalPages" (click)="suivantPage()">
+    Suivant
+  </button>
+</div>
+

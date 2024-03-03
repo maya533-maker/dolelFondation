@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 })
 export class CollecteClotureComponent implements OnInit {
   collectesCloturees: Collecte[] = [];
-
+  apiUrl = "http://127.0.0.1:8000/api";
   constructor(private collecteService: CollecteService) {}
 
   ngOnInit(): void {
@@ -24,6 +24,7 @@ export class CollecteClotureComponent implements OnInit {
       return;
     }
 
+    const collecteId: number = collecte.id; // Pas besoin de conversion, collecte.id est déjà de type number
     Swal.fire({
       title: 'Êtes-vous sûr de vouloir déclôturer cette collecte?',
       text: 'Cette action est irréversible!',
@@ -34,7 +35,7 @@ export class CollecteClotureComponent implements OnInit {
       confirmButtonText: 'Oui, déclôturer!',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.collecteService.decloturerCollecte(collecte.id).subscribe(
+        this.collecteService.decloturerCollecte(collecteId).subscribe(
           () => {
             this.alertMessage('success', 'Déclôture réussie!', 'La collecte a été déclôturée avec succès.');
             this.refreshCollectesCloturees();
@@ -54,6 +55,7 @@ export class CollecteClotureComponent implements OnInit {
       return;
     }
 
+    const collecteId: number = collecte.id; // Pas besoin de conversion, collecte.id est déjà de type number
     Swal.fire({
       title: 'Êtes-vous sûr de vouloir supprimer cette collecte?',
       text: 'Cette action est irréversible!',
@@ -64,7 +66,7 @@ export class CollecteClotureComponent implements OnInit {
       confirmButtonText: 'Oui, supprimer!',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.collecteService.deleteCollecte(collecte.id).subscribe(
+        this.collecteService.deleteCollecte(collecteId).subscribe(
           () => {
             this.alertMessage('success', 'Suppression réussie!', 'La collecte a été supprimée avec succès.');
             this.refreshCollectesCloturees();
@@ -77,6 +79,7 @@ export class CollecteClotureComponent implements OnInit {
       }
     });
   }
+
 
   refreshCollectesCloturees(): void {
     this.collecteService.getCollectesCloturees().subscribe(

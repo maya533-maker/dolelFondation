@@ -4,6 +4,19 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+.btn-mauve {
+  cursor: pointer;
+  background-color: #3b0458;
+  color: #fff;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-mauve:hover {
+  background-color: #2c033f;
+}
 
 .card {
   width: 300px;

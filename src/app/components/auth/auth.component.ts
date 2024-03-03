@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { AuthService } from '../service/auth.service';
@@ -7,45 +7,80 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
-  styleUrls: ['./auth.component.css']
+  styleUrls: ['./auth.component.css'],
 })
 export class AuthComponent {
- 
-  // @ViewChild('passwordField') passwordField: ElementRef;
-
   isSignUpMode: boolean = false;
   selectedRole: string = '';
   showSignUpForm: boolean = false;
 
   // Propriétés communes aux deux types de formulaires
-  emailLogin: string = "";
-  passwordLogin: string = "";
-  emailSignUp: string = "";
-  passwordSignUp: string = "";
-  name: string = "";
+  emailLogin: string = '';
+  passwordLogin: string = '';
+  emailSignUp: string = '';
+  passwordSignUp: string = '';
+  name: string = '';
   image!: File;
-  telephone: string = "";
-// Dans votre composant Angular
-passwordVisible: boolean = false;
+  telephone: string = '';
+  // Dans votre composant Angular
+  passwordVisible: boolean = false;
 
   // Propriétés spécifiques au formulaire de donateur
-  firstName: string = "";
+  firstName: string = '';
 
   // Propriétés spécifiques au formulaire de fondation
-  numeroEnregistrement: string = "";
-  adresse: string = "";
-  description: string = "";
-  passwordField:string = "";
-  constructor(private authService: AuthService, private router: Router, private http: HttpClient) { }
+  numeroEnregistrement: string = '';
+  adresse: string = '';
+  description: string = '';
+  passwordField: string = '';
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private http: HttpClient
+  ) {}
+
+  ngOnInit(): void {
+    // Vérifier si l'utilisateur est déjà connecté
+    const authToken = this.authService.getAuthToken();
+    if (authToken) {
+      // Récupérer le rôle de l'utilisateur depuis le service AuthService
+      const userRole = this.authService.getUserRole();
+
+      // Rediriger en fonction du rôle de l'utilisateur
+      switch (userRole) {
+        case 'admin':
+          this.router.navigate(['/pageAd']);
+          break;
+        case 'donateur':
+          this.router.navigate(['/page']);
+          break;
+        case 'fondation':
+          this.router.navigate(['/dash']);
+          break;
+        default:
+          this.router.navigate(['/default']);
+          break;
+      }
+    }
+  }
+
   togglePasswordVisibility(): void {
     this.passwordVisible = !this.passwordVisible;
-}
+  }
 
   signIn() {
-    if (this.emailLogin === "" || this.passwordLogin === "") {
-      this.alertMessage("error", "Attention", "Merci de renseigner tous les champs");
+    if (this.emailLogin === '' || this.passwordLogin === '') {
+      this.alertMessage(
+        'error',
+        'Attention',
+        'Merci de renseigner tous les champs'
+      );
     } else if (!this.isValidEmail(this.emailLogin)) {
-      this.alertMessage("error", "Erreur de format", "Veuillez entrer un email valide.");
+      this.alertMessage(
+        'error',
+        'Erreur de format',
+        'Veuillez entrer un email valide.'
+      );
     } else {
       this.authService.signIn(this.emailLogin, this.passwordLogin).subscribe(
         (response: any) => {
@@ -55,19 +90,35 @@ passwordVisible: boolean = false;
             if (response.role === 'donateur') {
               this.authService.blockDonor(response.userId).subscribe(
                 (blockResponse: any) => {
-                  this.alertMessage("error", "Compte bloqué", "Votre compte a été bloqué. Veuillez contacter l'administrateur.");
+                  this.alertMessage(
+                    'error',
+                    'Compte bloqué',
+                    "Votre compte a été bloqué. Veuillez contacter l'administrateur."
+                  );
                 },
                 (blockError: any) => {
-                  this.alertMessage("error", "Erreur de blocage", "Une erreur s'est produite lors du blocage de votre compte.");
+                  this.alertMessage(
+                    'error',
+                    'Erreur de blocage',
+                    "Une erreur s'est produite lors du blocage de votre compte."
+                  );
                 }
               );
             } else if (response.role === 'fondation') {
               this.authService.blockFoundation(response.userId).subscribe(
                 (blockResponse: any) => {
-                  this.alertMessage("error", "Compte bloqué", "Votre compte a été bloqué. Veuillez contacter l'administrateur.");
+                  this.alertMessage(
+                    'error',
+                    'Compte bloqué',
+                    "Votre compte a été bloqué. Veuillez contacter l'administrateur."
+                  );
                 },
                 (blockError: any) => {
-                  this.alertMessage("error", "Erreur de blocage", "Une erreur s'est produite lors du blocage de votre compte.");
+                  this.alertMessage(
+                    'error',
+                    'Erreur de blocage',
+                    "Une erreur s'est produite lors du blocage de votre compte."
+                  );
                 }
               );
             }
@@ -80,13 +131,25 @@ passwordVisible: boolean = false;
         (error: any) => {
           if (error.status === 401) {
             // Gérer le cas où l'email ou le mot de passe est incorrect
-            this.alertMessage("error", "Erreur de connexion", "Email ou mot de passe incorrect.");
+            this.alertMessage(
+              'error',
+              'Erreur de connexion',
+              'Email ou mot de passe incorrect.'
+            );
           } else if (error.status === 404) {
             // Gérer le cas où le compte n'existe pas
-            this.alertMessage("error", "Erreur de connexion", "Le compte n'existe pas. Veuillez vérifier vos informations.");
+            this.alertMessage(
+              'error',
+              'Erreur de connexion',
+              "Le compte n'existe pas. Veuillez vérifier vos informations."
+            );
           } else {
             // Gérer d'autres erreurs
-            this.alertMessage("error", "Erreur de connexion", "Une erreur s'est produite lors de la connexion. Veuillez réessayer.");
+            this.alertMessage(
+              'error',
+              'Erreur de connexion',
+              "Une erreur s'est produite lors de la connexion. Veuillez réessayer."
+            );
           }
         }
       );
@@ -106,17 +169,20 @@ passwordVisible: boolean = false;
       console.log('Token actuel:', authToken);
 
       const headers = new HttpHeaders({
-        'Authorization': `Bearer ${authToken}`,
+        Authorization: `Bearer ${authToken}`,
         'Content-Type': 'application/json',
       });
 
-      this.http.get('votre_url', { headers }).subscribe(response => {
-        console.log('Réponse de la requête:', response);
-        // Traitez la réponse
-      }, error => {
-        console.error('Erreur lors de la requête:', error);
-        // Traitez l'erreur
-      });
+      this.http.get('votre_url', { headers }).subscribe(
+        (response) => {
+          console.log('Réponse de la requête:', response);
+          // Traitez la réponse
+        },
+        (error) => {
+          console.error('Erreur lors de la requête:', error);
+          // Traitez l'erreur
+        }
+      );
     } else {
       console.error('Aucun jeton disponible.');
       // Gérez le cas où le jeton n'est pas disponible
@@ -124,37 +190,65 @@ passwordVisible: boolean = false;
   }
 
   signUp() {
-    if (!this.name || !this.emailSignUp || !this.passwordSignUp || !this.telephone || !this.selectedRole) {
-      this.alertMessage("error", "Attention", "Merci de renseigner tous les champs");
+    if (!this.name ||!this.emailSignUp ||!this.passwordSignUp ||!this.telephone ||!this.selectedRole) {
+      this.alertMessage(
+        'error',
+        'Attention',
+        'Merci de renseigner tous les champs'
+      );
       return;
     }
     if (!this.isValidEmail(this.emailSignUp)) {
-      this.alertMessage("error", "Erreur de format", "Veuillez entrer un email valide.");
+      this.alertMessage(
+        'error',
+        'Erreur de format',
+        'Veuillez entrer un email valide.'
+      );
       return;
     }
 
     if (this.passwordSignUp.length < 1 || this.passwordSignUp.length > 8) {
-      this.alertMessage("error", "Erreur de format", "Le mot de passe doit contenir entre 1 et 8 caractères.");
+      this.alertMessage(
+        'error',
+        'Erreur de format',
+        'Le mot de passe doit contenir entre 1 et 8 caractères.'
+      );
       return;
     }
 
     if (this.numeroEnregistrement.length > 13) {
-      this.alertMessage("error", "Erreur de format", "Le numéro d'enregistrement ne doit pas dépasser 13 caractères.");
+      this.alertMessage(
+        'error',
+        'Erreur de format',
+        "Le numéro d'enregistrement ne doit pas dépasser 13 caractères."
+      );
       return;
     }
 
     if (this.name.length < 1 || this.name.length > 8) {
-      this.alertMessage("error", "Erreur de format", "Le nom ne doit contenir qu'entre 1 et 8 caractères.");
+      this.alertMessage(
+        'error',
+        'Erreur de format',
+        "Le nom ne doit contenir qu'entre 1 et 8 caractères."
+      );
       return;
     }
 
     if (this.adresse.length < 1 || this.adresse.length > 8) {
-      this.alertMessage("error", "Erreur de format", "L'adresse ne doit contenir qu'entre 1 et 8 caractères.");
+      this.alertMessage(
+        'error',
+        'Erreur de format',
+        "L'adresse ne doit contenir qu'entre 1 et 8 caractères."
+      );
       return;
     }
 
     if (this.telephone.length !== 9) {
-      this.alertMessage("error", "Erreur de format", "Le numéro de téléphone doit contenir exactement 9 caractères.");
+      this.alertMessage(
+        'error',
+        'Erreur de format',
+        'Le numéro de téléphone doit contenir exactement 9 caractères.'
+      );
       return;
     }
 
@@ -163,42 +257,40 @@ passwordVisible: boolean = false;
       this.passwordSignUp = this.generateDefaultPassword();
     }
 
-    // Proceed with registration
-    const data = {
-      nom: this.name,
-      prenom: this.firstName,
-      image: this.image,
-      email: this.emailSignUp,
-      password: this.passwordSignUp,
-      telephone: this.telephone,
-      role: this.selectedRole,
-      description: this.description,
-      numeroEnregistrement: this.numeroEnregistrement,
-      adresse: this.adresse
-    };
+ 
+    const newUser = new FormData();
+    newUser.append('image', this.image as Blob);
+    newUser.append('nom' ,this.name);
+    newUser.append('prenom',this.firstName);
+    newUser.append('email',this.emailSignUp);
+    newUser.append('password',this.passwordSignUp);
+    newUser.append('telephone',this.telephone);
+    newUser.append('role',this.selectedRole);
+    newUser.append('description',this.description);
+    newUser.append('numeroEnregistrement',this.numeroEnregistrement);
+    newUser.append('adresse',this.adresse);
 
-    // Call the appropriate signUp method based on selected role
     if (this.selectedRole === 'donateur') {
-      this.authService.signUpDonateur(data).subscribe(
+      this.authService.signUpDonateur(newUser).subscribe(
         (response: any) => {
+          console.log("je suis vide pour le moment🥱:", response);
           const role = response.data.role;
           this.authService.handleSignInSuccess(role);
-          this.alertMessage("success", "Inscription réussie!", "🎉");
+          this.alertMessage("success","inscription réussie!!","🎉");
         },
         (error: any) => {
-          console.error("Erreur lors de l'inscription:", error);
+          console.error("si y'a erreur signale toi:", error);
           this.alertMessage("error", "Erreur d'inscription", "Vérifiez vos informations et réessayez.");
         }
       );
     } else if (this.selectedRole === 'fondation') {
-      this.authService.signUpFondation(data).subscribe(
+      this.authService.signUpFondation(newUser).subscribe(
         (response: any) => {
           const role = response.role;
           this.authService.handleSignInSuccess(role);
-          this.alertMessage("success", "Inscription réussie!", "🎉");
+          this.alertMessage("success","inscription réussie!!","🎉");
         },
         (error: any) => {
-          console.error("Erreur lors de l'inscription:", error);
           this.alertMessage("error", "Erreur d'inscription", "Vérifiez vos informations et réessayez.");
         }
       );
@@ -207,16 +299,14 @@ passwordVisible: boolean = false;
 
   // Method to generate a default password
   generateDefaultPassword(): string {
-    const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    const chars =
+      'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     let password = '';
     for (let i = 0; i < 8; i++) {
       password += chars.charAt(Math.floor(Math.random() * chars.length));
     }
     return password;
   }
-
-
-
 
   // Bloquer un donateur par l'administrateur
   blockDonor(donorId: number): void {
@@ -273,24 +363,24 @@ passwordVisible: boolean = false;
         console.log('Utilisateur supprimé avec succès:', response);
       },
       (error: any) => {
-        console.error('Erreur lors de la suppression de l\'utilisateur:', error);
+        console.error("Erreur lors de la suppression de l'utilisateur:", error);
       }
     );
   }
 
   checkIfDataReceived(response: any) {
-    console.log("Nom:", response.name);
-    console.log("Prénom:", response.firstName);
-    console.log("Image:", response.image);
-    console.log("Numéro de téléphone:", response.telephone);
-    console.log("Email:", response.email);
-    console.log("Mot de passe:", response.password);
+    console.log('Nom:', response.name);
+    console.log('Prénom:', response.firstName);
+    console.log('Image:', response.image);
+    console.log('Numéro de téléphone:', response.telephone);
+    console.log('Email:', response.email);
+    console.log('Mot de passe:', response.password);
 
     if (this.selectedRole === 'fondation') {
       console.log("Numéro d'enregistrement:", response.numeroEnregistrement);
-      console.log("Mot de passe (fondation):", response.password); // ou utilisez le champ de mot de passe spécifique à la fondation
-      console.log("Description:", response.description);
-      console.log("Adresse:", response.adresse);
+      console.log('Mot de passe (fondation):', response.password); // ou utilisez le champ de mot de passe spécifique à la fondation
+      console.log('Description:', response.description);
+      console.log('Adresse:', response.adresse);
     }
   }
 
@@ -319,7 +409,7 @@ passwordVisible: boolean = false;
       icon: icon,
       title: title,
       text: text,
-      timer: 1500
+      timer: 1500,
     });
   }
 }

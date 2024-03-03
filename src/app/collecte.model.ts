@@ -1,6 +1,5 @@
 export class Collecte {
-  // Les propriétés de votre modèle Collecte (titre, description, image, objectifFinancier, numeroCompte, etc.)
-  id: number;
+  id: number | undefined;
   titre: string;
   description: string;
   image !: File;

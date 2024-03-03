@@ -1,22 +1,21 @@
-<!-- <app-dash-ad></app-dash-ad>
-
-<div *ngIf="comptesSupprimes.length > 0">
-  <h3>Liste des comptes supprimés :</h3>
-  <ul>
-    <li *ngFor="let compteId of comptesSupprimes">
-      <button (click)="selectionnerCompte(compteId)">
-        Réactiver le compte {{ compteId }}
-      </button>
-    </li>
-  </ul>
+<app-dash-ad></app-dash-ad>
+<div class="card-container" style="margin-left: 5%; margin-top: 5%">
+  <div
+    class="card"
+    *ngFor="let compte of comptes"
+    style="margin-left: 5%; margin-top: 10%"
+  >
+    <img class="card-image" src="{{ compte.image }}" alt="Image de profil" />
+    <div class="content">
+      <p class="heading">{{ compte.nom }} {{ compte.prenom }}</p>
+      <p>Email: {{ compte.email }}</p>
+      <p>Adresse: {{ compte.adresse }}</p>
+      <p>Téléphone: {{ compte.telephone }}</p>
+      <p>Role: {{ compte.role }}</p>
+      <p>Statut: {{ compte.statut }}</p>
+      <p>Date de création: {{ compte.created_at }}</p>
+      <p>Date de mise à jour: {{ compte.updated_at }}</p>
+      <button class="btn  btn-outline-warning" (click)="reactiverCompte(compte.id)">Réactiver</button>
+    </div>
+  </div>
 </div>
-
-<div *ngIf="compteSelectionne !== null">
-  <h3>Compte sélectionné pour réactivation :</h3>
-  <p>Compte sélectionné : {{ compteSelectionne }}</p>
-  <button (click)="reactiverCompte()">Réactiver le compte sélectionné</button>
-</div>
-
-<div *ngIf="comptesSupprimes.length === 0">
-  <p>Aucun compte supprimé disponible.</p>
-</div> -->
