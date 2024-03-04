@@ -20,7 +20,7 @@ export class AuthComponent {
   emailSignUp: string = '';
   passwordSignUp: string = '';
   name: string = '';
-  image!: File;
+  image: File | null = null;
   telephone: string = '';
   // Dans votre composant Angular
   passwordVisible: boolean = false;
@@ -257,7 +257,7 @@ export class AuthComponent {
       this.passwordSignUp = this.generateDefaultPassword();
     }
 
- 
+
     const newUser = new FormData();
     newUser.append('image', this.image as Blob);
     newUser.append('nom' ,this.name);
@@ -288,6 +288,17 @@ export class AuthComponent {
         (response: any) => {
           const role = response.role;
           this.authService.handleSignInSuccess(role);
+
+          this.emailSignUp = '';
+          this.passwordSignUp = '';
+          this.name = '';
+          this.image = null;
+          this.telephone = '';
+          this.firstName = '';
+          this.numeroEnregistrement = '';
+          this.adresse = '';
+          this.description = '';
+
           this.alertMessage("success","inscription réussie!!","🎉");
         },
         (error: any) => {

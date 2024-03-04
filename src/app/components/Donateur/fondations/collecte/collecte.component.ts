@@ -17,7 +17,7 @@ export class CollecteComponent implements OnInit {
   collectes: Collecte[] = [];
   filtreActif: string = 'tout';
   nouvelleCollecte: Collecte = new Collecte();
-  image!: File;
+  image: File | null = null;
   titre!: any;
   description!: any;
   objectifFinancier!: any;
@@ -54,12 +54,65 @@ export class CollecteComponent implements OnInit {
     this.collecteService.addCollecte(addCollect).subscribe(
       (response) => {
         console.log("Réponse de l'API après ajout :", response);
-        this.refreshCollectes();
+        // Afficher l'alerte de succès
+        this.alertMessage(
+          'success',
+          'Ajout réussi!',
+          'La collecte a été ajoutée avec succès.'
+        );
+        // Vider les champs et fermer le modal
+        this.resetFields();
       },
       (error) => {
         console.error("Erreur lors de l'ajout de la collecte :", error);
       }
     );
+  }
+
+  modifierCollecte() {
+    const formData = new FormData();
+    formData.append('titre', this.collecteSelectionnee.titre);
+    formData.append('description', this.collecteSelectionnee.description);
+    formData.append(
+      'objectifFinancier',
+      this.collecteSelectionnee.objectifFinancier.toString()
+    );
+    formData.append('numeroCompte', this.collecteSelectionnee.numeroCompte);
+    // Vérifiez si une nouvelle image a été sélectionnée
+    if (this.image) {
+      formData.append('image', this.image as Blob);
+    }
+    // Assurez-vous que this.collecteSelectionnee.id contient l'ID correct de la collecte à modifier
+    const url = `${this.apiUrl}/modifierCollecte/${this.collecteSelectionnee.id}`;
+
+    this.http.post(url, formData).subscribe(
+      (response) => {
+        console.log("Réponse de l'API après modification :", response);
+        // Afficher l'alerte de succès
+        this.alertMessage(
+          'success',
+          'Modification réussie!',
+          'La collecte a été modifiée avec succès.'
+        );
+        // Vider les champs et fermer le modal
+        this.resetFields();
+      },
+      (error) => {
+        console.error("Erreur lors de la modification de la collecte :", error);
+      }
+    );
+  }
+
+  resetFields(): void {
+    // Vider les champs
+    this.titre = '';
+    this.description = '';
+    this.objectifFinancier = '';
+    this.numeroCompte = '';
+    this.image = null;
+    // Fermer les modals
+    document.getElementById('exampleModal')?.click();
+    document.getElementById('exampleModal2')?.click();
   }
 
   // refreshCollectes(): void {
@@ -85,7 +138,7 @@ export class CollecteComponent implements OnInit {
       return;
     }
 
-    const collecteId: number = collecte.id as number; // Assurer que collecte.id est bien de type number
+    const collecteId: number = collecte.id as number;
     Swal.fire({
       title: 'Êtes-vous sûr de vouloir clôturer cette collecte?',
       text: 'Cette action est irréversible!',
@@ -124,7 +177,7 @@ export class CollecteComponent implements OnInit {
       return;
     }
 
-    const collecteId: number = collecte.id as number; // Assurer que collecte.id est bien de type number
+    const collecteId: number = collecte.id as number;
     Swal.fire({
       title: 'Êtes-vous sûr de vouloir déclôturer cette collecte?',
       text: 'Cette action est irréversible!',
@@ -166,7 +219,7 @@ export class CollecteComponent implements OnInit {
       return;
     }
 
-    const collecteId: number = collecte.id as number; // Assurer que collecte.id est bien de type number
+    const collecteId: number = collecte.id as number;
     Swal.fire({
       title: 'Êtes-vous sûr de vouloir supprimer cette collecte?',
       text: 'Cette action est irréversible!',
@@ -200,30 +253,6 @@ export class CollecteComponent implements OnInit {
         );
       }
     });
-  }
-  modifierCollecte() {
-    const formData = new FormData();
-    formData.append('titre', this.collecteSelectionnee.titre);
-    formData.append('description', this.collecteSelectionnee.description);
-    formData.append('objectifFinancier', this.collecteSelectionnee.objectifFinancier.toString());
-    formData.append('numeroCompte', this.collecteSelectionnee.numeroCompte);
- // Vérifiez si une nouvelle image a été sélectionnée
- if (this.image) {
-  formData.append('image', this.image as Blob);
-}
-    // Assurez-vous que this.collecteSelectionnee.id contient l'ID correct de la collecte à modifier
-    const url = `${this.apiUrl}/modifierCollecte/${this.collecteSelectionnee.id}`;
-
-    this.http.post(url, formData).subscribe(
-      (response) => {
-        console.log("Réponse de l'API après modification :", response);
-        // Autre logique à implémenter en cas de succès
-      },
-      (error) => {
-        console.error("Erreur lors de la modification de la collecte :", error);
-        // Autre logique à implémenter en cas d'erreur
-      }
-    );
   }
 
   selectionnerCollecte(collecte: Collecte) {

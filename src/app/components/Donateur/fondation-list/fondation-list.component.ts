@@ -10,77 +10,107 @@ import { Router } from '@angular/router';
   selector: 'app-fondation-list',
   template: `
     <app-dashboard></app-dashboard>
-    <div class="card-container">
+    <div class="container" style="margin-top: 5%;">
+      <div class="view-mode">
+        <button class="btn btn-secondary" (click)="switchToListView()">
+          Vue Liste
+        </button>
+        <button class="btn btn-secondary" (click)="switchToGridView()">
+          Vue Grille
+        </button>
+      </div>
       <span style="color:black;font-weight:bold;font-size:30px;">LISTE FONDATIONS</span>
-      <div
-        *ngFor="let fondation of fondations"
-        class="card"
-        [ngClass]="{ blocked: fondation.bloquee }"
-      >
-        <div class="card-content">
-          <div
-            class="image"
-            [style.background-image]="'url(' + fondation.image + ')'"
-            *ngIf="isDonateur"
-          >
-            <img class="card-img-top img-fluid"  style="max-height: 300px;object-fit: contain;" src="{{ apiUrl }}/{{ fondation?.image }}" alt="" />
-            <div class="icons" *ngIf="isAdmin">
-              <i
-                class="fas fa-check text-success"
-                (click)="approuverDemande(fondation)"
-              ></i>
-              <i
-                class="fas fa-times text-danger"
-                (click)="refuserDemande(fondation)"
-              ></i>
-              <i
-                class="fas fa-trash text-warning"
-                (click)="supprimerFondation(fondation)"
-              ></i>
-              <button
-                *ngIf="!fondation.bloquee"
-                class="btn btn-danger"
-                (click)="bloquerFondation(fondation)"
-              >
-                <i class="fas fa-ban"></i> Bloquer
-              </button>
-              <button
-                *ngIf="fondation.bloquee"
-                class="btn btn-success"
-                (click)="debloquerFondation(fondation)"
-              >
-                <i class="fas fa-unlock"></i> Débloquer
-              </button>
-            </div>
-          </div>
-          <div class="details">
-            <div class="abonne-badge">
-              <button
-                *ngIf="!fondation.bloquee && fondation.abonne"
-                class="btn btn-danger btn-se-desabonner"
-                (click)="seDesabonner(fondation)"
-              >
-                Se désabonner
-              </button>
-              <button
-                *ngIf="!fondation.bloquee && !fondation.abonne"
-                class="btn btn-primary btn-abonner"
-                (click)="sAbonner(fondation)"
-              >
-                S'abonner
-              </button>
-            </div>
-            <h5 class="card-title">{{ fondation.nom }}</h5>
-            <p class="card-text">{{ fondation.description }}</p>
-            <button
-              class="btn btn-primary btn-details"
-              (click)="detailsFondation(fondation)"
-            >
-              Détails
-            </button>
-          </div>
+      <div class="card-container" [ngClass]="{ 'list-view': isListView, 'grid-view': isGridView }">
+      <div *ngIf="isListView" class="list-view">
+          <table class="table w-100">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Description</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let fondation of getFondationsPage()">
+                <th scope="row">{{ fondation.id }}</th>
+                <td>{{ fondation.nom }}</td>
+                <td>{{ fondation.description }}</td>
+                <td>
+                  <button class="btn btn-primary btn-details" (click)="detailsFondation(fondation)">
+                    Détails
+                  </button>
+                  <button class="btn btn-danger" *ngIf="isAdmin" (click)="supprimerFondation(fondation)">
+                    Supprimer
+                  </button>
+                  <button class="btn btn-success" *ngIf="isAdmin && fondation.bloquee" (click)="debloquerFondation(fondation)">
+                    Débloquer
+                  </button>
+                  <button class="btn btn-warning" *ngIf="isAdmin && !fondation.bloquee" (click)="bloquerFondation(fondation)">
+                    Bloquer
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
+      </div>
+      <div class="card-container" *ngIf="isGridView" class="grid-view">
+        <!-- <span style="color:black;font-weight:bold;font-size:30px;"
+          >LISTE FONDATIONS</span
+        > -->
+        <!-- Début de la modification -->
+        <div class="row">
+          <div *ngFor="let fondation of getFondationsPage()" class="col-md-4 mb-4">
+            <div class="card" [ngClass]="{ blocked: fondation.bloquee }">
+              <div class="card-content">
+                <div class="image" [style.background-image]="'url(' + fondation.image + ')'" *ngIf="isDonateur">
+                  <img class="card-img-top img-fluid" style="max-height: 300px;object-fit: contain;" src="{{ apiUrl }}/{{ fondation?.image }}" alt="" />
+                  <div class="icons" *ngIf="isAdmin">
+                    <i class="fas fa-check text-success" (click)="approuverDemande(fondation)"></i>
+                    <i class="fas fa-times text-danger" (click)="refuserDemande(fondation)"></i>
+                    <i class="fas fa-trash text-warning" (click)="supprimerFondation(fondation)"></i>
+                    <button *ngIf="!fondation.bloquee" class="btn btn-danger" (click)="bloquerFondation(fondation)">
+                      <i class="fas fa-ban"></i> Bloquer
+                    </button>
+                    <button *ngIf="fondation.bloquee" class="btn btn-success" (click)="debloquerFondation(fondation)">
+                      <i class="fas fa-unlock"></i> Débloquer
+                    </button>
+                  </div>
+                </div>
+                <div class="details">
+                  <div class="abonne-badge">
+                    <button *ngIf="!fondation.bloquee && fondation.abonne" class="btn btn-danger btn-se-desabonner" (click)="seDesabonner(fondation)">
+                      Se désabonner
+                    </button>
+                    <button *ngIf="!fondation.bloquee && !fondation.abonne" class="btn btn-primary btn-abonner" (click)="sAbonner(fondation)">
+                      S'abonner
+                    </button>
+                  </div>
+                  <h5 class="card-title">{{ fondation.nom }}</h5>
+                  <p class="card-text">{{ fondation.description }}</p>
+                  <button class="btn btn-primary btn-details" (click)="detailsFondation(fondation)">
+                    Détails
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Fin de la modification -->
+      </div>
+    <!-- Pagination -->
+    <div class="d-flex flex-wrap justify-content-center my-5">
+      <button class="btn btn-mauve me-2" [disabled]="pageActuelle === 1" (click)="precedentPage()">
+        Précédent
+      </button>
+      <button class="btn btn-mauve ms-2" *ngFor="let page of pages" (click)="pageActuelle = page" [style.backgroundColor]="page === pageActuelle ? '#f7e801' : '#3b0458'">
+        {{ page }}
+      </button>
+      <button class="btn btn-mauve ms-2" [disabled]="pageActuelle === totalPages" (click)="suivantPage()">
+        Suivant
+      </button>
     </div>
   `,
   styles: [
@@ -206,6 +236,17 @@ import { Router } from '@angular/router';
         background-color: #dc3545;
         color: #fff;
       }
+      .list-view .card {
+  /* Couleur pour la vue en liste */
+  border-color: #ccc; /* Couleur de la bordure */
+  background-color: #fff; /* Couleur de fond */
+}
+
+.grid-view .card {
+  /* Couleur pour la vue en grille */
+  border-color: #ccc; /* Couleur de la bordure */
+  background-color: #fff; /* Couleur de fond */
+}
     `,
   ],
 })
@@ -213,8 +254,22 @@ export class FondationListComponent implements OnInit {
   fondations: any[] = [];
   isAdmin: boolean = false;
   isDonateur: boolean = false;
+  pageActuelle = 1;
+  articlesParPage = 6;
 
   apiUrl = 'http://127.0.0.1:8000/api';
+  isListView: boolean = false;
+  isGridView: boolean = true;
+
+  switchToListView(): void {
+    this.isListView = true;
+    this.isGridView = false;
+  }
+
+  switchToGridView(): void {
+    this.isListView = false;
+    this.isGridView = true;
+  }
 
   constructor(
     private http: HttpClient,
@@ -310,6 +365,33 @@ export class FondationListComponent implements OnInit {
         );
       }
     );
+  }
+  precedentPage(): void {
+    if (this.pageActuelle > 1) {
+      this.pageActuelle--;
+    }
+  }
+
+  suivantPage(): void {
+    if (this.pageActuelle < this.totalPages) {
+      this.pageActuelle++;
+    }
+  }
+  get pages(): number[] {
+    const totalPages = Math.ceil(this.fondations.length / this.articlesParPage);
+    return Array(totalPages)
+      .fill(0)
+      .map((_, index) => index + 1);
+  }
+
+  get totalPages(): number {
+    return Math.ceil(this.fondations.length / this.articlesParPage);
+  }
+
+  getFondationsPage(): any[] {
+    const indexDebut = (this.pageActuelle - 1) * this.articlesParPage;
+    const indexFin = indexDebut + this.articlesParPage;
+    return this.fondations.slice(indexDebut, indexFin);
   }
 
   abonnerFondation(fondationId: number): Observable<any> {
