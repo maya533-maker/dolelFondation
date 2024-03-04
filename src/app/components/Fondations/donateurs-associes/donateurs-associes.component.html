@@ -1,37 +1,26 @@
 <app-dashf></app-dashf>
-<!-- <span
-  style="
-    color: black;
-    font-size: 25px;
-    font-weight: bold;
-    border: 1px solid red;width: 25%;
-  "
-  >Liste des collectes en cours
-</span> -->
-<h1 style="
-color: black;
-font-size: 25px;
-font-weight: bold;
-width: 100%;
-">Liste des collectes en cours</h1>
-<div *ngIf="donateurs.length > 0">
-  <h3>Donateurs associés :</h3>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Montant donné</th>
-        <th>Nom</th>
-        <th>Prénom</th>
-        <th>Téléphone</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let donateur of donateurs">
-        <td>{{ donateur["Montant Donné"] }}</td>
-        <td>{{ donateur["Nom Donateur"] }}</td>
-        <td>{{ donateur["Prénom Donateur"] }}</td>
-        <td>{{ donateur["Téléphone Donateur"] }}</td>
-      </tr>
-    </tbody>
-  </table>
+
+<div class="container mt-5">
+  <h1 style="color: black; font-size: 25px; font-weight: bold; width: 100%;">Liste des collectes en cours</h1>
+  <div *ngIf="donateurs.length > 0" class="table-responsive">
+    <h3>Donateurs associés :</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Montant donné</th>
+          <th>Nom</th>
+          <th>Prénom</th>
+          <th>Téléphone</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let donateur of donateurs">
+          <td>{{ donateur["Montant Donné"] }}</td>
+          <td>{{ donateur["Nom Donateur"] }}</td>
+          <td>{{ donateur["Prénom Donateur"] }}</td>
+          <td>{{ donateur["Téléphone Donateur"] }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

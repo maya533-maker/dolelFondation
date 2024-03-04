@@ -1,25 +1,29 @@
 <app-dashf></app-dashf>
 
-<div class="card" style="margin-top: 7%; border: 1px solid #F7E801; margin-left: 8%; width: 90%">
-  <span style="color: black;font-weight: bold;font-size: 30px;">LISTE ABONNE</span>
-  <div class="card-body">
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col" style="background-color: #F7E801; font-weight: bold;">Photo</th>
-          <th scope="col" style="background-color: #F7E801; font-weight: bold;">Nom complet</th>
-          <th scope="col" style="background-color: #F7E801; font-weight: bold;">Prenom</th>
-          <th scope="col" style="background-color: #F7E801; font-weight: bold;">Téléphone</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let abonne of fondationsAbonnees">
-          <th scope="row"><img style="width: 49.98px; height: 50px; border-radius: 9999px" src="https://i.pinimg.com/736x/41/c4/f5/41c4f51bcd17b297aa8f8d94a2ac1d95.jpg" /></th>
-          <td>{{ abonne.nom_donateur }}</td>
-          <td>{{ abonne.prenom_donateur }}</td>
-          <td>{{ abonne.telephone_donateur }}</td>
-        </tr>
-      </tbody>
-    </table>
+<div class="container mt-5">
+  <h1 style="color: black; font-weight: bold; font-size: 30px;">LISTE ABONNÉ</h1>
+  <div class="card" style="border: 1px solid #F7E801;">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col" style="background-color: #F7E801; font-weight: bold;">Photo</th>
+              <th scope="col" style="background-color: #F7E801; font-weight: bold;">Nom complet</th>
+              <th scope="col" style="background-color: #F7E801; font-weight: bold;">Prénom</th>
+              <th scope="col" style="background-color: #F7E801; font-weight: bold;">Téléphone</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let abonne of fondationsAbonnees">
+              <td><img style="width: 50px; height: 50px; border-radius: 50%;" src="https://i.pinimg.com/736x/41/c4/f5/41c4f51bcd17b297aa8f8d94a2ac1d95.jpg" /></td>
+              <td>{{ abonne.nom_donateur }}</td>
+              <td>{{ abonne.prenom_donateur }}</td>
+              <td>{{ abonne.telephone_donateur }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>

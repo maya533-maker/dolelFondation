@@ -8,70 +8,141 @@ import { AuthService } from '../../service/auth.service';
 @Component({
   selector: 'app-profil-fond',
   template: `
-<app-dashf></app-dashf>
-<main class="mx-auto" style="margin-top: 8%;">
-  <h3 class="" style="margin-left:33%;margin-top:%">Informations du profil</h3>
-  <form (submit)="modifierProfilFondation()">
-    <div class="first"></div>
-    <div class="second"></div>
-    <div class="row g-4">
-      <div class="col col-md-6 left-profil">
-        <img class="container-fluid" style="width:60%;margin-left:30%;" src="https://i.pinimg.com/736x/41/c4/f5/41c4f51bcd17b297aa8f8d94a2ac1d95.jpg" alt="">
-      </div>
-      <div class="col-md-6 right-profil">
-        <div class="mb-3 d-flex justify-content-between">
-          <label for="nom" class="form-label">Nom</label>
-          <input type="text" class="form-control" id="nom" [(ngModel)]="fondation.nom" name="nom">
-        </div>
-        <div class="mb-3 d-flex justify-content-between">
-          <label for="adresse" class="form-label">Adresse</label>
-          <input type="text" class="form-control" id="adresse" [(ngModel)]="fondation.adresse" name="adresse">
-        </div>
-        <div class="mb-3 d-flex justify-content-between">
-          <label for="numeroenregistrement" class="form-label">Numéro Enregistrement</label>
-          <input type="text" class="form-control" id="numeroenregistrement" [(ngModel)]="fondation.numeroenregistrement" name="numeroenregistrement">
-        </div>
-        <div class="mb-3 d-flex justify-content-between">
-          <label for="email" class="form-label">Adresse email</label>
-          <input type="email" class="form-control" id="email" [(ngModel)]="fondation.email" name="email">
-        </div>
-        <div class="mb-3 d-flex justify-content-between">
-          <label for="telephone" class="form-label">Téléphone</label>
-          <input type="text" class="form-control" id="telephone" [(ngModel)]="fondation.telephone" name="telephone">
-        </div>
-      </div>
-    </div>
-    <h3 class="mb-5" style="margin-left:33%;">Changer de mot de passe</h3>
-    <div class="first"></div>
-    <div class="second"></div>
-    <div class="container pwd">
-      <div class="mb-3 d-flex flex-wrap justify-content-between">
-        <label for="currentPassword" class="form-label">Actuel mot de passe :</label>
-        <input type="password" class="form-control" id="currentPassword" placeholder="********" required>
-      </div>
-      <div class="mb-3 d-flex flex-wrap justify-content-between">
-        <label for="newPassword" class="form-label">Nouveau mot de passe :</label>
-        <input type="password" class="form-control" id="newPassword" placeholder="********" [(ngModel)]="newPassword" required>
-      </div>
-      <div class="mb-3 d-flex flex-wrap justify-content-between">
-        <label for="confirmNewPassword" class="form-label">Confirmer mot de passe :</label>
-        <input type="password" class="form-control" id="confirmNewPassword" placeholder="********" [(ngModel)]="confirmNewPassword" required>
-      </div>
-      <button type="submit" class="btnSave p-2 mt-5">Enregistrer</button>
-    </div>
-  </form>
-  <button class="btnSupprimerCompte p-2 mt-5" (click)="supprimerCompteFondation()">Supprimer le compte</button>
-</main>
+    <app-dashf></app-dashf>
 
+    <main class="container" style="margin-top: 8%;">
+      <h3 class="text-center">Informations du profil</h3>
+      <form (submit)="modifierProfilFondation()">
+        <div class="row justify-content-center mb-4">
+          <div class="col-md-6">
+            <img
+              class="img-fluid"
+              src="https://i.pinimg.com/736x/41/c4/f5/41c4f51bcd17b297aa8f8d94a2ac1d95.jpg"
+              alt=""
+            />
+          </div>
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="nom" class="form-label">Nom</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nom"
+                [(ngModel)]="fondation.nom"
+                name="nom"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="adresse" class="form-label">Adresse</label>
+              <input
+                type="text"
+                class="form-control"
+                id="adresse"
+                [(ngModel)]="fondation.adresse"
+                name="adresse"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="numeroenregistrement" class="form-label"
+                >Numéro Enregistrement</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="numeroenregistrement"
+                [(ngModel)]="fondation.numeroenregistrement"
+                name="numeroenregistrement"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Adresse email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                [(ngModel)]="fondation.email"
+                name="email"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="telephone" class="form-label">Téléphone</label>
+              <input
+                type="text"
+                class="form-control"
+                id="telephone"
+                [(ngModel)]="fondation.telephone"
+                name="telephone"
+              />
+            </div>
+          </div>
+        </div>
+        <h3 class="text-center mb-5">Changer de mot de passe</h3>
+        <div class="row justify-content-center mb-4">
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="currentPassword" class="form-label"
+                >Actuel mot de passe :</label
+              >
+              <input
+                type="password"
+                class="form-control"
+                id="currentPassword"
+                placeholder="********"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="newPassword" class="form-label"
+                >Nouveau mot de passe :</label
+              >
+              <input
+                type="password"
+                class="form-control"
+                id="newPassword"
+                placeholder="********"
+                [(ngModel)]="newPassword"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="confirmNewPassword" class="form-label"
+                >Confirmer mot de passe :</label
+              >
+              <input
+                type="password"
+                class="form-control"
+                id="confirmNewPassword"
+                placeholder="********"
+                [(ngModel)]="confirmNewPassword"
+                required
+              />
+            </div>
+            <button type="submit" class="btn btn-primary btn-save">
+              Enregistrer
+            </button>
+          </div>
+        </div>
+      </form>
+      <div class="row justify-content-center">
+        <button
+          class="btn btn-danger btn-supprimer-compte"
+          (click)="supprimerCompteFondation()"
+        >
+          Supprimer le compte
+        </button>
+      </div>
+    </main>
   `,
-  styles: [`
-    .right-profil input {
+  styles: [
+    `/* Ajoutez ces styles CSS à votre fichier de style */
+
+.right-profil input {
   width: 70%;
-  border: 1px solid #3B0458;
+  border: 1px solid #3b0458;
 }
 
 .first {
-  background-color: #3B0458;
+  background-color: #3b0458;
   width: 150px;
   height: 4px;
   position: relative;
@@ -80,7 +151,7 @@ import { AuthService } from '../../service/auth.service';
 }
 
 .second {
-  background-color: #F7E801;
+  background-color: #f7e801;
   border: 1px solid;
   border-radius: 100%;
   width: 20px;
@@ -90,23 +161,14 @@ import { AuthService } from '../../service/auth.service';
   left: 490px;
 }
 
-.left-profil img {
-  width: 80%;
-  height: 50%;
-}
-
-.pwd {
-  width: 60%;
-}
-
 .pwd input {
   width: 60%;
-  border: 1px solid #3B0458;
+  border: 1px solid #3b0458;
 }
 
 .btnSave {
   border: none;
-  background-color: #3B0458;
+  background-color: #3b0458;
   color: white;
   font-weight: bold;
   border-radius: 10px;
@@ -122,14 +184,38 @@ import { AuthService } from '../../service/auth.service';
   margin-left: 90%;
 }
 
-  `]
+.left-profil img {
+  width: 100%;
+  height: auto;
+}
+
+.pwd {
+  max-width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-save,
+.btn-supprimer-compte {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2rem;
+}
+
+    `,
+  ],
 })
 export class ProfilFondComponent {
   fondation: any = {}; // Assurez-vous que cet objet correspond à la structure de votre modèle fondation
   newPassword: string = '';
   confirmNewPassword: string = '';
 
-  constructor(private http: HttpClient, private authService: AuthService, private router: Router) {}
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   modifierProfilFondation() {
     // Appeler votre service pour modifier le profil de la fondation
@@ -137,13 +223,24 @@ export class ProfilFondComponent {
       (response) => {
         // Traiter la réponse de l'API si nécessaire
         console.log('Profil de la fondation modifié avec succès', response);
-        this.alertMessage('success', 'Modification réussie!', 'Le profil a été modifié avec succès.');
+        this.alertMessage(
+          'success',
+          'Modification réussie!',
+          'Le profil a été modifié avec succès.'
+        );
         this.clearForm();
       },
       (error) => {
         // Gérer les erreurs en cas d'échec de la modification du profil
-        console.error('Erreur lors de la modification du profil de la fondation : ', error);
-        this.alertMessage('error', 'Erreur de modification!', 'Une erreur s\'est produite lors de la modification du profil.');
+        console.error(
+          'Erreur lors de la modification du profil de la fondation : ',
+          error
+        );
+        this.alertMessage(
+          'error',
+          'Erreur de modification!',
+          "Une erreur s'est produite lors de la modification du profil."
+        );
       }
     );
   }
@@ -163,25 +260,32 @@ export class ProfilFondComponent {
       if (result.isConfirmed) {
         this.http.put(apiUrl, {}).subscribe(
           () => {
-            this.alertMessage('success', 'Suppression réussie!', 'Le compte a été supprimé avec succès.');
-            this.router.navigate(['/accueil']); 
+            this.alertMessage(
+              'success',
+              'Suppression réussie!',
+              'Le compte a été supprimé avec succès.'
+            );
+            this.router.navigate(['/accueil']);
           },
           (error) => {
             console.error('Erreur lors de la suppression du compte :', error);
-            this.alertMessage('error', 'Erreur de suppression!', 'Une erreur s\'est produite lors de la suppression du compte.');
+            this.alertMessage(
+              'error',
+              'Erreur de suppression!',
+              "Une erreur s'est produite lors de la suppression du compte."
+            );
           }
         );
       }
     });
   }
 
-
   alertMessage(icon: any, title: any, text: any): void {
     Swal.fire({
       icon: icon,
       title: title,
       text: text,
-      timer: 1500
+      timer: 1500,
     });
   }
 
