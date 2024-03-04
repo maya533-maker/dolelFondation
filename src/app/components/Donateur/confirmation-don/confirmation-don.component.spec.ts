@@ -14,7 +14,6 @@ describe('ConfirmationDonComponent', () => {
       declarations: [ConfirmationDonComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       providers: [
-
         {
           provide: ActivatedRoute,
           useValue: {
@@ -30,10 +29,10 @@ describe('ConfirmationDonComponent', () => {
     });
     fixture = TestBed.createComponent(ConfirmationDonComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
+    fixture.detectChanges();
     expect(component).toBeTruthy();
   });
 });

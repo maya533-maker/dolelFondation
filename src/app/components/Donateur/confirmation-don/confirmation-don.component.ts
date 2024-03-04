@@ -14,9 +14,12 @@ export class ConfirmationDonComponent implements OnInit {
 
   ngOnInit(): void {
     // Récupérer les données du don à partir des queryParams
-    this.route.queryParams.subscribe(params => {
-      this.montant = params['montant'];
-      this.message = params['message'];
-    });
+    if (this.route && this.route.queryParams) {
+      this.route.queryParams.subscribe(params => {
+        this.montant = params['montant'];
+        this.message = params['message'];
+      });
+    }
   }
+
 }

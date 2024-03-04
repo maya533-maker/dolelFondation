@@ -1,9 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FondationsDetailsComponent } from './fondations-details.component';
 import { CollecteService } from '../../service/collecte.service';
-import{CUSTOM_ELEMENTS_SCHEMA}from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('FondationsDetailsComponent', () => {
   let component: FondationsDetailsComponent;
@@ -19,11 +20,7 @@ describe('FondationsDetailsComponent', () => {
         {
           provide: ActivatedRoute,
           useValue: {
-            snapshot: {
-              params: {
-                id: 1
-              }
-            }
+            params: of({ id: 1 }) // Simuler un observable de paramètres de route
           }
         }
       ]
