@@ -13,7 +13,7 @@ describe('AdminGuard', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule,HttpClientModule],
+      imports: [RouterTestingModule, HttpClientModule],
       providers: [AdminGuard, AuthService]
     });
 
@@ -36,6 +36,15 @@ describe('AdminGuard', () => {
     const navigateSpy = spyOn(router, 'navigate');
 
     expect(guard.canActivate()).toBe(false);
+    expect(navigateSpy).toHaveBeenCalledWith(['/acceuil']);
+  });
+
+  it('should redirect to home page for non-admin users', () => {
+    spyOn(authService, 'getUserRole').and.returnValue('user');
+    const navigateSpy = spyOn(router, 'navigate');
+
+    guard.canActivate();
+
     expect(navigateSpy).toHaveBeenCalledWith(['/acceuil']);
   });
 });
