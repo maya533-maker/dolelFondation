@@ -9,8 +9,8 @@ import { Router } from '@angular/router';
   selector: 'app-fondations-list',
   template: `
     <app-dash-ad></app-dash-ad>
+    <span style="color: black;font-weight:bold;text-align:center;">Liste des Fondations</span>
     <div class="card-container">
-      <span style="color: black;font-weight:bold;">Liste des Fondations</span>
       <div
         *ngFor="let fondation of getFondationsPage()"
         class="card"
@@ -84,52 +84,59 @@ import { Router } from '@angular/router';
       </div>
     </div>
     <!-- Pagination -->
-<div class="d-flex flex-wrap justify-content-center my-5">
-  <button
-    class="btn btn-mauve me-2"
-    [disabled]="pageActuelle === 1"
-    (click)="precedentPage()"
-  >
-    Précédent
-  </button>
-  <button
-    class="btn"
-    [class.btn-mauve]="page === pageActuelle"
-    [class.btn-jaune]="page !== pageActuelle"
-    *ngFor="let page of pages"
-    (click)="pageActuelle = page"
-  >
-    {{ page }}
-  </button>
-  <button
-    class="btn btn-mauve ms-2"
-    [disabled]="pageActuelle === totalPages"
-    (click)="suivantPage()"
-  >
-    Suivant
-  </button>
-</div>
-
+    <div class="d-flex flex-wrap justify-content-center my-5">
+      <button
+        class="btn btn-mauve me-2"
+        [disabled]="pageActuelle === 1"
+        (click)="precedentPage()"
+      >
+        Précédent
+      </button>
+      <button
+        class="btn"
+        [class.btn-mauve]="page === pageActuelle"
+        [class.btn-jaune]="page !== pageActuelle"
+        *ngFor="let page of pages"
+        (click)="pageActuelle = page"
+      >
+        {{ page }}
+      </button>
+      <button
+        class="btn btn-mauve ms-2"
+        [disabled]="pageActuelle === totalPages"
+        (click)="suivantPage()"
+      >
+        Suivant
+      </button>
+    </div>
   `,
   styles: [
     `
-      .card-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        margin-top: 7%;
-        gap: 35px;
-        flex-wrap: wrap;
+ .card {
+  width: calc(20% - 20px);
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 7%;
+  gap: 20px;
+}
+
+
+      @media screen and (max-width: 992px) {
+        .card {
+          width: calc(30% - 35px);
+        }
       }
 
-      .card {
-        width: 300px;
-        border: 1px solid #ccc;
-        border-radius: 10px;
-        overflow: hidden;
-        margin-bottom: 20px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease;
+      @media screen and (max-width: 768px) {
+        .card {
+          width: calc(70% - 35px);
+        }
       }
 
       .card:hover {
@@ -199,13 +206,13 @@ import { Router } from '@angular/router';
         border-radius: 5px;
       }
       .btn.btn-jaune {
-  background-color: #f7e801;
-  color: #3b0458;
-}
+        background-color: #f7e801;
+        color: #3b0458;
+      }
 
-.btn.btn-jaune:hover {
-  background-color: #e7d301;
-}
+      .btn.btn-jaune:hover {
+        background-color: #e7d301;
+      }
 
       .btn-mauve:hover {
         background-color: #f7e801;
@@ -218,7 +225,6 @@ import { Router } from '@angular/router';
       .btn-danger:hover {
         background-color: #c9302c;
       }
-
 
       .blocked {
         filter: blur(2px);

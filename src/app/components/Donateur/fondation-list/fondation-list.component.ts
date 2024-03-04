@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-fondation-list',
   template: `
-    <app-dashboard></app-dashboard>
+   <app-dashboard></app-dashboard>
     <div class="container" style="margin-top: 5%;">
       <div class="view-mode">
         <button class="btn btn-secondary" (click)="switchToListView()">
@@ -21,7 +21,7 @@ import { Router } from '@angular/router';
       </div>
       <span style="color:black;font-weight:bold;font-size:30px;">LISTE FONDATIONS</span>
       <div class="card-container" [ngClass]="{ 'list-view': isListView, 'grid-view': isGridView }">
-      <div *ngIf="isListView" class="list-view">
+        <div *ngIf="isListView" class="list-view">
           <table class="table w-100">
             <thead>
               <tr>
@@ -54,52 +54,47 @@ import { Router } from '@angular/router';
             </tbody>
           </table>
         </div>
-      </div>
-      </div>
-      <div class="card-container" *ngIf="isGridView" class="grid-view">
-        <!-- <span style="color:black;font-weight:bold;font-size:30px;"
-          >LISTE FONDATIONS</span
-        > -->
-        <!-- Début de la modification -->
-        <div class="row">
-          <div *ngFor="let fondation of getFondationsPage()" class="col-md-4 mb-4">
-            <div class="card" [ngClass]="{ blocked: fondation.bloquee }">
-              <div class="card-content">
-                <div class="image" [style.background-image]="'url(' + fondation.image + ')'" *ngIf="isDonateur">
-                  <img class="card-img-top img-fluid" style="max-height: 300px;object-fit: contain;" src="{{ apiUrl }}/{{ fondation?.image }}" alt="" />
-                  <div class="icons" *ngIf="isAdmin">
-                    <i class="fas fa-check text-success" (click)="approuverDemande(fondation)"></i>
-                    <i class="fas fa-times text-danger" (click)="refuserDemande(fondation)"></i>
-                    <i class="fas fa-trash text-warning" (click)="supprimerFondation(fondation)"></i>
-                    <button *ngIf="!fondation.bloquee" class="btn btn-danger" (click)="bloquerFondation(fondation)">
-                      <i class="fas fa-ban"></i> Bloquer
-                    </button>
-                    <button *ngIf="fondation.bloquee" class="btn btn-success" (click)="debloquerFondation(fondation)">
-                      <i class="fas fa-unlock"></i> Débloquer
+        <div *ngIf="isGridView" class="grid-view">
+          <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+            <div *ngFor="let fondation of getFondationsPage()" class="col mb-4">
+              <div class="card" [ngClass]="{ blocked: fondation.bloquee }">
+                <div class="card-content">
+                  <div class="image" [style.background-image]="'url(' + fondation.image + ')'" *ngIf="isDonateur">
+                    <img class="card-img-top img-fluid" style="max-height: 300px;object-fit: contain;" src="{{ apiUrl }}/{{ fondation?.image }}" alt="" />
+                    <div class="icons" *ngIf="isAdmin">
+                      <i class="fas fa-check text-success" (click)="approuverDemande(fondation)"></i>
+                      <i class="fas fa-times text-danger" (click)="refuserDemande(fondation)"></i>
+                      <i class="fas fa-trash text-warning" (click)="supprimerFondation(fondation)"></i>
+                      <button *ngIf="!fondation.bloquee" class="btn btn-danger" (click)="bloquerFondation(fondation)">
+                        <i class="fas fa-ban"></i> Bloquer
+                      </button>
+                      <button *ngIf="fondation.bloquee" class="btn btn-success" (click)="debloquerFondation(fondation)">
+                        <i class="fas fa-unlock"></i> Débloquer
+                      </button>
+                    </div>
+                  </div>
+                  <div class="details">
+                    <div class="abonne-badge">
+                      <button *ngIf="!fondation.bloquee && fondation.abonne" class="btn btn-danger btn-se-desabonner" (click)="seDesabonner(fondation)">
+                        Se désabonner
+                      </button>
+                      <button *ngIf="!fondation.bloquee && !fondation.abonne" class="btn btn-primary btn-abonner" (click)="sAbonner(fondation)">
+                        S'abonner
+                      </button>
+                    </div>
+                    <h5 class="card-title">{{ fondation.nom }}</h5>
+                    <p class="card-text">{{ fondation.description }}</p>
+                    <button class="btn btn-primary btn-details" (click)="detailsFondation(fondation)">
+                      Détails
                     </button>
                   </div>
-                </div>
-                <div class="details">
-                  <div class="abonne-badge">
-                    <button *ngIf="!fondation.bloquee && fondation.abonne" class="btn btn-danger btn-se-desabonner" (click)="seDesabonner(fondation)">
-                      Se désabonner
-                    </button>
-                    <button *ngIf="!fondation.bloquee && !fondation.abonne" class="btn btn-primary btn-abonner" (click)="sAbonner(fondation)">
-                      S'abonner
-                    </button>
-                  </div>
-                  <h5 class="card-title">{{ fondation.nom }}</h5>
-                  <p class="card-text">{{ fondation.description }}</p>
-                  <button class="btn btn-primary btn-details" (click)="detailsFondation(fondation)">
-                    Détails
-                  </button>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <!-- Fin de la modification -->
       </div>
+    </div>
     <!-- Pagination -->
     <div class="d-flex flex-wrap justify-content-center my-5">
       <button class="btn btn-mauve me-2" [disabled]="pageActuelle === 1" (click)="precedentPage()">

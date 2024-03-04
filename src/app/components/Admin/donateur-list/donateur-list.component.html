@@ -1,11 +1,9 @@
 <!-- donateur-list.component.html -->
 <app-dash-ad></app-dash-ad>
 <div class="container">
-  <span style="color: black; font-weight: bold; font-size: 30px"
-    >Liste Donateur</span
-  >
-  <div class="row">
-    <div *ngFor="let donateur of getdonateursPage()" class="col-md-4">
+  <span style="color: black; font-weight: bold; font-size: 30px">Liste Donateur</span>
+  <div class="row justify-content-md-center">
+    <div *ngFor="let donateur of getdonateursPage()" class="col-lg-4 col-md-6 mb-4">
       <div class="card" [ngClass]="{ blocked: donateur.bloque }">
         <div class="card-content">
           <img
@@ -44,6 +42,8 @@
     </div>
   </div>
 </div>
+
+
 <!-- Pagination -->
 <div class="d-flex flex-wrap justify-content-center my-5">
   <button class="btn btn-mauve me-2" [disabled]="pageActuelle === 1" (click)="precedentPage()">

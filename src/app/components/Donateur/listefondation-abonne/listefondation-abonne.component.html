@@ -1,74 +1,65 @@
 <app-dashboard></app-dashboard>
 
-<div
-  class="card"
-  style="margin-top: 8%; margin-left: 8%; border: 1px solid #f7e801; width: 90%"
->
-<h1><span style="color: #000000; font-weight: bold; font-size: 30px"
-  >Fondations Abonnées</span
-></h1>
-  <div class="card-body">
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col" style="background-color: #f7e801; font-weight: bold">
-            Photo
-          </th>
-          <th scope="col" style="background-color: #f7e801; font-weight: bold">
-            Nom
-          </th>
-          <!-- <th scope="col" style="background-color: #f7e801; font-weight: bold">
-            Email
-          </th>
-          <th scope="col" style="background-color: #f7e801; font-weight: bold">
-            Adresse
-          </th> -->
-          <th scope="col" style="background-color: #f7e801; font-weight: bold">
-            Description
-          </th>
-          <th scope="col" style="background-color: #f7e801; font-weight: bold">
-            Téléphone
-          </th>
-          <!-- <th scope="col" style="background-color: #f7e801; font-weight: bold">
-            Numéro d'enregistrement
-          </th> -->
-          <th scope="col" style="background-color: #f7e801; font-weight: bold">
-            Action
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let fondation of fondationsAbonnees">
-          <th scope="row">
-            <img
-              style="width: 49.98px; height: 50px; border-radius: 9999px"
-              src="{{ apiUrl }}/{{ fondation.image }}"
-              class="card-img-top"
-              alt="..."
-            />
-          </th>
-
-          <td>{{ fondation.nom_fondation }}</td>
-          <!-- <td>{{ fondation.email_fondation }}</td>
-          <td>{{ fondation.adresse_fondation }}</td> -->
-          <td>{{ fondation.description_fondation }}</td>
-          <td>{{ fondation.telephone_donateur }}</td>
-          <!-- <td>{{ fondation.numeroenregistrement_fondation }}</td> -->
-          <td>
-            <button
-              type="button"
-              data-bs-toggle="modal"
-              data-bs-target="#exampleModal4"
-              class="btn"
-              style="color: #f7e801"
-              (click)="showCollectesModal(fondation.id)"
-            >
-              <i class="fa-solid fa-circle-info fa-bounce"></i>
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+<div class="container mt-5">
+  <div class="card mt-5" style="border: 1px solid #f7e801">
+    <h1
+      style="
+        color: #000000;
+        font-weight: bold;
+        font-size: 30px;
+        margin-top: 2rem;
+        margin-left: 1rem;
+      "
+    >
+      Fondations Abonnées
+    </h1>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr style="background-color: #f7e801; font-weight: bold">
+              <th scope="col">Photo</th>
+              <th scope="col">Nom</th>
+              <!-- <th scope="col">Email</th>
+              <th scope="col">Adresse</th> -->
+              <th scope="col">Description</th>
+              <th scope="col">Téléphone</th>
+              <!-- <th scope="col">Numéro d'enregistrement</th> -->
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let fondation of fondationsAbonnees">
+              <td>
+                <img
+                  style="width: 50px; height: 50px; border-radius: 50%"
+                  [src]="apiUrl + '/' + fondation.image"
+                  class="card-img-top"
+                  alt="Fondation Photo"
+                />
+              </td>
+              <td>{{ fondation.nom_fondation }}</td>
+              <!-- <td>{{ fondation.email_fondation }}</td>
+              <td>{{ fondation.adresse_fondation }}</td> -->
+              <td>{{ fondation.description_fondation }}</td>
+              <td>{{ fondation.telephone_donateur }}</td>
+              <!-- <td>{{ fondation.numeroenregistrement_fondation }}</td> -->
+              <td>
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal4"
+                  (click)="showCollectesModal(fondation.id)"
+                >
+                  <i class="fa-solid fa-circle-info fa-bounce"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -91,7 +82,6 @@
           class="btn-close"
           data-bs-dismiss="modal"
           aria-label="Close"
-          style="background-color: #3b0458"
         ></button>
       </div>
       <div class="modal-body">
@@ -122,8 +112,8 @@
       <div class="modal-footer" style="background-color: #3b0458">
         <button
           type="button"
-          style="border: 1px solid #f7e801; color: #f7e801"
           class="btn"
+          style="border: 1px solid #f7e801; color: #f7e801"
           data-bs-dismiss="modal"
         >
           Fermer
