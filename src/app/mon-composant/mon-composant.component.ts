@@ -8,7 +8,7 @@ import { AdminService } from '../components/service/admin.service';
 })
 export class MonComposantComponent implements OnInit {
   comptes: any[] = [];
-
+  apiUrl = 'http://127.0.0.1:8000/api';
 
   constructor(private adminService: AdminService) {}
 
@@ -19,7 +19,7 @@ export class MonComposantComponent implements OnInit {
 
   loadComptes(): void {
     this.adminService.getListeCompteAReactiver().subscribe(response => {
-      console.log(response); 
+      console.log(response);
       this.comptes = response.data;
     });
   }

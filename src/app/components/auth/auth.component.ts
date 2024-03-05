@@ -234,14 +234,14 @@ export class AuthComponent {
       return;
     }
 
-    if (this.adresse.length < 1 || this.adresse.length > 8) {
-      this.alertMessage(
-        'error',
-        'Erreur de format',
-        "L'adresse ne doit contenir qu'entre 1 et 8 caractères."
-      );
-      return;
-    }
+    // if (this.adresse.length < 1 || this.adresse.length > 8) {
+    //   this.alertMessage(
+    //     'error',
+    //     'Erreur de format',
+    //     "L'adresse ne doit contenir qu'entre 1 et 8 caractères."
+    //   );
+    //   return;
+    // }
 
     if (this.telephone.length !== 9) {
       this.alertMessage(

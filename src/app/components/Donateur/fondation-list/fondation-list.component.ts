@@ -111,64 +111,100 @@ import { Router } from '@angular/router';
   styles: [
     `
       .card-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        margin-top: 7%;
-      }
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 7%;
+}
 
-      .card {
-        width: 300px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        overflow: hidden;
-        background-color: #fff;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease;
-      }
+.card {
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-      .card:hover {
-        transform: translateY(-5px);
-      }
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
 
-      .card-content {
-        display: flex;
-        flex-direction: column;
-      }
+.card-content {
+  padding: 20px;
+}
 
-      .image {
-        height: 150px;
-        background-size: cover;
-        background-position: center;
-      }
+.image {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 200px; /* Ajustez la hauteur selon vos besoins */
+  overflow: hidden; /* Assurez-vous que l'image ne dépasse pas de la carte */
+}
 
-      .details {
-        padding: 10px;
-      }
+.image img {
+  max-width: 100%;
+  max-height: 100%;
+}
 
-      .icons {
-        display: flex;
-        justify-content: space-between;
-        padding: 5px;
-        background-color: #f8f9fa;
-      }
+.card-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
 
-      .blocked {
-        filter: blur(2px);
-      }
+.card-text {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 15px;
+}
 
-      .card-title {
-        font-size: 20px;
-        font-weight: bold;
-        color: #f7e801;
-        margin-bottom: 5px;
-      }
+.btn-details {
+  background-color: #f7e801;
+  color: #333;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+}
 
-      .card-text {
-        font-size: 16px;
-        color: #555;
-        margin-bottom: 10px;
-      }
+.btn-details:hover {
+  background-color: #d0bb00;
+}
+
+.icons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f8f9fa;
+  border-top: 1px solid #ccc;
+}
+
+.icons button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.icons button:hover {
+  color: #f00;
+}
+
+.list-view .card {
+  border-color: #ccc;
+  background-color: #fff;
+}
+
+.grid-view .card {
+  border-color: #ccc;
+  background-color: #fff;
+}
+
 
       .btn-abonner,
       .btn-se-desabonner,
@@ -231,17 +267,7 @@ import { Router } from '@angular/router';
         background-color: #dc3545;
         color: #fff;
       }
-      .list-view .card {
-  /* Couleur pour la vue en liste */
-  border-color: #ccc; /* Couleur de la bordure */
-  background-color: #fff; /* Couleur de fond */
-}
-
-.grid-view .card {
-  /* Couleur pour la vue en grille */
-  border-color: #ccc; /* Couleur de la bordure */
-  background-color: #fff; /* Couleur de fond */
-}
+ 
     `,
   ],
 })

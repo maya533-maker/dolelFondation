@@ -2,19 +2,21 @@
 
 <div class="container-fluid">
   <div class="row justify-content-center">
-    <div class="col-lg-6 col-md-8"> 
-      <div class="card" *ngFor="let compte of comptes">
-        <img class="card-image" src="{{ compte.image }}" alt="Image de profil" />
-        <div class="content">
-          <p class="heading">{{ compte.nom }} {{ compte.prenom }}</p>
-          <p>Email: {{ compte.email }}</p>
-          <p>Adresse: {{ compte.adresse }}</p>
-          <p>Téléphone: {{ compte.telephone }}</p>
-          <p>Role: {{ compte.role }}</p>
-          <p>Statut: {{ compte.statut }}</p>
-          <p>Date de création: {{ compte.created_at }}</p>
-          <p>Date de mise à jour: {{ compte.updated_at }}</p>
-          <button class="btn btn-outline-warning" (click)="reactiverCompte(compte.id)">Réactiver</button>
+    <div class="col-lg-6 col-md-8">
+      <div class="card-container">
+        <div class="card" *ngFor="let compte of comptes">
+          <img class="card-image" src="{{ apiUrl }}/{{ compte.image }}" alt="Image de profil" />
+          <div class="content">
+            <p class="heading">{{ compte.nom }} {{ compte.prenom }}</p>
+            <p>Email: {{ compte.email }}</p>
+            <p>Adresse: {{ compte.adresse }}</p>
+            <p>Téléphone: {{ compte.telephone }}</p>
+            <p>Role: {{ compte.role }}</p>
+            <p>Statut: {{ compte.statut }}</p>
+            <p>Date de création: {{ compte.created_at }}</p>
+            <p>Date de mise à jour: {{ compte.updated_at }}</p>
+            <button class="btn btn-outline-warning" (click)="reactiverCompte(compte.id)">Réactiver</button>
+          </div>
         </div>
       </div>
     </div>

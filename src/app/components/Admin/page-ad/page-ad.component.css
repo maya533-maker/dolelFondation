@@ -1,4 +1,24 @@
-.card.lk{
-  background-color: #3B0458;
-  color: white;
+.card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.donation-card {
+  background-color: #f8f9fa;
+}
+
+.card-title {
+  color: #3B0458;
+}
+
+.card-value {
+  font-size: 24px;
+  font-weight: bold;
+  color: #3B0458;
 }
