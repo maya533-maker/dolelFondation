@@ -1,0 +1,54 @@
+.cookie-notification {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to right, #3b0458, #f7e801);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+}
+
+.cookie-notification .content {
+  max-width: 600px;
+  margin: 0 auto;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cookie-notification p {
+  margin-bottom: 10px;
+}
+
+.cookie-notification button {
+  background-color: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+span{
+  font-weight: bold;
+  color: #3b0458;
+}
+.cookie-notification button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.more-info {
+  margin-top: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 20px;
+}
+
+.more-info p {
+  margin-bottom: 10px;
+}

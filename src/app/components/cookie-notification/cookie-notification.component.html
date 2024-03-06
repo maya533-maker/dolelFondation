@@ -1,0 +1,16 @@
+<div *ngIf="!acceptedCookies" class="cookie-notification">
+  <div class="content">
+    <p>
+      🌟 En continuant à utiliser notre site, vous acceptez l'utilisation de cookies. Ils nous aident à vous offrir la meilleure expérience possible et à soutenir nos efforts pour un monde meilleur. 🍪
+      <br>
+      <span>Informations supplémentaires</span>
+      <br>
+      Les cookies sont de petits fichiers texte placés sur votre appareil. En les acceptant, vous nous aidez à personnaliser le contenu, à améliorer nos services et à poursuivre notre mission d'impact positif. Merci pour votre soutien ! ❤️
+    </p>
+    <button (click)="acceptCookies()">Accepter les cookies</button>
+  </div>
+</div>
+
+<div *ngIf="showMore" class="more-info">
+  <button (click)="hideMoreInfo()">Fermer</button>
+</div>

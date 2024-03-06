@@ -51,6 +51,7 @@ import { DonateursAssociesComponent } from './components/Fondations/donateurs-as
 import { DonationComponent } from './donation/donation.component';
 import { CollecteListComponent } from './collecte-list/collecte-list.component';
 import { MonComposantComponent } from './mon-composant/mon-composant.component';
+import { CookieNotificationComponent } from './components/cookie-notification/cookie-notification.component';
 
 
 @NgModule({
@@ -97,7 +98,8 @@ import { MonComposantComponent } from './mon-composant/mon-composant.component';
     DonateurDonHistoryComponent,
     DonateursAssociesComponent,
     DonationComponent,
-    MonComposantComponent
+    MonComposantComponent,
+    CookieNotificationComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, BrowserAnimationsModule],
   providers: [AuthService, CollecteService, TokenInterceptorProvider],

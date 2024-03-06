@@ -43,32 +43,28 @@
 
 <!-- Modal pour modifier la collecte -->
 <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog custom-modal">
+  <div class="modal-dialog modal-lg custom-modal">
     <div class="modal-content">
       <div class="modal-header" style="display: flex;justify-content: center;">
         <h1>FORMULAIRE DE MODIFICATION D'UNE COLLECTE</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div class="input-field">
+        <div class="input-field" style="width: 100%;">
           <i class="fas fa-signature"></i>
-          <input name="titre" type="text" [(ngModel)]="collecteSelectionnee.titre" placeholder="Titre" />
+          <input name="titre" type="text" [(ngModel)]="collecteSelectionnee.titre" placeholder="Titre" class="form-control" />
         </div>
-        <div class="input-field">
+        <div class="input-field" style="width: 100%;">
           <i class="fas fa-align-left"></i>
-          <input name="description" [(ngModel)]="collecteSelectionnee.description" placeholder="Description">
+          <input name="description" [(ngModel)]="collecteSelectionnee.description" placeholder="Description" class="form-control" />
         </div>
-        <div class="input-field">
-          <i class="fas fa-image"></i>
-          <input type="file" (change)="getFile($event)" accept="image/*">
-        </div>
-        <div class="input-field">
+        <div class="input-field" style="width: 100%;">
           <i class="fas fa-money-bill"></i>
-          <input name="objectifFinancier" type="number" [(ngModel)]="collecteSelectionnee.objectifFinancier" placeholder="Objectif Financier" />
+          <input name="objectifFinancier" type="number" [(ngModel)]="collecteSelectionnee.objectifFinancier" placeholder="Objectif Financier" class="form-control" />
         </div>
-        <div class="input-field">
+        <div class="input-field" style="width: 100%;">
           <i class="fas fa-sort-numeric-up"></i>
-          <input name="numeroCompte" type="text" [(ngModel)]="collecteSelectionnee.numeroCompte" placeholder="Numéro de compte" />
+          <input name="numeroCompte" type="text" [(ngModel)]="collecteSelectionnee.numeroCompte" placeholder="Numéro de compte" class="form-control" />
         </div>
         <button (click)="modifierCollecte()" style="border: 2px solid #F7E801;color: #F7E801;" class="btn edit-button">Modifier</button>
       </div>
@@ -76,36 +72,30 @@
   </div>
 </div>
 
-
-
-
+<!-- Modal pour ajouter une collecte -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog custom-modal">
+  <div class="modal-dialog modal-lg custom-modal">
     <div class="modal-content">
       <div class="modal-header" style="display: flex;justify-content: center;">
         <h1>FORMULAIRE D'AJOUT D'UNE COLLECTE</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body ">
-        <div class="input-field">
+      <div class="modal-body">
+        <div class="input-field" style="width: 100%;">
           <i class="fas fa-signature"></i>
-          <input name="titre" type="text" [(ngModel)]="titre" placeholder="Titre" />
+          <input name="titre" type="text" [(ngModel)]="titre" placeholder="Titre" class="form-control" />
         </div>
-        <div class="input-field">
+        <div class="input-field" style="width: 100%;">
           <i class="fas fa-align-left"></i>
-          <input name="description" [(ngModel)]="description" placeholder="Description">
+          <input name="description" [(ngModel)]="description" placeholder="Description" class="form-control" />
         </div>
-        <div class="input-field">
-          <i class="fas fa-image"></i>
-          <input type="file" (change)="getFile($event)" accept="image/*">
-        </div>
-        <div class="input-field">
+        <div class="input-field" style="width: 100%;">
           <i class="fas fa-money-bill"></i>
-          <input name="objectifFinancier" type="number" [(ngModel)]="objectifFinancier" placeholder="Objectif Financier" />
+          <input name="objectifFinancier" type="number" [(ngModel)]="objectifFinancier" placeholder="Objectif Financier" class="form-control" />
         </div>
-        <div class="input-field">
+        <div class="input-field" style="width: 100%;">
           <i class="fas fa-sort-numeric-up"></i>
-          <input name="numeroCompte" type="text" [(ngModel)]="numeroCompte" placeholder="Numéro de compte" />
+          <input name="numeroCompte" type="text" [(ngModel)]="numeroCompte" placeholder="Numéro de compte" class="form-control" />
         </div>
         <button (click)="ajouterCollecte()" style="border: 2px solid #F7E801;color: #F7E801;" class="btn add-button">Ajouter</button>
       </div>
